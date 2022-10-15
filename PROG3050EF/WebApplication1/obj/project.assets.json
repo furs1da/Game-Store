@@ -3303,11 +3303,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
+      "projectName": "GameStore",
+      "projectPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\WebApplication1\\WebApplication1\\obj\\",
+      "outputPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

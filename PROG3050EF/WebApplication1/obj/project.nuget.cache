@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EE36mX8pampfGG8TintIJ42/42oY65itn46tIstMkRG3tB6E1KXmtIlJ3Hb0Ez3MTfrFkrSa3i5V6DLMZ8flTA==",
+  "dgSpecHash": "tWe+nsOatgt7ip/QOezUGjGou+9ufy18sQN9UgpxVnF3gdSuGhlaRdkhgCtnRUpujmpxJ7ddlnAbdxvBi35ryw==",
   "success": true,
-  "projectFilePath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

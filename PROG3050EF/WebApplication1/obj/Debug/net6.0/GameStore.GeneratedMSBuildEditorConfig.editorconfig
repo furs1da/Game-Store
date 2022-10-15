@@ -6,8 +6,8 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = WebApplication1
-build_property.RootNamespace = WebApplication1
+build_property.RootNamespace = GameStore
+build_property.RootNamespace = GameStore
 build_property.ProjectDir = D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
@@ -41,4 +41,4 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-bddmc6yalx
+build_metadata.AdditionalFiles.CssScope = b-iuwtwudm05
