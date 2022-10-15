@@ -1,0 +1,30 @@
+﻿@model List<Prog3050A1.Data.Customer>
+@{
+    ViewData["Title"] = "All Customers";
+}
+
+<h1>@ViewData["Title"]</h1>
+<a asp-controller="Login" asp-action="Add">Register</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Customer Nickname</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Prog3050A1.Model.Customer customer in Model)
+        {
+            <tr>
+                <td>@customer.Nickname</td>
+                <td>
+                    <a asp-controller="Login" asp-action="Edit" asp-route-id="@customer.Cust_Id">Edit</a>
+                    <span class="linkSpacer">|</span>
+                    <a asp-controller="Login" asp-action="Delete" asp-route-id="@customer.Cust_Id">Delete</a>
+                    <span class="linkSpacer">|</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
