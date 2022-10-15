@@ -1,0 +1,30 @@
+﻿@model List<WebApplication1.Data.Event>
+@{
+    ViewData["Title"] = "All Events";
+}
+
+<h1>@ViewData["Title"]</h1>
+<a asp-controller="Event" asp-action="Add">Add Event</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (WebApplication1.Data.Event eventInstance in Model)
+        {
+            <tr>
+                <td>@eventInstance.Name</td>
+                <td>
+                    <a asp-controller="Game" asp-action="Edit" asp-route-id="@eventInstance.EventId">Edit</a>
+                    <span class="linkSpacer">|</span>
+                    <a asp-controller="Game" asp-action="Delete" asp-route-id="@eventInstance.EventId">Delete</a>
+                    <span class="linkSpacer">|</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

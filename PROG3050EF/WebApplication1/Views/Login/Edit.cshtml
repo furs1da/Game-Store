@@ -1,4 +1,4 @@
-﻿@model Prog3050A1.Data.Customer
+﻿@model WebApplication1.Data.Customer
 @{
     string title = ViewBag.Action + " Account";
     ViewBag.Title = title;
@@ -23,9 +23,9 @@
         <input type="text" asp-for="Password" class="form-control" />
     </div>
 
-    <input type="hidden" asp-for="PreferedPlatform_Id" value="1" />
-    <input type="hidden" asp-for="PreferedCategory_Id" value="1" />
-    <input type="hidden" asp-for="Cust_Id" />
+    <input type="hidden" asp-for="PreferedPlatformId" value="1" />
+    <input type="hidden" asp-for="PreferedCategoryId" value="1" />
+    <input type="hidden" asp-for="CustId" />
 
     <input type="submit" class="btn btn-primary" value="@ViewBag.Action" />
     <a asp-controller="Login" asp-action="Index" class="btn btn-primary">Cancel</a>

@@ -1,4 +1,4 @@
-﻿@model List<Prog3050A1.Data.Customer>
+﻿@model List<WebApplication1.Data.Customer>
 @{
     ViewData["Title"] = "All Customers";
 }
@@ -13,14 +13,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Prog3050A1.Model.Customer customer in Model)
+        @foreach (WebApplication1.Data.Customer customer in Model)
         {
             <tr>
                 <td>@customer.Nickname</td>
                 <td>
-                    <a asp-controller="Login" asp-action="Edit" asp-route-id="@customer.Cust_Id">Edit</a>
+                    <a asp-controller="Login" asp-action="Edit" asp-route-id="@customer.CustId">Edit</a>
                     <span class="linkSpacer">|</span>
-                    <a asp-controller="Login" asp-action="Delete" asp-route-id="@customer.Cust_Id">Delete</a>
+                    <a asp-controller="Login" asp-action="Delete" asp-route-id="@customer.CustId">Delete</a>
                     <span class="linkSpacer">|</span>
                 </td>
             </tr>
