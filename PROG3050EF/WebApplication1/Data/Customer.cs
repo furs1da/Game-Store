@@ -67,16 +67,16 @@ namespace WebApplication1.Data
         [Unicode(false)]
         public string? MailingPostalCode { get; set; }
         [Column("preferedPlatform_id")]
-        public int PreferedPlatformId { get; set; }
+        public int? PreferedPlatformId { get; set; }
         [Column("preferedCategory_id")]
-        public int PreferedCategoryId { get; set; }
+        public int? PreferedCategoryId { get; set; }
 
         [ForeignKey("PreferedCategoryId")]
         [InverseProperty("Customers")]
-        public virtual Category PreferedCategory { get; set; } = null!;
+        public virtual Category? PreferedCategory { get; set; } = null!;
         [ForeignKey("PreferedPlatformId")]
         [InverseProperty("Customers")]
-        public virtual Platform PreferedPlatform { get; set; } = null!;
+        public virtual Platform? PreferedPlatform { get; set; } = null!;
         [InverseProperty("Cust")]
         public virtual ICollection<CreditCard> CreditCards { get; set; }
         [InverseProperty("CustId1Navigation")]
