@@ -46,7 +46,7 @@ namespace WebApplication1.Controllers
                 _storeContext.Games.Add(game);
                 _storeContext.SaveChanges();
                 TempData["Message"] = game.Name + " Added";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Game");
             }
             else
             {
@@ -81,7 +81,7 @@ namespace WebApplication1.Controllers
                 _storeContext.Games.Update(game);
                 _storeContext.SaveChanges();
                 TempData["Message"] = game.Name + " Edited";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Game");
             }
             else
             {
@@ -111,7 +111,7 @@ namespace WebApplication1.Controllers
             _storeContext.Games.Remove(game);
             _storeContext.SaveChanges();
             TempData["Message"] = game.Name + " Deleted";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Game");
         }
         private StoreContext _storeContext;
     }

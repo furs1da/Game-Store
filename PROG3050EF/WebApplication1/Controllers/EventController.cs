@@ -46,7 +46,7 @@ namespace WebApplication1.Controllers
                 _storeContext.Events.Add(eventInstance);
                 _storeContext.SaveChanges();
                 TempData["Message"] = eventInstance.Name + " Added";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Event");
             }
             else
             {
@@ -81,7 +81,7 @@ namespace WebApplication1.Controllers
                 _storeContext.Events.Update(eventInstance);
                 _storeContext.SaveChanges();
                 TempData["Message"] = eventInstance.Name + " Edited";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Event");
             }
             else
             {
@@ -111,7 +111,7 @@ namespace WebApplication1.Controllers
             _storeContext.Events.Remove(eventInstance);
             _storeContext.SaveChanges();
             TempData["Message"] = eventInstance.Name + " Deleted";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Event");
         }
         private StoreContext _storeContext;
     }

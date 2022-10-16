@@ -45,7 +45,7 @@ namespace WebApplication1.Controllers
                 _storeContext.Customers.Add(customer);
                 _storeContext.SaveChanges();
                 TempData["Message"] = customer.Nickname + " Added";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Customer");
             }
             else
             {
@@ -80,7 +80,7 @@ namespace WebApplication1.Controllers
                 _storeContext.Customers.Update(customer);
                 _storeContext.SaveChanges();
                 TempData["Message"] = customer.Nickname + " Edited";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Customer");
             }
             else
             {
@@ -110,7 +110,7 @@ namespace WebApplication1.Controllers
             _storeContext.Customers.Remove(customer);
             _storeContext.SaveChanges();
             TempData["Message"] = customer.Nickname + " Deleted";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Customer");
         }
         private StoreContext _storeContext;
     }
