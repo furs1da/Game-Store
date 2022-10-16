@@ -9,6 +9,15 @@
     <thead>
         <tr>
             <th>Customer Nickname</th>
+            <th>Customer Email</th>
+            <th>Customer First Name</th>
+            <th>Customer Last Name</th>
+            <th>Customer Date Of Birth</th>
+            <th>Customer Shipping Address</th>
+            <th>Customer Shipping Postal Code</th>
+            <th>Customer Mailing Address</th>
+            <th>Customer Mailing Postal Code</th>
+
             <th>Action</th>
         </tr>
     </thead>
@@ -17,6 +26,15 @@
         {
             <tr>
                 <td>@customer.Nickname</td>
+                <td>@customer.Email</td>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Dob</td>
+                <td>@customer.ShippingAddress</td>
+                <td>@customer.ShippingPostalCode</td>
+                <td>@customer.MailingAddress</td>
+                <td>@customer.MailingPostalCode</td>
+
                 <td>
                     <a asp-controller="Login" asp-action="Edit" asp-route-id="@customer.CustId">Edit</a>
                     <span class="linkSpacer">|</span>
