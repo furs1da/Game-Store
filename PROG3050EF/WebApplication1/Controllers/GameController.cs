@@ -10,14 +10,14 @@ namespace WebApplication1.Controllers
 {
     public class GameController : Controller
     {
-        public GameController(TransactionContext transactionContext)
+        public GameController(StoreContext storeContext)
         {
-            _transactionContext = transactionContext;
+            _storeContext = storeContext;
         }
         public IActionResult Index()
         {
 
-            var transactions = _transactionContext.Game.ToList();
+            var transactions = _storeContext.Games.ToList();
             // and then pass that off to the view to display:
             return View(transactions);
         }
@@ -43,8 +43,8 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 // it's valid so we want to add the new transaction to the DB:
-                _transactionContext.Game.Add(game);
-                _transactionContext.SaveChanges();
+                _storeContext.Games.Add(game);
+                _storeContext.SaveChanges();
                 TempData["Message"] = game.Name + " Added";
                 return RedirectToAction("Index", "Home");
             }
@@ -65,10 +65,10 @@ namespace WebApplication1.Controllers
         {
             ViewBag.Action = "Edit";
 
-            ViewBag.Company = _transactionContext.Game.OrderBy(g => g.Name).ToList();
+            ViewBag.Company = _storeContext.Games.OrderBy(g => g.Name).ToList();
 
             // Find/retrieve/select the transaction to edit and then pass it to the view:
-            var transaction = _transactionContext.Game.Find(id);
+            var transaction = _storeContext.Games.Find(id);
             return View(transaction);
         }
 
@@ -78,8 +78,8 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 // it's valid so we want to update the existing transaction in the DB:
-                _transactionContext.Game.Update(game);
-                _transactionContext.SaveChanges();
+                _storeContext.Games.Update(game);
+                _storeContext.SaveChanges();
                 TempData["Message"] = game.Name + " Edited";
                 return RedirectToAction("Index", "Home");
             }
@@ -88,7 +88,7 @@ namespace WebApplication1.Controllers
                 // it's invalid so we simply return the transaction object
                 // to the Edit view setting add action again:
 
-                ViewBag.Company = _transactionContext.Game.OrderBy(g => g.Name).ToList();
+                ViewBag.Company = _storeContext.Games.OrderBy(g => g.Name).ToList();
 
                 ViewBag.Action = "Edit";
                 TempData["Message"] = "Failed to Edit";
@@ -100,7 +100,7 @@ namespace WebApplication1.Controllers
         public IActionResult Delete(int id)
         {
             // Find/retrieve/select the transaction to edit and then pass it to the view:
-            var transaction = _transactionContext.Game.Find(id);
+            var transaction = _storeContext.Games.Find(id);
             return View(transaction);
         }
 
@@ -108,11 +108,11 @@ namespace WebApplication1.Controllers
         public IActionResult Delete(Game game)
         {
             // Simply remove the transaction and then redirect back to the all transactions view:
-            _transactionContext.Game.Remove(game);
-            _transactionContext.SaveChanges();
+            _storeContext.Games.Remove(game);
+            _storeContext.SaveChanges();
             TempData["Message"] = game.Name + " Deleted";
             return RedirectToAction("Index", "Home");
         }
-        private TransactionContext _transactionContext;
+        private StoreContext _storeContext;
     }
 }

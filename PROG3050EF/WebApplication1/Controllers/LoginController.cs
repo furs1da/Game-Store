@@ -9,14 +9,14 @@ namespace WebApplication1.Controllers
 {
     public class LoginController : Controller
     {
-        public LoginController(CustomerContext customerContext)
+        public LoginController(StoreContext storeContext)
         {
-            _customerContext = customerContext;
+            _storeContext = storeContext;
         }
         public IActionResult Index()
         {
 
-            var transactions = _customerContext.Customer.ToList();
+            var transactions = _storeContext.Customers.ToList();
             // and then pass that off to the view to display:
             return View(transactions);
         }
@@ -42,8 +42,8 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 // it's valid so we want to add the new transaction to the DB:
-                _customerContext.Customer.Add(customer);
-                _customerContext.SaveChanges();
+                _storeContext.Customers.Add(customer);
+                _storeContext.SaveChanges();
                 TempData["Message"] = customer.Nickname + " Added";
                 return RedirectToAction("Index", "Home");
             }
@@ -64,10 +64,10 @@ namespace WebApplication1.Controllers
         {
             ViewBag.Action = "Edit";
 
-            ViewBag.Company = _customerContext.Customer.OrderBy(g => g.Nickname).ToList();
+            ViewBag.Company = _storeContext.Customers.OrderBy(g => g.Nickname).ToList();
 
             // Find/retrieve/select the transaction to edit and then pass it to the view:
-            var transaction = _customerContext.Customer.Find(id);
+            var transaction = _storeContext.Customers.Find(id);
             return View(transaction);
         }
 
@@ -77,8 +77,8 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 // it's valid so we want to update the existing transaction in the DB:
-                _customerContext.Customer.Update(customer);
-                _customerContext.SaveChanges();
+                _storeContext.Customers.Update(customer);
+                _storeContext.SaveChanges();
                 TempData["Message"] = customer.Nickname + " Edited";
                 return RedirectToAction("Index", "Home");
             }
@@ -87,7 +87,7 @@ namespace WebApplication1.Controllers
                 // it's invalid so we simply return the transaction object
                 // to the Edit view setting add action again:
 
-                ViewBag.Company = _customerContext.Customer.OrderBy(g => g.Nickname).ToList();
+                ViewBag.Company = _storeContext.Customers.OrderBy(g => g.Nickname).ToList();
 
                 ViewBag.Action = "Edit";
                 TempData["Message"] = "Failed to Edit";
@@ -99,7 +99,7 @@ namespace WebApplication1.Controllers
         public IActionResult Delete(int id)
         {
             // Find/retrieve/select the transaction to edit and then pass it to the view:
-            var transaction = _customerContext.Customer.Find(id);
+            var transaction = _storeContext.Customers.Find(id);
             return View(transaction);
         }
 
@@ -107,11 +107,11 @@ namespace WebApplication1.Controllers
         public IActionResult Delete(Customer customer)
         {
             // Simply remove the transaction and then redirect back to the all transactions view:
-            _customerContext.Customer.Remove(customer);
-            _customerContext.SaveChanges();
+            _storeContext.Customers.Remove(customer);
+            _storeContext.SaveChanges();
             TempData["Message"] = customer.Nickname + " Deleted";
             return RedirectToAction("Index", "Home");
         }
-        private CustomerContext _customerContext;
+        private StoreContext _storeContext;
     }
 }
