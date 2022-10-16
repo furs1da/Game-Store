@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace GameStore.Migrations
 {
     public partial class NullableFields : Migration
     {

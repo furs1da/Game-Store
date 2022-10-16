@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace WebApplication1.Data
+namespace GameStore.Data
 {
     public partial class StoreContext : DbContext
     {

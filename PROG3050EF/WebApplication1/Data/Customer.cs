@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Data
+namespace GameStore.Data
 {
     [Table("Customer")]
     [Index("Email", Name = "UQ__Customer__AB6E6164661522CF", IsUnique = true)]

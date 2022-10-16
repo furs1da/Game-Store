@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using GameStore.Data;
+using GameStore.Models;
 
-namespace WebApplication1.Controllers
+namespace GameStore.Controllers
 {
     public class EventController : Controller
     {

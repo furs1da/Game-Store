@@ -1,4 +1,4 @@
-﻿@model List<WebApplication1.Data.Customer>
+﻿@model List<Customer>
 @{
     ViewData["Title"] = "All Customers";
 }
@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (WebApplication1.Data.Customer customer in Model)
+        @foreach (Customer customer in Model)
         {
             <tr>
                 <td>@customer.Nickname</td>

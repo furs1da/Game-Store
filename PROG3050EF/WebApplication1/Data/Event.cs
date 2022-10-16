@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication1.Data
+namespace GameStore.Data
 {
     [Table("Event")]
     public partial class Event

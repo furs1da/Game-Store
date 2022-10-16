@@ -1,4 +1,4 @@
-﻿@model List<WebApplication1.Data.Event>
+﻿@model List<Event>
 @{
     ViewData["Title"] = "All Events";
 }
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (WebApplication1.Data.Event eventInstance in Model)
+        @foreach (Event eventInstance in Model)
         {
             <tr>
                 <td>@eventInstance.Name</td>

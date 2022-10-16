@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication1.Data;
+using GameStore.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace GameStore.Migrations
 {
     [DbContext(typeof(StoreContext))]
     [Migration("20221015181205_Initial")]

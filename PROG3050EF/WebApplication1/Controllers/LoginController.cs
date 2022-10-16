@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using GameStore.Data;
+using GameStore.Models;
 using System.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace WebApplication1.Controllers
+namespace GameStore.Controllers
 {
     public class LoginController : Controller
     {
