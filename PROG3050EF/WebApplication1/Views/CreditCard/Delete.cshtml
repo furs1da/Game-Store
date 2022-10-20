@@ -1,0 +1,14 @@
+﻿@model CreditCard
+@{
+    ViewBag.Title = "Delete Card";
+}
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.CardName</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CardName" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="CreditCard" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
