@@ -52,6 +52,8 @@ namespace GameStore
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+           
         }
     }
 }

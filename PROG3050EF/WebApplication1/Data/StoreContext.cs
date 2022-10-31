@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace GameStore.Data
 {
-    public partial class StoreContext : DbContext
+    public partial class StoreContext : IdentityDbContext<User>
     {
         public StoreContext()
         {
@@ -45,6 +48,8 @@ namespace GameStore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<CreditCard>(entity =>
             {
                 entity.HasKey(e => e.CreditId)
