@@ -1,5 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Customer
 @{
+    string title = "Register Account";
+    ViewBag.Title = title;
 }
+
+<h1>@title</h1>
+<form asp-controller="Account" asp-action="Register" method="post" enctype="application/x-www-form-urlencoded">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Nickname">Nickname</label>
+        <input type="text" asp-for="Nickname" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" class="form-control" />
+    </div>
+
+
+    <input type="submit" class="btn btn-primary" value="Register" />
+    <a asp-controller="Register" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+

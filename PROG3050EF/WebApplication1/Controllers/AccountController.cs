@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using GameStore.Data;
+using GameStore.Models.ViewModels;
 
 namespace GameStore.Controllers
 {
