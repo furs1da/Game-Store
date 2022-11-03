@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using GameStore.Data;
+using GameStore.Models.ViewModels;
+using GameStore.Models.Recaptcha;
+using GameStore.Helpers;
+using Microsoft.Extensions.Options;
 
 namespace GameStore.Controllers
 {
@@ -10,25 +14,43 @@ namespace GameStore.Controllers
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
 
-        public AccountController(UserManager<User> userMngr, SignInManager<User> signInMngr)
+        private readonly RecaptchaOption _option;
+        private readonly RecaptchaHelper _helper;
+
+        public AccountController(UserManager<User> userMngr, SignInManager<User> signInMngr, IOptions<RecaptchaOption> option)
         {
             userManager = userMngr;
             signInManager = signInMngr;
+            _option = option.Value;
+            _helper = new RecaptchaHelper(option);
         }
 
 
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            var model = new RegisterViewModel()
+            {
+                SiteKey = _option.SiteKey
+            };
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            string captchaResponse = Request.Form["g-recaptcha-response"].ToString();
+            var validate = _helper.ValidateCaptcha(captchaResponse);
+
+            if (!validate.Success)
+            {
+                ModelState.AddModelError("", "Finish captcha");
+                return View("Register", model);
+            }
+       
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username };
+                var user = new User { UserName = model.Nickname };
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -45,7 +67,7 @@ namespace GameStore.Controllers
                 }
             }
 
-            return View(model);
+            return View("Register", model);
         }
 
         [HttpPost]
