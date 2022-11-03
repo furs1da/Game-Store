@@ -50,7 +50,7 @@ namespace GameStore.Controllers
        
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Nickname };
+                var user = new User { UserName = model.Nickname, Email = model.Email};
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
