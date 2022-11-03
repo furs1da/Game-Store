@@ -44,7 +44,6 @@ namespace GameStore
                 options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequireDigit = true;                 
             }).AddEntityFrameworkStores<StoreContext>().AddDefaultTokenProviders();
-
         }
         public void Configure(IApplicationBuilder app)
         {
@@ -60,12 +59,29 @@ namespace GameStore
             app.UseSession();
             app.UseEndpoints(endpoints =>
             {
+                // route for Admin area
+                endpoints.MapAreaControllerRoute(
+                   name: "admin",
+                   areaName: "Admin",
+                   pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
+
+                // route for paging, sorting, and filtering
+                endpoints.MapControllerRoute(
+                    name: "",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{author}/{genre}/{price}");
+
+                // route for paging and sorting only
+                endpoints.MapControllerRoute(
+                    name: "",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
+
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-           
+            // calling the code that seeds our DB with an admin user:
+            StoreContext.CreateAdminUser(app.ApplicationServices).Wait();
         }
     }
 }
