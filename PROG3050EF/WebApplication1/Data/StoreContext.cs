@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
+
 namespace GameStore.Data
 {
     public partial class StoreContext : IdentityDbContext<User>
@@ -29,11 +30,18 @@ namespace GameStore.Data
             // if username doesn't exist, create it and add it to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new User { UserName = username, EmailConfirmed = true };
+                User user = new User { UserName = username };
+                user.EmailConfirmed = true;
+                user.Email = "gamestore.prog3050@gmail.com";
+
                 var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(user, roleName);
+                }
+                else
+                {
+                    string check = "smth";
                 }
             }
         }

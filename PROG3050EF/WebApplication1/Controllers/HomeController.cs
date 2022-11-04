@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using GameStore.Models;
+using GameStore.Data;
 
 namespace GameStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private StoreContext _storeContext;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, StoreContext storeContext)
         {
-            _logger = logger;
+            _storeContext = storeContext;
+
         }
 
         public IActionResult Index()
