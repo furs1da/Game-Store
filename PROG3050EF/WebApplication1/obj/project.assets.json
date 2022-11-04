@@ -65,10 +65,14 @@
           "MimeKit": "3.4.2"
         },
         "compile": {
-          "lib/net6.0/MailKit.dll": {}
+          "lib/net6.0/MailKit.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/MailKit.dll": {}
+          "lib/net6.0/MailKit.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "MessagePack/2.1.152": {
@@ -1812,10 +1816,14 @@
           "System.Security.Cryptography.Pkcs": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/MimeKit.dll": {}
+          "lib/net6.0/MimeKit.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/MimeKit.dll": {}
+          "lib/net6.0/MimeKit.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -2028,10 +2036,14 @@
       "Portable.BouncyCastle/1.9.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -2585,10 +2597,14 @@
       "System.Formats.Asn1/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Formats.Asn1.dll": {}
+          "lib/net6.0/System.Formats.Asn1.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/System.Formats.Asn1.dll": {}
+          "lib/net6.0/System.Formats.Asn1.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -3401,10 +3417,14 @@
           "System.Formats.Asn1": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {}
+          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {}
+          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
