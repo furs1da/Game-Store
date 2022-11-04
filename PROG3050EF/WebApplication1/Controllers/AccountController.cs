@@ -34,6 +34,7 @@ namespace GameStore.Controllers
         }
 
 
+        #region Registration
         [HttpGet]
         public IActionResult Register()
         {
@@ -66,7 +67,6 @@ namespace GameStore.Controllers
 
                 if (result.Succeeded)
                 {
-                    //await signInManager.SignInAsync(user, isPersistent: false);
                     try
                     {
                         var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -81,7 +81,6 @@ namespace GameStore.Controllers
                     {
                         return RedirectToAction("Error", "Account");
                     }
-
                 }
                 else
                 {
@@ -128,6 +127,8 @@ namespace GameStore.Controllers
         {
             return View();
         }
+        #endregion
+
 
         [HttpGet]
         public IActionResult Error()
@@ -177,8 +178,90 @@ namespace GameStore.Controllers
 
             ModelState.AddModelError("", messages);
 
-            ModelState.AddModelError("", "Invalid Login Attemp.");
+            ModelState.AddModelError("", "Invalid Login Attempt.");
             return View(model);
+        }
+
+
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPasswordModel)
+        {
+            if (!ModelState.IsValid)
+                return View(forgotPasswordModel);
+
+            var user = await userManager.FindByEmailAsync(forgotPasswordModel.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "This email is not registered in the system.");
+                return View(forgotPasswordModel);
+
+            }
+              
+            try
+            {
+                var token = await userManager.GeneratePasswordResetTokenAsync(user);
+                var confirmationLink = Url.Action(nameof(ResetPassword), "Account", new { token, email = user.Email }, Request.Scheme);
+
+
+                MailRequest request = new MailRequest() { ToEmail = forgotPasswordModel.Email, Body = "Hi there! Password recovery link: " + confirmationLink, Subject = "Welcome Letter - GameStore PROG-3050" };
+                await mailService.SendEmailAsync(request);
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "Account");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            var model = new ResetPasswordModel { Token = token, Email = email };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel resetPasswordModel)
+        {
+            if (!ModelState.IsValid)
+                return View(resetPasswordModel);
+
+            var user = await userManager.FindByEmailAsync(resetPasswordModel.Email);
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Account");
+            }
+               
+            var resetPassResult = await userManager.ResetPasswordAsync(user, resetPasswordModel.Token, resetPasswordModel.Password);
+            if (!resetPassResult.Succeeded)
+            {
+                foreach (var error in resetPassResult.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                return View();
+            }
+            return RedirectToAction(nameof(ResetPasswordConfirmation));
+        }
+        
+        [HttpGet]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
         }
 
         [HttpGet]
