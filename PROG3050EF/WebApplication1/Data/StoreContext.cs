@@ -39,10 +39,6 @@ namespace GameStore.Data
                 {
                     await userManager.AddToRoleAsync(user, roleName);
                 }
-                else
-                {
-                    string check = "smth";
-                }
             }
         }
 
