@@ -18,7 +18,7 @@ namespace GameStore.Data
                 .GetRequiredService<RoleManager<IdentityRole>>();
 
             string username = "admin";
-            string password = "SlavaUkraine2022!"; // #ruzziaIsTerroristState 
+            string password = "1OBb$^#0^u21!"; // #ruzziaIsTerroristState 
             string roleName = "Admin";
 
             // if role doesn't exist, create it
@@ -29,7 +29,7 @@ namespace GameStore.Data
             // if username doesn't exist, create it and add it to role
             if (await userManager.FindByNameAsync(username) == null)
             {
-                User user = new User { UserName = username };
+                User user = new User { UserName = username, EmailConfirmed = true };
                 var result = await userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {

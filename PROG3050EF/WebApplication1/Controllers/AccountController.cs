@@ -10,6 +10,7 @@ using GameStore.Interfaces;
 using GameStore.Models.EmailSender;
 using static System.Net.WebRequestMethods;
 
+
 namespace GameStore.Controllers
 {
     public class AccountController : Controller
@@ -19,13 +20,16 @@ namespace GameStore.Controllers
         private readonly IMailService mailService;
         private readonly RecaptchaOption _option;
         private readonly RecaptchaHelper _helper;
+        private StoreContext _storeContext;
 
-        public AccountController(UserManager<User> userMngr, SignInManager<User> signInMngr, IOptions<RecaptchaOption> option, IMailService mailService)
+
+        public AccountController(UserManager<User> userMngr, SignInManager<User> signInMngr, IOptions<RecaptchaOption> option, IMailService mailService, StoreContext storeContext)
         {
             userManager = userMngr;
             signInManager = signInMngr;
             _option = option.Value;
             _helper = new RecaptchaHelper(option);
+            _storeContext = storeContext;
             this.mailService = mailService;
         }
 
@@ -35,7 +39,7 @@ namespace GameStore.Controllers
         {
             var model = new RegisterViewModel()
             {
-                SiteKey = _option.SiteKey
+          
             };
             return View(model);
         }
@@ -52,7 +56,9 @@ namespace GameStore.Controllers
                 ModelState.AddModelError("", "Finish captcha");
                 return View("Register", model);
             }
-       
+
+           
+
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Nickname, Email = model.Email};
@@ -60,8 +66,22 @@ namespace GameStore.Controllers
 
                 if (result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    //await signInManager.SignInAsync(user, isPersistent: false);
+                    try
+                    {
+                        var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email }, Request.Scheme);
+
+
+                        MailRequest request = new MailRequest() { ToEmail = model.Email, Body = "Hi there! Confirmation email link: " + confirmationLink, Subject = "Welcome Letter - GameStore PROG-3050" };
+                        await mailService.SendEmailAsync(request);
+                        return RedirectToAction("SuccessRegistration", "Account");
+                    }
+                    catch (Exception ex)
+                    {
+                        return RedirectToAction("Error", "Account");
+                    }
+
                 }
                 else
                 {
@@ -71,34 +91,41 @@ namespace GameStore.Controllers
                     }
                 }
             }
-
+            string messages = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+           
+            ModelState.AddModelError("", messages);
+            
             return View("Register", model);
         }
 
         [HttpGet]
         public async Task<IActionResult> ConfirmEmail(string token, string email)
         {
-            var user = await userManager.FindByEmailAsync(email);
-            if (user == null)
-                return View("Error");
-            var result = await userManager.ConfirmEmailAsync(user, token);
-            return View(result.Succeeded ? nameof(ConfirmEmail) : "Error");
+            try
+            {
+                var user = await userManager.FindByEmailAsync(email);
+                if (user == null)
+                    return View("Error");
+                var result = await userManager.ConfirmEmailAsync(user, token);
+
+                Customer customer = new Customer() { Email = user.Email, Nickname = user.UserName, Password = user.PasswordHash };
+
+                _storeContext.Customers.Add(customer);
+                _storeContext.SaveChanges();
+
+                return View(result.Succeeded ? nameof(ConfirmEmail) : "Error");
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Error", "Account");
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> SuccessRegistration()
         {
-            try
-            {
-                MailRequest request = new MailRequest() { ToEmail = "furs.dmitry@gmail.com", Body = "Hi there! <a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">Verify ME!</a>", Subject = "Welcome Letter - GameStore PROG-3050" };
-                await mailService.SendEmailAsync(request);
-                return View();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-
             return View();
         }
 
@@ -145,7 +172,7 @@ namespace GameStore.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Invalid username/password.");
+            ModelState.AddModelError("", "Invalid Login Attemp.");
             return View(model);
         }
 

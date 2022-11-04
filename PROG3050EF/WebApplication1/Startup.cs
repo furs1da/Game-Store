@@ -7,6 +7,7 @@ using GameStore.Models.Recaptcha;
 using GameStore.Data;
 using GameStore.Models.EmailSender;
 using GameStore.Interfaces;
+using GameStore.Models.Tokens;
 
 namespace GameStore
 {
@@ -44,8 +45,17 @@ namespace GameStore
             services.AddIdentity<User, IdentityRole>(options => {
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequireDigit = true;                 
-            }).AddEntityFrameworkStores<StoreContext>().AddDefaultTokenProviders();
+                options.Password.RequireDigit = true;
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedEmail = true;
+
+                options.Tokens.EmailConfirmationTokenProvider = "emailconfirmation";
+            }).AddEntityFrameworkStores<StoreContext>()
+            .AddDefaultTokenProviders()
+            .AddTokenProvider<EmailConfirmationTokenProvider<User>>("emailconfirmation");
+
+            services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(2));
+            services.Configure<EmailConfirmationTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromDays(3));
         }
         public void Configure(IApplicationBuilder app)
         {
