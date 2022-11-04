@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using GameStore.Models.Recaptcha;
 using GameStore.Data;
-
-
+using GameStore.Models.EmailSender;
+using GameStore.Interfaces;
 
 namespace GameStore
 {
@@ -22,6 +22,8 @@ namespace GameStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<RecaptchaOption>(Configuration.GetSection(nameof(RecaptchaOption)));
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, Services.MailService>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 

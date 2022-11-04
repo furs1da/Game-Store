@@ -6,6 +6,7 @@ using GameStore.Models.ViewModels;
 using GameStore.Models.Recaptcha;
 using GameStore.Helpers;
 using Microsoft.Extensions.Options;
+using GameStore.Interfaces;
 
 namespace GameStore.Controllers
 {
@@ -13,16 +14,17 @@ namespace GameStore.Controllers
     {
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
-
+        private readonly IMailService mailService;
         private readonly RecaptchaOption _option;
         private readonly RecaptchaHelper _helper;
 
-        public AccountController(UserManager<User> userMngr, SignInManager<User> signInMngr, IOptions<RecaptchaOption> option)
+        public AccountController(UserManager<User> userMngr, SignInManager<User> signInMngr, IOptions<RecaptchaOption> option, IMailService mailService)
         {
             userManager = userMngr;
             signInManager = signInMngr;
             _option = option.Value;
             _helper = new RecaptchaHelper(option);
+            this.mailService = mailService;
         }
 
 
@@ -37,6 +39,7 @@ namespace GameStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             string captchaResponse = Request.Form["g-recaptcha-response"].ToString();
@@ -69,6 +72,29 @@ namespace GameStore.Controllers
 
             return View("Register", model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+            if (user == null)
+                return View("Error");
+            var result = await userManager.ConfirmEmailAsync(user, token);
+            return View(result.Succeeded ? nameof(ConfirmEmail) : "Error");
+        }
+
+        [HttpGet]
+        public IActionResult SuccessRegistration()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Error()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> LogOut()
