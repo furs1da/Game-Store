@@ -17,32 +17,43 @@ namespace GameStore.Models.ValidationAttributes
         }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            string name = value.ToString();
-            var property = validationContext.ObjectType.GetProperty(_IdPropertyName);
-            if (property != null)
+            try
             {
-                var idValue = property.GetValue(validationContext.ObjectInstance, null);
-                var _context = (StoreContext)validationContext.GetService(typeof(StoreContext));
-
-                var checkForUpdate = _context.Users.SingleOrDefault(e => e.UserName == value.ToString() && e.Id == idValue);
-                
-                if(checkForUpdate != null)
-                    return ValidationResult.Success;
-
-                var entity = _context.Users.SingleOrDefault(e => e.UserName == value.ToString() && e.Id != idValue);
-
-                if (entity != null)
+                if(value == null)
                 {
-                    return new ValidationResult(GetErrorMessage(value.ToString()));
+                    return new ValidationResult(GetErrorMessage());
                 }
+                string name = value.ToString();
+                var property = validationContext.ObjectType.GetProperty(_IdPropertyName);
+                if (property != null)
+                {
+                    var idValue = property.GetValue(validationContext.ObjectInstance, null);
+                    var _context = (StoreContext)validationContext.GetService(typeof(StoreContext));
+
+                    var checkForUpdate = _context.Users.SingleOrDefault(e => e.UserName == value.ToString() && e.Id == idValue);
+
+                    if (checkForUpdate != null)
+                        return ValidationResult.Success;
+
+                    var entity = _context.Users.SingleOrDefault(e => e.UserName == value.ToString() && e.Id != idValue);
+
+                    if (entity != null)
+                    {
+                        return new ValidationResult(GetErrorMessage(value.ToString()));
+                    }
+                }
+            }     
+            catch (Exception ex)
+            {
+                return new ValidationResult(GetErrorMessage(ex.ToString()));
             }
 
             return ValidationResult.Success;
         }
 
-        public string GetErrorMessage(string name)
+        public string GetErrorMessage(string name = "")
         {
-            return $"Nickname {name} is already in use.";
+            return $"Nickname {name} is already in use or is empty.";
         }
     }
 }

@@ -17,6 +17,10 @@ namespace GameStore.Models.ValidationAttributes
         }
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            if (value == null)
+            {
+                return new ValidationResult(GetErrorMessage());
+            }
             string name = value.ToString();
             var property = validationContext.ObjectType.GetProperty(_IdPropertyName);
             if (property != null)
@@ -40,9 +44,9 @@ namespace GameStore.Models.ValidationAttributes
             return ValidationResult.Success;
         }
 
-        public string GetErrorMessage(string email)
+        public string GetErrorMessage(string email = "")
         {
-            return $"Email {email} is already in use.";
+            return $"Email {email} is already in use or is empty.";
         }
     }
 }

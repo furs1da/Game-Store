@@ -39,7 +39,7 @@ namespace GameStore.Controllers
         {
             var model = new RegisterViewModel()
             {
-          
+                SiteKey = _option.SiteKey
             };
             return View(model);
         }
