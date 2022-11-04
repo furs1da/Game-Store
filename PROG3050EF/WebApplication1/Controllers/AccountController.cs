@@ -7,6 +7,8 @@ using GameStore.Models.Recaptcha;
 using GameStore.Helpers;
 using Microsoft.Extensions.Options;
 using GameStore.Interfaces;
+using GameStore.Models.EmailSender;
+using static System.Net.WebRequestMethods;
 
 namespace GameStore.Controllers
 {
@@ -84,8 +86,19 @@ namespace GameStore.Controllers
         }
 
         [HttpGet]
-        public IActionResult SuccessRegistration()
+        public async Task<IActionResult> SuccessRegistration()
         {
+            try
+            {
+                MailRequest request = new MailRequest() { ToEmail = "furs.dmitry@gmail.com", Body = "Hi there! <a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">Verify ME!</a>", Subject = "Welcome Letter - GameStore PROG-3050" };
+                await mailService.SendEmailAsync(request);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
             return View();
         }
 
