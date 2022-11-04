@@ -171,6 +171,11 @@ namespace GameStore.Controllers
                     }
                 }
             }
+            string messages = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+
+            ModelState.AddModelError("", messages);
 
             ModelState.AddModelError("", "Invalid Login Attemp.");
             return View(model);

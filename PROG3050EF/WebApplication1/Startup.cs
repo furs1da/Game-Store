@@ -33,7 +33,7 @@ namespace GameStore
             services.AddMemoryCache();
             services.AddSession();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
             services.AddHttpContextAccessor();
           
