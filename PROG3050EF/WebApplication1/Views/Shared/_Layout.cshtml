@@ -32,6 +32,20 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mt-1 text-white">
+                             <a asp-action="GameList" asp-controller="Game"
+                               asp-area="" class="nav-link text-white">Games</a>
+                        </li>
+                        <li class="nav-item mt-1 text-white">
+                             <a asp-action="MerchandiseList" asp-controller="Merchandise"
+                               asp-area="" class="nav-link text-white">Merchandise</a>
+                        </li>
+                        <li class="nav-item mt-1 text-white">
+                             <a asp-action="EventList" asp-controller="Events"
+                               asp-area="" class="nav-link text-white">Events</a>
+                        </li>
+                </ul>
                <div class="collapse navbar-collapse " id="menu">
                 <ul class="navbar-nav ml-auto">
                     
@@ -45,27 +59,36 @@
                                   My Account
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="#">Profile Information</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Profile Information</a>
                                   <div class="dropdown-divider"></div>
                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Addresses
                                    </a>
                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Shipping Address</a>
-                                    <a class="dropdown-item" href="#">Mailing Address</a>
+                                    <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Shipping Address</a>
+                                    <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Mailing Address</a>
                                   </div>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Payment Information</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Payment Information</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Family & Friends</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Family & Friends</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Wish List</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Wish List</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Reviews</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Reviews</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Events</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Events</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Orders</a>
+                                  <a class="dropdown-item" asp-action="EventList" asp-controller="Events"
+                               asp-area="">Orders</a>
                                 </div>
                             </li>      
                         }
