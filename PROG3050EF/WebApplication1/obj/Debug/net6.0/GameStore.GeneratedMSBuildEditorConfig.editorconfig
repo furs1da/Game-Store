@@ -8,129 +8,129 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GameStore
 build_property.RootNamespace = GameStore
-build_property.ProjectDir = C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\
+build_property.ProjectDir = D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1
+build_property.MSBuildProjectDirectory = D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/AccessDenied.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/ConfirmEmail.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/Error.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/ForgotPassword.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/ForgotPasswordConfirmation.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/Login.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/Register.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/ResetPassword.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/ResetPasswordConfirmation.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Account/SuccessRegistration.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Account/SuccessRegistration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTdWNjZXNzUmVnaXN0cmF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Admin/Index.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/CreditCard/Delete.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/CreditCard/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Q2FyZFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/CreditCard/Edit.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/CreditCard/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Q2FyZFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/CreditCard/Index.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/CreditCard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Q2FyZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Event/Delete.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Event/Edit.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Event/Index.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Game/Delete.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Game/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Game/Edit.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Game/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Game/Index.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Game/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Home/Index.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Home/Privacy.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Login/Delete.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Login/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Login/Edit.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Login/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Login/Index.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Shared/Error.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/_ViewImports.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/_ViewStart.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alex_/Documents/GitHub/GameStore/PROG3050EF/WebApplication1/Views/Shared/_Layout.cshtml]
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-iuwtwudm05

@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using GameStore.Data;
-using GameStore.Models;
+using GameStore.Models.ViewModels;
+using GameStore.Models.Recaptcha;
+using GameStore.Helpers;
+using Microsoft.Extensions.Options;
+using GameStore.Interfaces;
+using GameStore.Models.EmailSender;
+using static System.Net.WebRequestMethods;
 
 namespace GameStore.Controllers
 {
