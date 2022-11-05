@@ -19,6 +19,13 @@
         width: 100%;
         text-align: center;
     }
+    .vl {
+        border-left: 2px solid white;
+        height: 100%;
+        position: relative;
+        margin-left: .4em;
+        margin-right: .4em;
+    }
 </style>
 </head>
 <body>
@@ -32,21 +39,79 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mt-1 text-white">
-                             <a asp-action="GameList" asp-controller="Game"
-                               asp-area="" class="nav-link text-white">Games</a>
-                        </li>
-                        <li class="nav-item mt-1 text-white">
-                             <a asp-action="MerchandiseList" asp-controller="Merchandise"
-                               asp-area="" class="nav-link text-white">Merchandise</a>
-                        </li>
-                        <li class="nav-item mt-1 text-white">
-                             <a asp-action="EventList" asp-controller="Events"
-                               asp-area="" class="nav-link text-white">Events</a>
-                        </li>
-                </ul>
-               <div class="collapse navbar-collapse " id="menu">
+                @if (signInManager.IsSignedIn(User))
+                {
+                        if (!User.IsInRole("Admin"))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="GameList" asp-controller="Game"
+                                           asp-area="" class="nav-link text-white">Games</a>
+                                    </li>
+                                     <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="MerchandiseList" asp-controller="Merchandise"
+                                           asp-area="" class="nav-link text-white">Merchandise</a>
+                                    </li>
+                                     <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="EventList" asp-controller="Events"
+                                           asp-area="" class="nav-link text-white">Events</a>
+                                    </li>
+                            </ul>
+                    }
+                    else
+                    {
+                            <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="GameList" asp-controller="Game"
+                                           asp-area="" class="nav-link text-white">List of Games</a>
+                                    </li>
+                                    <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="MerchandiseList" asp-controller="Merchandise"
+                                           asp-area="" class="nav-link text-white">List of Merchandise</a>
+                                          
+                                    </li>
+                                     <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="EventList" asp-controller="Events"
+                                           asp-area="" class="nav-link text-white">List of Events</a>
+                                    </li>
+                                     <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                     <li class="nav-item mt-1 text-white">
+                                         <a asp-action="EventList" asp-controller="Events"
+                                           asp-area="" class="nav-link text-white">List of Orders</a>   
+                                    </li>
+                                     <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="EventList" asp-controller="Events"
+                                           asp-area="" class="nav-link text-white">List of Game Reviews</a>
+                                    </li>
+                                     <li class="nav-item mt-1"> 
+                                        <div class="vl"></div>
+                                    </li>
+                                    <li class="nav-item mt-1 text-white">
+                                         <a asp-action="EventList" asp-controller="Events"
+                                           asp-area="" class="nav-link text-white">Reports</a>
+                                    </li>
+                            </ul>
+                    }
+                }
+                
+                <div class="collapse navbar-collapse " id="menu">
                 <ul class="navbar-nav ml-auto">
                     
                    @if (signInManager.IsSignedIn(User))
