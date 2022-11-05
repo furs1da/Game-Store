@@ -157,7 +157,7 @@ namespace GameStore.Controllers
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.Username, model.Password,
-                            isPersistent: model.RememberMe, lockoutOnFailure: false);
+                            isPersistent: model.RememberMe, lockoutOnFailure: true);
 
                 if (result.Succeeded)
                 {
@@ -171,7 +171,20 @@ namespace GameStore.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
+                if (result.IsLockedOut)
+                {
+                    var user = await userManager.FindByNameAsync(model.Username);
+                    var forgotPassLink = Url.Action(nameof(ForgotPassword), "Account", new { }, Request.Scheme);
+
+
+                    MailRequest request = new MailRequest() { ToEmail = user.Email, Body = string.Format("Your account is locked out, to reset your password, please click this link: {0}", forgotPassLink), Subject = "Locked out account information - GameStore PROG-3050" };
+                    await mailService.SendEmailAsync(request);
+                    ModelState.AddModelError("", "The account is locked out");
+
+                    return View(model);
+                }
             }
+           
             string messages = string.Join("; ", ModelState.Values
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));

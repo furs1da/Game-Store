@@ -48,8 +48,11 @@ namespace GameStore
                 options.Password.RequireDigit = true;
                 options.User.RequireUniqueEmail = true;
                 options.SignIn.RequireConfirmedEmail = true;
-
                 options.Tokens.EmailConfirmationTokenProvider = "emailconfirmation";
+
+                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+                options.Lockout.MaxFailedAccessAttempts = 3;
             }).AddEntityFrameworkStores<StoreContext>()
             .AddDefaultTokenProviders()
             .AddTokenProvider<EmailConfirmationTokenProvider<User>>("emailconfirmation");
