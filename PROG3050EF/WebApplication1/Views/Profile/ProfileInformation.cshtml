@@ -1,0 +1,33 @@
+﻿@using GameStore.Data.UtilityClasses
+@model GameStore.Models.ViewModels.ProfileViewModel
+@{
+    string title = "Profile Information:";
+    ViewBag.Title = title;
+}
+
+    
+    <h1 class="mt-3">@title</h1>
+
+
+    <div class="form-group">
+        <label asp-for="FirstName">First Name: @(Model.FirstName == null ? "No Information" : Model.FirstName)</label>
+       
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name: @(Model.LastName == null ? "No Information" : Model.LastName)</label>
+       
+    </div>
+    <div class="form-group">
+        <label asp-for="DOB">Date Of Birth: @(Model.DOB == new DateTime() ? "No Information" : Model.DOB.Value.ToString("dd/MM/yyyy"))</label> 
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender">Gender: @(Model.Genders.FirstOrDefault(item => item.Id == Model.Gender) == null ? "No Information" : Model.Genders.FirstOrDefault(item => item.Id == Model.Gender).Name)</label>
+    </div>
+    <div class="form-group">
+        <label asp-for="RecievePromotion">Receive Promotions: @(Model.RecievePromotion == true ? "Yes" : "No") </label>
+    </div>
+
+    <input type="hidden" asp-for="CustomerId" />
+
+    <a asp-controller="Profile" asp-action="ProfileInformationEdit" class="btn btn-primary">Edit</a>
+    <a asp-controller="Profile" asp-action="ChangePassword" class="link-primary ml-2">Change Password</a>

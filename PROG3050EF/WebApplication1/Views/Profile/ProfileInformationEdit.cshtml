@@ -1,0 +1,43 @@
+﻿@using GameStore.Data.UtilityClasses
+@model GameStore.Models.ViewModels.ProfileViewModel
+@{
+    string title = "Profile Information:";
+    ViewBag.Title = title;
+}
+
+<h1>@title</h1>
+<form asp-controller="Profile" asp-action="ProfileInformationEdit" method="post" enctype="application/x-www-form-urlencoded">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input type="text" asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input type="text" asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DOB">Date Of Birth</label>
+        <input type="date" asp-for="DOB" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender">Gender</label>
+        <select asp-for="Gender" class="form-control" >
+            <option value="0">Select your gender</option>
+            @foreach(Gender item in Model.Genders)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="RecievePromotion">Receive Promotions</label>
+        <input type="checkbox" asp-for="RecievePromotion" class="form-check"/>
+    </div>
+
+    <input type="hidden" asp-for="CustomerId" />
+
+    <input type="submit" class="btn btn-primary" value="Save Changes" />
+    <a asp-controller="Profile" asp-action="ProfileInformation" class="btn btn-primary">Cancel</a>
+</form>
