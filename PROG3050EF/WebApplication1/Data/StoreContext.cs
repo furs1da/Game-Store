@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
+using GameStore.Data.SeedData;
 
 namespace GameStore.Data
 {
@@ -303,9 +303,8 @@ namespace GameStore.Data
                     .HasConstraintName("FKWishList795792");
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            modelBuilder.ApplyConfiguration(new SeedPlatform());
+            modelBuilder.ApplyConfiguration(new SeedCategory());
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
