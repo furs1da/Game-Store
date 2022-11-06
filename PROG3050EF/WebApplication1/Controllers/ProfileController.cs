@@ -107,7 +107,8 @@ namespace GameStore.Controllers
         [HttpGet]
         public async Task<IActionResult> ChangePassword()
         {
-            return View();
+            ChangePasswordViewModel vm = new ChangePasswordViewModel();
+            return View(vm);
         }
 
         [Authorize]
@@ -121,7 +122,40 @@ namespace GameStore.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel vm)
         {
-            return View();
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            if (customer == null)
+            {
+                return RedirectToAction("Error");
+            }
+
+           
+
+            var user = await userManager.FindByEmailAsync(customer.Email);
+            
+            PasswordVerificationResult passResult = userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, vm.OldPassword);
+            if (passResult == 0)
+            {
+                ModelState.AddModelError("OldPassword", "Wrong old password.");
+                return View(vm);
+            }
+
+            var token = await userManager.GeneratePasswordResetTokenAsync(user);
+            var resetPassResult = await userManager.ResetPasswordAsync(user, token, vm.Password);
+
+            if (!resetPassResult.Succeeded)
+            {
+                foreach (var error in resetPassResult.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                return View(vm);
+            }
+
+            return View("ChangePasswordConfirmation");
         }
     }
 }
