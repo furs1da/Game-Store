@@ -1,0 +1,23 @@
+﻿@using GameStore.Data.UtilityClasses
+@model GameStore.Models.ViewModels.PreferencesViewModel
+@{
+    string title = "Preferences:";
+    ViewBag.Title = title;
+}
+
+    
+    <h1 class="mt-3">@title</h1>
+
+
+    <div class="form-group">
+        <label asp-for="CategoryId">Favourite Category: @(Model.Categories.FirstOrDefault(item => item.CategoryId == Model.CategoryId) == null ? "No Information" : Model.Categories.FirstOrDefault(item => item.CategoryId == Model.CategoryId).Name)</label>
+    </div>
+   <div class="form-group">
+        <label asp-for="PlatformId">Favourite Platform: @(Model.Platforms.FirstOrDefault(item => item.PlatformId == Model.PlatformId) == null ? "No Information" : Model.Platforms.FirstOrDefault(item => item.PlatformId == Model.PlatformId).Name)</label>
+    </div>
+
+    <input type="hidden" asp-for="Categories" />
+    <input type="hidden" asp-for="Platforms" />
+    <input type="hidden" asp-for="CustomerId" />
+
+    <a asp-controller="Preferences" asp-action="PreferencesEdit" class="btn btn-primary">Edit</a>

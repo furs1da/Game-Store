@@ -2,7 +2,7 @@
 
 namespace GameStore.Models.ViewModels
 {
-    public class ForgotPasswordViewModel
+    public class ForgotPasswordViewModel // Account Controller
     {
         [Required]
         [EmailAddress]

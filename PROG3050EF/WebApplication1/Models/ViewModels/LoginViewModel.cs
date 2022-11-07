@@ -2,7 +2,7 @@
 
 namespace GameStore.Models.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel // Account Controller
     {
         [Required(ErrorMessage = "Please enter a username.")]
         [StringLength(255)]

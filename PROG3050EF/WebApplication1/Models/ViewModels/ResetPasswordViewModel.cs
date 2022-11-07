@@ -2,7 +2,7 @@
 
 namespace GameStore.Models.ViewModels
 {
-    public class ResetPasswordModel
+    public class ResetPasswordModel // Account Controller
     {
         [Required]
         [DataType(DataType.Password)]

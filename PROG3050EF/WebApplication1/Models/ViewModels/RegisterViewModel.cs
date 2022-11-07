@@ -3,7 +3,7 @@ using GameStore.Models.ValidationAttributes;
 
 namespace GameStore.Models.ViewModels
 {
-    public class RegisterViewModel
+    public class RegisterViewModel // Account Controller
     {
         [Key]
         public int Id { get; set; }

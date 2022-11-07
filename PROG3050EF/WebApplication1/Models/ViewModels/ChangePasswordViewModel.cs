@@ -3,7 +3,7 @@ using GameStore.Models.ValidationAttributes;
 
 namespace GameStore.Models.ViewModels
 {
-    public class ChangePasswordViewModel
+    public class ChangePasswordViewModel // Profile Controller
     {
         [Required(ErrorMessage = "Please enter your old password.")]
         [DataType(DataType.Password)]

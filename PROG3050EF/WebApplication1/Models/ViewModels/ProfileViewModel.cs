@@ -4,7 +4,7 @@ using GameStore.Data.UtilityClasses;
 
 namespace GameStore.Models.ViewModels
 {
-    public class ProfileViewModel
+    public class ProfileViewModel // Profile Controller
     {
         public int? CustomerId { get; set; }
 
