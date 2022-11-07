@@ -22,19 +22,6 @@ namespace GameStore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CategoryGame", b =>
-                {
-                    b.Property<int>("Categoryid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Gameid")
-                        .HasColumnType("int");
-
-                    b.HasKey("Categoryid", "Gameid");
-
-                    b.ToTable("CategoryGame");
-                });
-
             modelBuilder.Entity("CustomerEvent", b =>
                 {
                     b.Property<int>("Customerid")
@@ -83,32 +70,6 @@ namespace GameStore.Migrations
                     b.ToTable("GameFeature_Game", (string)null);
                 });
 
-            modelBuilder.Entity("GameGameFeature", b =>
-                {
-                    b.Property<int>("GameFeatureid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Gameid")
-                        .HasColumnType("int");
-
-                    b.HasKey("GameFeatureid", "Gameid");
-
-                    b.ToTable("GameGameFeature");
-                });
-
-            modelBuilder.Entity("GamePlatform", b =>
-                {
-                    b.Property<int>("Gameid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Platformid")
-                        .HasColumnType("int");
-
-                    b.HasKey("Gameid", "Platformid");
-
-                    b.ToTable("GamePlatform");
-                });
-
             modelBuilder.Entity("GameStore.Data.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -126,7 +87,7 @@ namespace GameStore.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
 
                     b.HasData(
                         new
@@ -209,7 +170,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("CustId");
 
-                    b.ToTable("CreditCard");
+                    b.ToTable("CreditCard", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Customer", b =>
@@ -248,17 +209,9 @@ namespace GameStore.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("lastName");
 
-                    b.Property<string>("MailingAddress")
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("mailingAddress");
-
-                    b.Property<string>("MailingPostalCode")
-                        .HasMaxLength(16)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("mailingPostalCode");
+                    b.Property<int?>("MailingAddressId")
+                        .HasColumnType("int")
+                        .HasColumnName("mailingAddress_id");
 
                     b.Property<string>("Nickname")
                         .IsRequired()
@@ -285,24 +238,20 @@ namespace GameStore.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("recievePromotion");
 
-                    b.Property<string>("ShippingAddress")
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("shippingAddress");
-
-                    b.Property<string>("ShippingPostalCode")
-                        .HasMaxLength(16)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(16)")
-                        .HasColumnName("shippingPostalCode");
+                    b.Property<int?>("ShippingAddressId")
+                        .HasColumnType("int")
+                        .HasColumnName("shippingAddress_id");
 
                     b.HasKey("CustId")
                         .HasName("PK__Customer__A1B71F90C6489007");
 
+                    b.HasIndex("MailingAddressId");
+
                     b.HasIndex("PreferedCategoryId");
 
                     b.HasIndex("PreferedPlatformId");
+
+                    b.HasIndex("ShippingAddressId");
 
                     b.HasIndex(new[] { "Email" }, "UQ__Customer__AB6E6164661522CF")
                         .IsUnique();
@@ -310,7 +259,7 @@ namespace GameStore.Migrations
                     b.HasIndex(new[] { "Nickname" }, "UQ__Customer__CC6CD17E283CABFD")
                         .IsUnique();
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customer", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Employee", b =>
@@ -339,7 +288,7 @@ namespace GameStore.Migrations
                     b.HasKey("EmpId")
                         .HasName("PK__Employee__1299A861977CC9A6");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employee", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Event", b =>
@@ -376,7 +325,7 @@ namespace GameStore.Migrations
 
                     b.HasKey("EventId");
 
-                    b.ToTable("Event");
+                    b.ToTable("Event", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.FriendsFamily", b =>
@@ -415,7 +364,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("CustId2");
 
-                    b.ToTable("FriendsFamily");
+                    b.ToTable("FriendsFamily", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Game", b =>
@@ -465,7 +414,7 @@ namespace GameStore.Migrations
 
                     b.HasKey("GameId");
 
-                    b.ToTable("Game");
+                    b.ToTable("Game", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.GameFeature", b =>
@@ -487,7 +436,7 @@ namespace GameStore.Migrations
                     b.HasKey("FeatureId")
                         .HasName("PK__GameFeat__7906CBD7BF1F29A9");
 
-                    b.ToTable("GameFeature");
+                    b.ToTable("GameFeature", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.GameImage", b =>
@@ -524,7 +473,39 @@ namespace GameStore.Migrations
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("GameImage");
+                    b.ToTable("GameImage", (string)null);
+                });
+
+            modelBuilder.Entity("GameStore.Data.MailingAddress", b =>
+                {
+                    b.Property<int>("MailingAddressId")
+                        .HasColumnType("int")
+                        .HasColumnName("mailingAddressId");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(55)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(55)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<int>("Province")
+                        .HasColumnType("int");
+
+                    b.HasKey("MailingAddressId");
+
+                    b.ToTable("MailingAddress", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Merchandise", b =>
@@ -563,7 +544,7 @@ namespace GameStore.Migrations
                     b.HasKey("MerchId")
                         .HasName("PK__Merchand__1937E9C0E88FCC6F");
 
-                    b.ToTable("Merchandise");
+                    b.ToTable("Merchandise", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.MerchandiseImage", b =>
@@ -596,7 +577,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("MerchandiseId");
 
-                    b.ToTable("MerchandiseImage");
+                    b.ToTable("MerchandiseImage", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Order", b =>
@@ -642,7 +623,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("MerchandiseId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Platform", b =>
@@ -663,7 +644,7 @@ namespace GameStore.Migrations
 
                     b.HasKey("PlatformId");
 
-                    b.ToTable("Platform");
+                    b.ToTable("Platform", (string)null);
 
                     b.HasData(
                         new
@@ -746,7 +727,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("Review");
+                    b.ToTable("Review", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.ReviewImage", b =>
@@ -779,7 +760,39 @@ namespace GameStore.Migrations
 
                     b.HasIndex("ReviewId");
 
-                    b.ToTable("ReviewImage");
+                    b.ToTable("ReviewImage", (string)null);
+                });
+
+            modelBuilder.Entity("GameStore.Data.ShippingAddress", b =>
+                {
+                    b.Property<int>("ShippingAddressId")
+                        .HasColumnType("int")
+                        .HasColumnName("shippingAddressId");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(55)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(55)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<int>("Province")
+                        .HasColumnType("int");
+
+                    b.HasKey("ShippingAddressId");
+
+                    b.ToTable("ShippingAddress", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.User", b =>
@@ -877,7 +890,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("MerchandiseId");
 
-                    b.ToTable("WishList");
+                    b.ToTable("WishList", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1087,6 +1100,11 @@ namespace GameStore.Migrations
 
             modelBuilder.Entity("GameStore.Data.Customer", b =>
                 {
+                    b.HasOne("GameStore.Data.MailingAddress", "MailingAddress")
+                        .WithMany("Customers")
+                        .HasForeignKey("MailingAddressId")
+                        .HasConstraintName("FK_Customer_MailingAddress");
+
                     b.HasOne("GameStore.Data.Category", "PreferedCategory")
                         .WithMany("Customers")
                         .HasForeignKey("PreferedCategoryId")
@@ -1097,9 +1115,18 @@ namespace GameStore.Migrations
                         .HasForeignKey("PreferedPlatformId")
                         .HasConstraintName("FKCustomer55737");
 
+                    b.HasOne("GameStore.Data.ShippingAddress", "ShippingAddress")
+                        .WithMany("Customers")
+                        .HasForeignKey("ShippingAddressId")
+                        .HasConstraintName("FK_Customer_ShippingAddress");
+
+                    b.Navigation("MailingAddress");
+
                     b.Navigation("PreferedCategory");
 
                     b.Navigation("PreferedPlatform");
+
+                    b.Navigation("ShippingAddress");
                 });
 
             modelBuilder.Entity("GameStore.Data.FriendsFamily", b =>
@@ -1324,6 +1351,11 @@ namespace GameStore.Migrations
                     b.Navigation("WishLists");
                 });
 
+            modelBuilder.Entity("GameStore.Data.MailingAddress", b =>
+                {
+                    b.Navigation("Customers");
+                });
+
             modelBuilder.Entity("GameStore.Data.Merchandise", b =>
                 {
                     b.Navigation("MerchandiseImages");
@@ -1341,6 +1373,11 @@ namespace GameStore.Migrations
             modelBuilder.Entity("GameStore.Data.Review", b =>
                 {
                     b.Navigation("ReviewImages");
+                });
+
+            modelBuilder.Entity("GameStore.Data.ShippingAddress", b =>
+                {
+                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }
