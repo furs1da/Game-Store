@@ -15,7 +15,10 @@ namespace GameStore.Models.ViewModels
         [Required(ErrorMessage = "City is required.")]
         [MaxLength(55)]
         public string City { get; set; }
+
+
         [Required(ErrorMessage = "Province is required.")]
+        [Range(1, 13, ErrorMessage = "Please select your province.")]
         public int Province { get; set; }
         [Required(ErrorMessage = "Postal Code is required.")]
         [MaxLength(16)]

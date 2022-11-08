@@ -136,7 +136,7 @@ namespace GameStore.Controllers
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
             if (customer == null)
             {
-                return RedirectToAction("Error");
+                return View("Error");
             }
 
            
