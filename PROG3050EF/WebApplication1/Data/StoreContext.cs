@@ -112,7 +112,7 @@ namespace GameStore.Data
                     .IsUnicode(false)
                     .HasColumnName("cardName");
 
-                entity.Property(e => e.CardNumber).HasColumnName("cardNumber");
+                entity.Property(e => e.CardNumber).HasMaxLength(24).HasColumnName("cardNumber");
 
                 entity.Property(e => e.CustId).HasColumnName("cust_id");
 

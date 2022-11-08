@@ -14,6 +14,10 @@ namespace GameStore.Controllers
 {
     public class CreditCardController : Controller
     {
+        private UserManager<User> userManager;
+        private SignInManager<User> signInManager;
+        private StoreContext _storeContext;
+
         public CreditCardController(StoreContext storeContext)
         {
             _storeContext = storeContext;
@@ -31,7 +35,7 @@ namespace GameStore.Controllers
         // passed here as an input param
 
         // Defining GET & POST actions for the "Add" sub/request resource:
-        [HttpGet()]
+        [HttpGet]
         public IActionResult Add()
         {
             // Because editing & adding new transactions will share the same view
@@ -41,7 +45,8 @@ namespace GameStore.Controllers
             // will look for a view named Add, not Edit
             return View("Edit", new CreditCard());
         }
-        [HttpPost()]
+
+        [HttpPost]
         public IActionResult Add(CreditCard card)
         {
             if (ModelState.IsValid)
@@ -65,7 +70,7 @@ namespace GameStore.Controllers
         }
 
         // Defining GET & POST actions for the "Edit" sub/request resource:
-        [HttpGet()]
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
@@ -77,7 +82,7 @@ namespace GameStore.Controllers
             return View(transaction);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public IActionResult Edit(CreditCard card)
         {
             if (ModelState.IsValid)
@@ -101,7 +106,7 @@ namespace GameStore.Controllers
             }
         }
         // Defining GET & POST actions for the "Delete" sub/request resource:
-        [HttpGet()]
+        [HttpGet]
         public IActionResult Delete(int id)
         {
             // Find/retrieve/select the transaction to edit and then pass it to the view:
@@ -109,7 +114,7 @@ namespace GameStore.Controllers
             return View(transaction);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public IActionResult Delete(CreditCard card)
         {
             // Simply remove the transaction and then redirect back to the all transactions view:
@@ -118,6 +123,5 @@ namespace GameStore.Controllers
             TempData["Message"] = card.CardName + " Deleted";
             return RedirectToAction("Index", "CreditCard");
         }
-        private StoreContext _storeContext;
     }
 }

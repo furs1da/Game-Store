@@ -7,7 +7,7 @@ namespace GameStore.Data
     {
         public int CreditId { get; set; }
         public int CustId { get; set; }
-        public int CardNumber { get; set; }
+        public string CardNumber { get; set; }
         public string CardName { get; set; } = null!;
         public DateTime ExpirationDate { get; set; }
 
