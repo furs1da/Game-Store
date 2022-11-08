@@ -13,6 +13,7 @@ namespace GameStore.Data
         public int FeatureId { get; set; }
         public string Feature { get; set; } = null!;
 
+        public virtual ICollection<GameFeatureGame> GameFeatureGames { get; set; }
         public virtual ICollection<Game> Games { get; set; }
     }
 }

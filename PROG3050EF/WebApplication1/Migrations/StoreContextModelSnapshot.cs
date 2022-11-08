@@ -35,7 +35,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("Eventid");
 
-                    b.ToTable("Customer_Event", (string)null);
+                    b.ToTable("CustomerEvent", (string)null);
                 });
 
             modelBuilder.Entity("GameCategory", b =>
@@ -51,7 +51,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("Categoryid");
 
-                    b.ToTable("Game_Category", (string)null);
+                    b.ToTable("GameCategory", (string)null);
                 });
 
             modelBuilder.Entity("GameFeatureGame", b =>
@@ -67,7 +67,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("Gameid");
 
-                    b.ToTable("GameFeature_Game", (string)null);
+                    b.ToTable("GameFeatureGame", (string)null);
                 });
 
             modelBuilder.Entity("GameStore.Data.Category", b =>
@@ -262,6 +262,21 @@ namespace GameStore.Migrations
                     b.ToTable("Customer", (string)null);
                 });
 
+            modelBuilder.Entity("GameStore.Data.CustomerEvent", b =>
+                {
+                    b.Property<int>("Customerid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Eventid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Customerid", "Eventid");
+
+                    b.HasIndex("Eventid");
+
+                    b.ToTable("CustomerEvents");
+                });
+
             modelBuilder.Entity("GameStore.Data.Employee", b =>
                 {
                     b.Property<int>("EmpId")
@@ -417,6 +432,21 @@ namespace GameStore.Migrations
                     b.ToTable("Game", (string)null);
                 });
 
+            modelBuilder.Entity("GameStore.Data.GameCategory", b =>
+                {
+                    b.Property<int>("Gameid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Categoryid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Gameid", "Categoryid");
+
+                    b.HasIndex("Categoryid");
+
+                    b.ToTable("GameCategories");
+                });
+
             modelBuilder.Entity("GameStore.Data.GameFeature", b =>
                 {
                     b.Property<int>("FeatureId")
@@ -437,6 +467,21 @@ namespace GameStore.Migrations
                         .HasName("PK__GameFeat__7906CBD7BF1F29A9");
 
                     b.ToTable("GameFeature", (string)null);
+                });
+
+            modelBuilder.Entity("GameStore.Data.GameFeatureGame", b =>
+                {
+                    b.Property<int>("GameFeatureid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Gameid")
+                        .HasColumnType("int");
+
+                    b.HasKey("GameFeatureid", "Gameid");
+
+                    b.HasIndex("Gameid");
+
+                    b.ToTable("GameFeatureGames");
                 });
 
             modelBuilder.Entity("GameStore.Data.GameImage", b =>
@@ -682,6 +727,21 @@ namespace GameStore.Migrations
                             PlatformId = 7,
                             Name = "Steam OS"
                         });
+                });
+
+            modelBuilder.Entity("GameStore.Data.PlatformGame", b =>
+                {
+                    b.Property<int>("Platformid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Gameid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Platformid", "Gameid");
+
+                    b.HasIndex("Gameid");
+
+                    b.ToTable("PlatformGames");
                 });
 
             modelBuilder.Entity("GameStore.Data.Review", b =>
@@ -1039,7 +1099,7 @@ namespace GameStore.Migrations
 
                     b.HasIndex("Gameid");
 
-                    b.ToTable("Platform_Game", (string)null);
+                    b.ToTable("PlatformGame", (string)null);
                 });
 
             modelBuilder.Entity("CustomerEvent", b =>
@@ -1129,6 +1189,25 @@ namespace GameStore.Migrations
                     b.Navigation("ShippingAddress");
                 });
 
+            modelBuilder.Entity("GameStore.Data.CustomerEvent", b =>
+                {
+                    b.HasOne("GameStore.Data.Customer", "Customer")
+                        .WithMany("CustomerEvents")
+                        .HasForeignKey("Customerid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GameStore.Data.Event", "Event")
+                        .WithMany("CustomerEvents")
+                        .HasForeignKey("Eventid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Event");
+                });
+
             modelBuilder.Entity("GameStore.Data.FriendsFamily", b =>
                 {
                     b.HasOne("GameStore.Data.Customer", "CustId1Navigation")
@@ -1146,6 +1225,44 @@ namespace GameStore.Migrations
                     b.Navigation("CustId1Navigation");
 
                     b.Navigation("CustId2Navigation");
+                });
+
+            modelBuilder.Entity("GameStore.Data.GameCategory", b =>
+                {
+                    b.HasOne("GameStore.Data.Category", "Category")
+                        .WithMany("GameCategories")
+                        .HasForeignKey("Categoryid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GameStore.Data.Game", "Game")
+                        .WithMany("GameCategories")
+                        .HasForeignKey("Gameid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Game");
+                });
+
+            modelBuilder.Entity("GameStore.Data.GameFeatureGame", b =>
+                {
+                    b.HasOne("GameStore.Data.GameFeature", "GameFeature")
+                        .WithMany("GameFeatureGames")
+                        .HasForeignKey("GameFeatureid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GameStore.Data.Game", "Game")
+                        .WithMany("GameFeatureGames")
+                        .HasForeignKey("Gameid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("GameFeature");
                 });
 
             modelBuilder.Entity("GameStore.Data.GameImage", b =>
@@ -1195,6 +1312,25 @@ namespace GameStore.Migrations
                     b.Navigation("Game");
 
                     b.Navigation("Merchandise");
+                });
+
+            modelBuilder.Entity("GameStore.Data.PlatformGame", b =>
+                {
+                    b.HasOne("GameStore.Data.Game", "Game")
+                        .WithMany("PlatformGames")
+                        .HasForeignKey("Gameid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GameStore.Data.Platform", "Platform")
+                        .WithMany("PlatformGames")
+                        .HasForeignKey("Platformid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Platform");
                 });
 
             modelBuilder.Entity("GameStore.Data.Review", b =>
@@ -1323,11 +1459,15 @@ namespace GameStore.Migrations
             modelBuilder.Entity("GameStore.Data.Category", b =>
                 {
                     b.Navigation("Customers");
+
+                    b.Navigation("GameCategories");
                 });
 
             modelBuilder.Entity("GameStore.Data.Customer", b =>
                 {
                     b.Navigation("CreditCards");
+
+                    b.Navigation("CustomerEvents");
 
                     b.Navigation("FriendsFamilyCustId1Navigations");
 
@@ -1340,15 +1480,31 @@ namespace GameStore.Migrations
                     b.Navigation("WishLists");
                 });
 
+            modelBuilder.Entity("GameStore.Data.Event", b =>
+                {
+                    b.Navigation("CustomerEvents");
+                });
+
             modelBuilder.Entity("GameStore.Data.Game", b =>
                 {
+                    b.Navigation("GameCategories");
+
+                    b.Navigation("GameFeatureGames");
+
                     b.Navigation("GameImages");
 
                     b.Navigation("Orders");
 
+                    b.Navigation("PlatformGames");
+
                     b.Navigation("Reviews");
 
                     b.Navigation("WishLists");
+                });
+
+            modelBuilder.Entity("GameStore.Data.GameFeature", b =>
+                {
+                    b.Navigation("GameFeatureGames");
                 });
 
             modelBuilder.Entity("GameStore.Data.MailingAddress", b =>
@@ -1368,6 +1524,8 @@ namespace GameStore.Migrations
             modelBuilder.Entity("GameStore.Data.Platform", b =>
                 {
                     b.Navigation("Customers");
+
+                    b.Navigation("PlatformGames");
                 });
 
             modelBuilder.Entity("GameStore.Data.Review", b =>

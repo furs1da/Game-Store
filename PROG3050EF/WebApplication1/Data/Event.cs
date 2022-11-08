@@ -16,6 +16,7 @@ namespace GameStore.Data
         public string? Description { get; set; }
         public string? Duration { get; set; }
 
+        public virtual ICollection<CustomerEvent> CustomerEvents { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
     }
 }

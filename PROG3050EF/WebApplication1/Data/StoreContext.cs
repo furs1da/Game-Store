@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using GameStore.Data.SeedData;
 
+
 namespace GameStore.Data
 {
     public partial class StoreContext : IdentityDbContext<User>
@@ -41,7 +42,6 @@ namespace GameStore.Data
                 }
             }
         }
-
         public StoreContext()
         {
         }
@@ -50,7 +50,6 @@ namespace GameStore.Data
             : base(options)
         {
         }
-
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<CreditCard> CreditCards { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
@@ -69,6 +68,10 @@ namespace GameStore.Data
         public virtual DbSet<ReviewImage> ReviewImages { get; set; } = null!;
         public virtual DbSet<ShippingAddress> ShippingAddresses { get; set; } = null!;
         public virtual DbSet<WishList> WishLists { get; set; } = null!;
+        public virtual DbSet<PlatformGame> PlatformGames { get; set; } = null!;
+        public virtual DbSet<GameFeatureGame> GameFeatureGames { get; set; } = null!;
+        public virtual DbSet<GameCategory> GameCategories { get; set; } = null!; 
+        public virtual DbSet<CustomerEvent> CustomerEvents { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -209,7 +212,7 @@ namespace GameStore.Data
                         {
                             j.HasKey("Customerid", "Eventid").HasName("PK__Customer__333907D60F8269FF");
 
-                            j.ToTable("Customer_Event");
+                            j.ToTable("CustomerEvent");
                         });
             });
 
@@ -333,7 +336,7 @@ namespace GameStore.Data
                         {
                             j.HasKey("Gameid", "Categoryid").HasName("PK__Game_Cat__0B57EBB7A12BD34A");
 
-                            j.ToTable("Game_Category");
+                            j.ToTable("GameCategory");
                         });
             });
 
@@ -361,7 +364,7 @@ namespace GameStore.Data
                         {
                             j.HasKey("GameFeatureid", "Gameid").HasName("PK__GameFeat__0E2BBB9711BBC777");
 
-                            j.ToTable("GameFeature_Game");
+                            j.ToTable("GameFeatureGame");
                         });
             });
 
@@ -535,7 +538,7 @@ namespace GameStore.Data
                         {
                             j.HasKey("Platformid", "Gameid").HasName("PK__Platform__B7F882CFAE338AEA");
 
-                            j.ToTable("Platform_Game");
+                            j.ToTable("PlatformGame");
                         });
             });
 
@@ -660,6 +663,75 @@ namespace GameStore.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FKWishList795792");
             });
+
+            // composite primary key for PlatformGame
+            modelBuilder.Entity<PlatformGame>()
+                .HasKey(pg => new { pg.Platformid, pg.Gameid });
+
+            // one-to-many relationship between Platform and PlatformGame
+            modelBuilder.Entity<PlatformGame>()
+                .HasOne(pg => pg.Platform)
+                .WithMany(p => p.PlatformGames)
+                .HasForeignKey(pg => pg.Platformid);
+
+            // one-to-many relationship between Game and PlatformGame
+            modelBuilder.Entity<PlatformGame>()
+                .HasOne(pg => pg.Game)
+                .WithMany(p => p.PlatformGames)
+                .HasForeignKey(pg => pg.Gameid);
+
+
+            // composite primary key for GameFeatureGame
+            modelBuilder.Entity<GameFeatureGame>()
+                .HasKey(gfg => new { gfg.GameFeatureid, gfg.Gameid });
+
+            // one-to-many relationship between GameFeature and GameFeatureGame
+            modelBuilder.Entity<GameFeatureGame>()
+                .HasOne(gfg => gfg.GameFeature)
+                .WithMany(gf => gf.GameFeatureGames)
+                .HasForeignKey(gfg => gfg.GameFeatureid);
+
+            // one-to-many relationship between Game and GameFeatureGame
+            modelBuilder.Entity<GameFeatureGame>()
+                .HasOne(gfg => gfg.Game)
+                .WithMany(g => g.GameFeatureGames)
+                .HasForeignKey(gfg => gfg.Gameid);
+
+
+
+            // composite primary key for GameCategory
+            modelBuilder.Entity<GameCategory>()
+                .HasKey(gc => new { gc.Gameid, gc.Categoryid });
+
+            // one-to-many relationship between Category and GameCategory
+            modelBuilder.Entity<GameCategory>()
+                .HasOne(gc => gc.Category)
+                .WithMany(c => c.GameCategories)
+                .HasForeignKey(gc => gc.Categoryid);
+
+            // one-to-many relationship between Game and GameCategory
+            modelBuilder.Entity<GameCategory>()
+                .HasOne(gc => gc.Game)
+                .WithMany(g => g.GameCategories)
+                .HasForeignKey(gc => gc.Gameid);
+
+
+
+            // composite primary key for CustomerEvent
+            modelBuilder.Entity<CustomerEvent>()
+                .HasKey(ce => new { ce.Customerid, ce.Eventid });
+
+            // one-to-many relationship between Customer and CustomerEvent
+            modelBuilder.Entity<CustomerEvent>()
+                .HasOne(ce => ce.Customer)
+                .WithMany(c => c.CustomerEvents)
+                .HasForeignKey(ce => ce.Customerid);
+
+            // one-to-many relationship between Event and CustomerEvent
+            modelBuilder.Entity<CustomerEvent>()
+                .HasOne(ce => ce.Event)
+                .WithMany(g => g.CustomerEvents)
+                .HasForeignKey(ce => ce.Eventid);
 
             OnModelCreatingPartial(modelBuilder);
 

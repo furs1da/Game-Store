@@ -14,8 +14,9 @@ namespace GameStore.Data
         public int PlatformId { get; set; }
         public string Name { get; set; } = null!;
 
-        public virtual ICollection<Customer> Customers { get; set; }
 
+        public virtual ICollection<PlatformGame> PlatformGames { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
         public virtual ICollection<Game> Games { get; set; }
     }
 }

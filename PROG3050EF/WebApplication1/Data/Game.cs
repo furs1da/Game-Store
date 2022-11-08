@@ -26,6 +26,10 @@ namespace GameStore.Data
         public int? GameStudio { get; set; }
         public bool? Digital { get; set; }
 
+        public virtual ICollection<PlatformGame> PlatformGames { get; set; }
+        public virtual ICollection<GameFeatureGame> GameFeatureGames { get; set; }
+        public virtual ICollection<GameCategory> GameCategories { get; set; }
+
         public virtual ICollection<GameImage> GameImages { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
