@@ -94,13 +94,12 @@ namespace GameStore.Controllers
                 customer.Gender = vm.Gender != 0 ? vm.Gender : customer.Gender;
                 customer.RecievePromotion = vm.RecievePromotion;
 
-
                 vm.CustomerId = customer.CustId;
-                vm.FirstName = customer.FirstName != null ? customer.FirstName : "";
-                vm.LastName = customer.LastName != null ? customer.LastName : "";
-                vm.DOB = customer.Dob != null ? customer.Dob : new DateTime(1991, 1, 1);
+                vm.FirstName = customer.FirstName != null ? customer.FirstName : null;
+                vm.LastName = customer.LastName != null ? customer.LastName : null;
+                vm.DOB = customer.Dob != null ? customer.Dob : new DateTime();
                 vm.RecievePromotion = (bool)(customer.RecievePromotion != null ? customer.RecievePromotion : false);
-                vm.Gender = customer.Gender != null ? customer.Gender : 0;
+                vm.Gender = customer.Gender != null ? customer.Gender : null;
 
                 _storeContext.Customers.Update(customer);
                 _storeContext.SaveChanges();
