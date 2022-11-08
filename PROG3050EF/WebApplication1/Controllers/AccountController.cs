@@ -109,7 +109,7 @@ namespace GameStore.Controllers
                     return View("Error");
                 var result = await userManager.ConfirmEmailAsync(user, token);
 
-                Customer customer = new Customer() { Email = user.Email, Nickname = user.UserName, Password = user.PasswordHash };
+                Customer customer = new Customer() { Email = user.Email, Nickname = user.UserName };
 
                 _storeContext.Customers.Add(customer);
                 _storeContext.SaveChanges();

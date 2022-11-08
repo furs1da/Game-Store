@@ -169,11 +169,6 @@ namespace GameStore.Data
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Password)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("password");
-
                 entity.Property(e => e.PreferedCategoryId).HasColumnName("preferedCategory_id");
 
                 entity.Property(e => e.PreferedPlatformId).HasColumnName("preferedPlatform_id");

@@ -219,13 +219,6 @@ namespace GameStore.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("password");
-
                     b.Property<int?>("PreferedCategoryId")
                         .HasColumnType("int")
                         .HasColumnName("preferedCategory_id");
