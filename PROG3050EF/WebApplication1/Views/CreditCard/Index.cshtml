@@ -1,22 +1,27 @@
-﻿@model List<CreditCard>
+﻿@model List<CreditCardViewModel>
 @{
-    ViewData["Title"] = "All Credit Cards";
+    ViewData["Title"] = "Your Cards";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="mt-3">@ViewData["Title"]</h1>
 <a asp-controller="CreditCard" asp-action="Add">Add Card</a>
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>Card Name</th>
+            <th>Card Number</th>
+            <th>Expiration Date</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (CreditCard card in Model)
+        @foreach (CreditCardViewModel card in Model)
         {
             <tr>
                 <td>@card.CardName</td>
+                <td>@card.CardNumber</td>
+                <td>@card.Month / @card.Year</td>
                 <td>
                     <a asp-controller="CreditCard" asp-action="Edit" asp-route-id="@card.CreditId">Edit</a>
                     <span class="linkSpacer">|</span>
