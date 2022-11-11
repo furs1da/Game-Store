@@ -4,7 +4,7 @@ namespace GameStore.Data.Static_Data
 {
     public static class GameStudioList
     {
-        public static List<GameStudio> Genders = new List<GameStudio>() {
+        public static List<GameStudio> GameStudios = new List<GameStudio>() {
                 new GameStudio(1, "Ubisoft"),
                 new GameStudio(2, "EA"),
                 new GameStudio(3, "Microsoft"),

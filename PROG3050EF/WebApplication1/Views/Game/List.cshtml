@@ -1,4 +1,5 @@
-﻿@model GridViewModel<Game>
+﻿@using GameStore.Models.ExtensionModels
+@model GridViewModel<Game>
 
 @{
     ViewData["Title"] = " | Game Catalog";
@@ -29,8 +30,8 @@
     <vc:price-drop-down selected-value="@Model.CurrentRoute.PriceFilter">
     </vc:price-drop-down>
 
-    <button type="submit" class="mr-2">Filter</button>
-    <button type="submit" name="clear" value="true">Clear</button>
+    <button type="submit" class="btn btn-primary mr-2">Filter</button>
+    <button type="submit" name="clear" value="true" class="btn btn-primary">Clear</button>
 </form>
 
 
@@ -91,7 +92,13 @@
 
 
                     <td>
-                        <button type="submit" name="id" value="@game.GameId">
+                        <a asp-action="Details" asp-controller="Game" asp-area="" 
+                         asp-route-id="@game.GameId"
+                         asp-route-slug="@game.Name.Slug()" class="btn btn-primary">
+                         Details
+                        </a>
+                        <span class="linkSpacer ml-1 mr-1">|</span>
+                        <button type="submit" name="id" value="@game.GameId" class="btn btn-primary">
                             Add To Cart
                         </button>
                     </td>
