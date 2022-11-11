@@ -738,6 +738,7 @@ namespace GameStore.Data
 
             modelBuilder.ApplyConfiguration(new SeedGameCategory());
             modelBuilder.ApplyConfiguration(new SeedPlatformGame());
+            modelBuilder.ApplyConfiguration(new SeedGameFeatureGame());
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
