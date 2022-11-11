@@ -3,6 +3,8 @@ using System.Diagnostics;
 using GameStore.Models;
 using GameStore.Data;
 
+using GameStore.Models.ViewModels;
+
 namespace GameStore.Controllers
 {
     public class HomeController : Controller

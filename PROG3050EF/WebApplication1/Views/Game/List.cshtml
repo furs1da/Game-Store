@@ -10,20 +10,20 @@
 <form asp-action="Filter" method="post" class="form-inline">
     
     <label>Category: </label>
-    <vc:author-drop-down selected-value="@Model.CurrentRoute.CategoryFilter">
-    </vc:author-drop-down>
+    <vc:category-drop-down selected-value="@Model.CurrentRoute.CategoryFilter">
+    </vc:category-drop-down>
 
 
 
     <label>Platform: </label>
-    <vc:genre-drop-down selected-value="@Model.CurrentRoute.PlatformFilter">
-    </vc:genre-drop-down>
+    <vc:platform-drop-down selected-value="@Model.CurrentRoute.PlatformFilter">
+    </vc:platform-drop-down>
 
 
     <label>Game Feature: </label>
-    <vc:genre-drop-down selected-value="@Model.CurrentRoute.GameFeatureFilter">
-    </vc:genre-drop-down>
-
+    <vc:game-feature-drop-down selected-value="@Model.CurrentRoute.GameFeatureFilter">
+    </vc:game-feature-drop-down>
+    
 
     <label>Price: </label>
     <vc:price-drop-down selected-value="@Model.CurrentRoute.PriceFilter">

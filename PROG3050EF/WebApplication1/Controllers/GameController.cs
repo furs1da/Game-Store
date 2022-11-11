@@ -22,17 +22,18 @@ namespace GameStore.Controllers
         private StoreContext _storeContext;
 
         private IRepository<Game> data { get; set; }
-        public GameController(IRepository<Game> rep) => data = rep;
+        //public GameController(IRepository<Game> rep) => data = rep;
 
         public RedirectToActionResult Index() => RedirectToAction("List");
 
 
 
-        public GameController(UserManager<User> userMngr, SignInManager<User> signInMngr, StoreContext storeContext)
+        public GameController(UserManager<User> userMngr, SignInManager<User> signInMngr, StoreContext storeContext, IRepository<Game> rep)
         {
             userManager = userMngr;
             signInManager = signInMngr;
             _storeContext = storeContext;
+            data = rep;
         }
 
         public ViewResult List(GamesGridDTO values)
@@ -42,7 +43,7 @@ namespace GameStore.Controllers
 
             var options = new GameQueryOptions
             {
-                Includes = "GameCategory.Category, GameFeatureGame.GameFeature, PlatformGame.Platform",
+                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
                 OrderByDirection = builder.CurrentRoute.SortDirection,
                 PageNumber = builder.CurrentRoute.PageNumber,
                 PageSize = builder.CurrentRoute.PageSize
@@ -63,7 +64,7 @@ namespace GameStore.Controllers
         {
             var book = data.Get(new QueryOptions<Game>
             {
-                Includes = "GameCategory.Category, GameFeatureGame.GameFeature, PlatformGame.Platform",
+                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
                 Where = g => g.GameId == id
             });
             return View(book);
