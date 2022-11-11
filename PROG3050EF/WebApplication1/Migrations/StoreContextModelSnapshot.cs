@@ -425,6 +425,116 @@ namespace GameStore.Migrations
                     b.HasKey("GameId");
 
                     b.ToTable("Game", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            GameId = 1,
+                            Description = "The best MOBA game",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 4,
+                            Name = "Dota 2",
+                            Pquantity = 10,
+                            Price = 0m,
+                            ReleaseDate = new DateTime(2013, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 2,
+                            Description = "The best first-person shooter game",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 4,
+                            Name = "CS:GO",
+                            Pquantity = 15,
+                            Price = 0m,
+                            ReleaseDate = new DateTime(2012, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 3,
+                            Description = "The best game",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 5,
+                            Name = "Fortnite",
+                            Pquantity = 100,
+                            Price = 0m,
+                            ReleaseDate = new DateTime(2017, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 4,
+                            Description = "The best battle royal-hero game",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 2,
+                            Name = "Apex Legends",
+                            Pquantity = 50,
+                            Price = 0m,
+                            ReleaseDate = new DateTime(2021, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 5,
+                            Description = "Play a new COD game from EA Arts!",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 2,
+                            Name = "Call of Duty®: Modern Warfare® II",
+                            Pquantity = 25,
+                            Price = 89.99m,
+                            ReleaseDate = new DateTime(2022, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 6,
+                            Description = "You are a wanderer with the power to change the fate of The City.",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 6,
+                            Name = "Dying Light 2",
+                            Pquantity = 15,
+                            Price = 43.99m,
+                            ReleaseDate = new DateTime(2022, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 7,
+                            Description = "Better than Fall Guys!",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 7,
+                            Name = "Stumble Guys",
+                            Pquantity = 10,
+                            Price = 0m,
+                            ReleaseDate = new DateTime(2021, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 8,
+                            Description = "BIGFOOT is a survival horror game about hunting Bigfoot.",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 8,
+                            Name = "BIGFOOT",
+                            Pquantity = 24,
+                            Price = 26m,
+                            ReleaseDate = new DateTime(2017, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            GameId = 9,
+                            Description = "EA SPORTS™ FIFA 22 brings the game even closer to the real thing with fundamental gameplay advances and a new season of innovation across every mode.",
+                            Digital = true,
+                            Discount = 0,
+                            GameStudio = 2,
+                            Name = "FIFA 22",
+                            Pquantity = 125,
+                            Price = 89.99m,
+                            ReleaseDate = new DateTime(2021, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("GameStore.Data.GameCategory", b =>
@@ -462,6 +572,53 @@ namespace GameStore.Migrations
                         .HasName("PK__GameFeat__7906CBD7BF1F29A9");
 
                     b.ToTable("GameFeature", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            FeatureId = 1,
+                            Feature = "Free-to-play"
+                        },
+                        new
+                        {
+                            FeatureId = 2,
+                            Feature = "Multiplayer"
+                        },
+                        new
+                        {
+                            FeatureId = 3,
+                            Feature = "Casual"
+                        },
+                        new
+                        {
+                            FeatureId = 4,
+                            Feature = "Party-based"
+                        },
+                        new
+                        {
+                            FeatureId = 5,
+                            Feature = "Anime"
+                        },
+                        new
+                        {
+                            FeatureId = 6,
+                            Feature = "Co-Operative"
+                        },
+                        new
+                        {
+                            FeatureId = 7,
+                            Feature = "LAN"
+                        },
+                        new
+                        {
+                            FeatureId = 8,
+                            Feature = "Singleplayer"
+                        },
+                        new
+                        {
+                            FeatureId = 9,
+                            Feature = "Sports"
+                        });
                 });
 
             modelBuilder.Entity("GameStore.Data.GameFeatureGame", b =>

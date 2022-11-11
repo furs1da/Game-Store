@@ -8,6 +8,7 @@ using GameStore.Data;
 using GameStore.Models.EmailSender;
 using GameStore.Interfaces;
 using GameStore.Models.Tokens;
+using GameStore.Models.Repositories;
 
 namespace GameStore
 {
@@ -33,10 +34,11 @@ namespace GameStore
             services.AddMemoryCache();
             services.AddSession();
 
-            services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
+            services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true).AddNewtonsoftJson();
 
             services.AddHttpContextAccessor();
-          
+
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
 
             services.AddDbContext<StoreContext>(options =>
@@ -80,10 +82,25 @@ namespace GameStore
                    areaName: "Admin",
                    pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
 
+                // route for paging, sorting, and filtering for Admin area
+                endpoints.MapAreaControllerRoute(
+                   name: "admin",
+                   areaName: "Admin",
+                   pattern: "Admin/{controller=Admin}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
+
+                // route for paging and sorting only for Admin area
+                endpoints.MapAreaControllerRoute(
+                   name: "admin",
+                   areaName: "Admin",
+                   pattern: "Admin/{controller=Admin}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
+
+
+
+
                 // route for paging, sorting, and filtering
                 endpoints.MapControllerRoute(
                     name: "",
-                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{author}/{genre}/{price}");
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
 
                 // route for paging and sorting only
                 endpoints.MapControllerRoute(
