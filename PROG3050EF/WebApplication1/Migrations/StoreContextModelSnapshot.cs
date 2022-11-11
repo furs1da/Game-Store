@@ -971,6 +971,148 @@ namespace GameStore.Migrations
                     b.HasIndex("Gameid");
 
                     b.ToTable("PlatformGames");
+
+                    b.HasData(
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 1
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 1
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 2
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 2
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 3
+                        },
+                        new
+                        {
+                            Platformid = 2,
+                            Gameid = 3
+                        },
+                        new
+                        {
+                            Platformid = 3,
+                            Gameid = 3
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 3
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 4
+                        },
+                        new
+                        {
+                            Platformid = 2,
+                            Gameid = 4
+                        },
+                        new
+                        {
+                            Platformid = 3,
+                            Gameid = 4
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 4
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 5
+                        },
+                        new
+                        {
+                            Platformid = 2,
+                            Gameid = 5
+                        },
+                        new
+                        {
+                            Platformid = 3,
+                            Gameid = 5
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 5
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 6
+                        },
+                        new
+                        {
+                            Platformid = 2,
+                            Gameid = 6
+                        },
+                        new
+                        {
+                            Platformid = 3,
+                            Gameid = 6
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 6
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 7
+                        },
+                        new
+                        {
+                            Platformid = 6,
+                            Gameid = 7
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 8
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 8
+                        },
+                        new
+                        {
+                            Platformid = 1,
+                            Gameid = 9
+                        },
+                        new
+                        {
+                            Platformid = 2,
+                            Gameid = 9
+                        },
+                        new
+                        {
+                            Platformid = 3,
+                            Gameid = 9
+                        },
+                        new
+                        {
+                            Platformid = 7,
+                            Gameid = 9
+                        });
                 });
 
             modelBuilder.Entity("GameStore.Data.Review", b =>
