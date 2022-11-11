@@ -550,6 +550,83 @@ namespace GameStore.Migrations
                     b.HasIndex("Categoryid");
 
                     b.ToTable("GameCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Gameid = 1,
+                            Categoryid = 7
+                        },
+                        new
+                        {
+                            Gameid = 2,
+                            Categoryid = 1
+                        },
+                        new
+                        {
+                            Gameid = 3,
+                            Categoryid = 1
+                        },
+                        new
+                        {
+                            Gameid = 3,
+                            Categoryid = 4
+                        },
+                        new
+                        {
+                            Gameid = 4,
+                            Categoryid = 1
+                        },
+                        new
+                        {
+                            Gameid = 4,
+                            Categoryid = 4
+                        },
+                        new
+                        {
+                            Gameid = 5,
+                            Categoryid = 1
+                        },
+                        new
+                        {
+                            Gameid = 5,
+                            Categoryid = 4
+                        },
+                        new
+                        {
+                            Gameid = 6,
+                            Categoryid = 5
+                        },
+                        new
+                        {
+                            Gameid = 6,
+                            Categoryid = 3
+                        },
+                        new
+                        {
+                            Gameid = 7,
+                            Categoryid = 8
+                        },
+                        new
+                        {
+                            Gameid = 7,
+                            Categoryid = 4
+                        },
+                        new
+                        {
+                            Gameid = 8,
+                            Categoryid = 5
+                        },
+                        new
+                        {
+                            Gameid = 8,
+                            Categoryid = 3
+                        },
+                        new
+                        {
+                            Gameid = 9,
+                            Categoryid = 8
+                        });
                 });
 
             modelBuilder.Entity("GameStore.Data.GameFeature", b =>
