@@ -109,7 +109,7 @@ namespace GameStore
 
                 endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Game}/{action=List}/{id?}");
             });
 
             // calling the code that seeds our DB with an admin user:

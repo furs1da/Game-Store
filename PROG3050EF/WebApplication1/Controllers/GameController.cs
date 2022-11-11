@@ -12,6 +12,7 @@ using GameStore.Models.DTOs;
 using GameStore.Models.Query;
 using GameStore.Models.ViewModels;
 using GameStore.Models.ExtensionModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameStore.Controllers
 {
@@ -36,6 +37,7 @@ namespace GameStore.Controllers
             data = rep;
         }
 
+        [Authorize]
         public ViewResult List(GamesGridDTO values)
         {
             var builder = new GamesGridBuilder(HttpContext.Session, values,
@@ -59,7 +61,7 @@ namespace GameStore.Controllers
 
             return View(vm);
         }
-
+        [Authorize]
         public ViewResult Details(int id)
         {
             var book = data.Get(new QueryOptions<Game>
@@ -69,7 +71,7 @@ namespace GameStore.Controllers
             });
             return View(book);
         }
-
+        [Authorize]
         [HttpPost]
         public RedirectToActionResult Filter([FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform, [FromServices] IRepository<GameFeature> dataFeature,
             string[] filter, bool clear = false)
