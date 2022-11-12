@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GameStore.Data
 {
@@ -17,12 +18,22 @@ namespace GameStore.Data
         }
 
         public int GameId { get; set; }
+        [Required(ErrorMessage = "Please enter a game name.")]
+        [MaxLength(255)]
         public string Name { get; set; } = null!;
+
+        [Range(0.0, 1000000.0, ErrorMessage = "Price must be more than 0.")]
         public decimal? Price { get; set; }
+        [Range(0, 100000, ErrorMessage = "Quantity must be more than 0.")]
         public int? Pquantity { get; set; }
+
+        [Required(ErrorMessage = "Please enter a game description.")]
+        [MaxLength(255)]
         public string? Description { get; set; }
         public int? Discount { get; set; }
+        [Required(ErrorMessage = "Please enter a release date.")]
         public DateTime? ReleaseDate { get; set; }
+        [Required(ErrorMessage = "Please select a game studio.")]
         public int? GameStudio { get; set; }
         public bool? Digital { get; set; }
 

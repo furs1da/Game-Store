@@ -37,9 +37,16 @@ namespace GameStore.Controllers
             data = rep;
         }
 
+
         [Authorize]
-        public ViewResult List(GamesGridDTO values)
+        public IActionResult List(GamesGridDTO values)
         {
+            if(User.IsInRole("Admin"))
+            {
+                return RedirectToAction("List", "Game", new { area = "Admin" });
+            }
+
+
             var builder = new GamesGridBuilder(HttpContext.Session, values,
                 defaultSortField: nameof(Game.Name));
 
@@ -61,6 +68,11 @@ namespace GameStore.Controllers
 
             return View(vm);
         }
+
+        
+
+
+
         [Authorize]
         public ViewResult Details(int id)
         {
@@ -71,6 +83,7 @@ namespace GameStore.Controllers
             });
             return View(book);
         }
+
         [Authorize]
         [HttpPost]
         public RedirectToActionResult Filter([FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform, [FromServices] IRepository<GameFeature> dataFeature,
@@ -96,6 +109,9 @@ namespace GameStore.Controllers
         }
 
 
+
+
+        
 
 
 

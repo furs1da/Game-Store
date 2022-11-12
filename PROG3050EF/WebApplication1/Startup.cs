@@ -86,16 +86,13 @@ namespace GameStore
                 endpoints.MapAreaControllerRoute(
                    name: "admin",
                    areaName: "Admin",
-                   pattern: "Admin/{controller=Admin}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
+                   pattern: "Admin/{controller=Game}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
 
                 // route for paging and sorting only for Admin area
                 endpoints.MapAreaControllerRoute(
                    name: "admin",
                    areaName: "Admin",
-                   pattern: "Admin/{controller=Admin}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
-
-
-
+                   pattern: "Admin/{controller=Game}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
 
                 // route for paging, sorting, and filtering
                 endpoints.MapControllerRoute(
@@ -110,6 +107,7 @@ namespace GameStore
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Game}/{action=List}/{id?}");
+
             });
 
             // calling the code that seeds our DB with an admin user:

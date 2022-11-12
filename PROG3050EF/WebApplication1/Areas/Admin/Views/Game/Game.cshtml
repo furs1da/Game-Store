@@ -1,0 +1,191 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+
+
+@model GameViewModel
+
+@{
+    // this view is used for add, edit, and delete. 
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+
+    ViewData["Title"] = $" | {action} Game";
+}
+
+<h1>@action Game</h1>
+
+<form asp-action="@action" asp-area="Admin" asp-controller="Game" method="post">
+    
+    <input type="hidden" asp-for="Game.GameId" />
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Name:</label></div>
+
+        @* if deleting, display title in a label and put value in hidden field
+           for delete message. Otherwise, provide a text box*@
+        @if (Operation.IsDelete(action)) {
+            <div class="col-sm-4"><label>@Model.Game.Name</label></div>
+            <input type="hidden" asp-for="Game.Name" />
+        }
+        else {
+            <div class="col-sm-4">
+                <input asp-for="Game.Name" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.Name" class="text-danger"></span>
+            </div>
+        }
+    </div>
+
+    @* if not deleting, display text boxes and drop-downs for rest of fields*@
+    @if (!Operation.IsDelete(action))
+    {
+
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Description:</label></div>
+            <div class="col-sm-4">
+                @*<input asp-for="Game.Description" mode="multiline" class="form-control" />*@
+
+                <textarea asp-for="Game.Description" rows="5" cols="40" class="form-control"></textarea>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Price:</label></div>
+            <div class="col-sm-4">
+                <input asp-for="Game.Price" type="number" step="0.01" class="form-control"  />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.Price" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Quantity:</label></div>
+            <div class="col-sm-4">
+                <input asp-for="Game.Pquantity" type="number" class="form-control"  />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.Pquantity" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Discount:</label></div>
+            <div class="col-sm-4">
+                <input asp-for="Game.Discount" type="number" class="form-control"  />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.Discount" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Release Date:</label></div>
+            <div class="col-sm-4">
+                <input asp-for="Game.ReleaseDate" type="date" class="form-control"  />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.ReleaseDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label asp-for="Game.Digital">Is Digital?</label></div>
+            <div class="col-sm-4">
+                @Html.CheckBox("Game.Digital", Model.Game.Digital, "form-check")
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.Digital" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Game Studio:</label></div>
+            <div class="col-sm-4">
+                <select asp-for="Game.GameStudio" class="form-control"
+                    asp-items='@new SelectList(GameStudioList.GameStudios, "Id", "Name", Model.Game.GameStudio)'>
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Game.GameStudio" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Category(ies):</label><br />
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="SelectedCategories" class="form-control"
+                    asp-items='@new MultiSelectList(Model.Categories, "CategoryId", "Name", Model.SelectedCategories)'>
+                </select>
+                (Hold down CTRL or CMD key to select multiple)
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="SelectedCategories" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Platform(s):</label><br />
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="SelectedPlatforms" class="form-control"
+                    asp-items='@new MultiSelectList(Model.Platforms, "PlatformId", "Name", Model.SelectedPlatforms)'>
+                </select>
+                (Hold down CTRL or CMD key to select multiple)
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="SelectedPlatforms" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Game Feature(s):</label><br />
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="SelectedGameFeatures" class="form-control"
+                    asp-items='@new MultiSelectList(Model.GameFeatures, "FeatureId", "Feature", Model.SelectedGameFeatures)'>
+                </select>
+                (Hold down CTRL or CMD key to select multiple)
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="SelectedGameFeatures" class="text-danger"></span>
+            </div>
+        </div>
+    }
+
+
+
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+
+            @* return user to main admin page after add, or to search page otherwise *@
+            <a asp-action="List" my-button>Cancel</a>
+        </div>
+    </div>
+   
+</form>
