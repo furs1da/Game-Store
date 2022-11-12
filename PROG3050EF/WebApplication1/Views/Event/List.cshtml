@@ -40,9 +40,24 @@
                             Details
                         </a>
                         <span class="linkSpacer ml-1 mr-1">|</span>
-                        <button type="submit" name="id" value="@itemEvent.EventId" class="btn btn-primary">
-                            Add To Cart
-                        </button>
+                        
+
+                    @if (itemEvent.CustomerEvents.Where(item => item.Eventid == itemEvent.EventId && item.Customerid == ViewBag.UserId).FirstOrDefault() == null)
+                    {
+                        <a asp-action="AddToWishList" asp-controller="Event" 
+                         asp-route-id="@itemEvent.EventId"
+                         class="btn btn-primary">
+                            Add To Wish List
+                        </a>
+                    }
+                    else 
+                    {
+                    <a asp-action="RemoveFromWishList" asp-controller="Event" 
+                         asp-route-id="@itemEvent.EventId"
+                         class="btn btn-primary">
+                            Remove From Wish List
+                    </a>
+                    }
                     </td>
                 </tr>
             }

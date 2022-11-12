@@ -59,8 +59,51 @@ namespace GameStore.Controllers
                 TotalPages = builder.GetTotalPages(data.Count)
             };
 
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId =  customer.CustId;
+
             return View(vm);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddToWishList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = new CustomerEvent();
+            ce.Customerid = customer.CustId;
+            ce.Eventid = id;
+
+            _storeContext.CustomerEvents.Add(ce);
+            _storeContext.SaveChanges();
+
+
+            return RedirectToAction("List");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> RemoveFromWishList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = _storeContext.CustomerEvents.Where(item => item.Customerid == customer.CustId && item.Eventid == id).FirstOrDefault();
+
+            if (ce != null)
+            {
+                _storeContext.CustomerEvents.Remove(ce);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("List");
+        }
+
+
 
         [Authorize]
         public ViewResult Details(int id)
