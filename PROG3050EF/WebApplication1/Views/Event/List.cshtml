@@ -10,7 +10,7 @@
     <table class="table table-bordered table-striped table-sm">
         <thead class="thead-dark">
             <tr>
-                     <th>
+                    <th>
                         <my-sorting-link sort-field="@nameof(Event.Name)"
                             current="@Model.CurrentRoute">Event Name</my-sorting-link>
                     </th>
@@ -28,7 +28,7 @@
                         <partial name="_EventLinkPartial" model="@itemEvent" />
                     </td>
                     <td>
-                        @itemEvent.Date.Value.ToString("DD/MM/yyyy")
+                        @itemEvent.Date.Value.ToString("dd/MM/yyyy")
                     </td>
                     <td>
                         @itemEvent.Duration

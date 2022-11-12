@@ -49,7 +49,9 @@ namespace GameStore.Controllers
                 PageNumber = builder.CurrentRoute.PageNumber,
                 PageSize = builder.CurrentRoute.PageSize
             };
-           
+
+            options.SortFilter(builder);
+
             var vm = new GridViewModel<Event>
             {
                 Items = data.List(options),
