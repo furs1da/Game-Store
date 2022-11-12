@@ -720,3 +720,7 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
