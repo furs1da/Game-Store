@@ -336,6 +336,80 @@ namespace GameStore.Migrations
                     b.HasKey("EventId");
 
                     b.ToTable("Event", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            EventId = 1,
+                            Date = new DateTime(2022, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Join DevGAMM Game Fest 2022, that takes place online on November 23-25 and will be fully dedicated to games and devs.",
+                            Duration = "5 hours",
+                            Name = "DevGAMM Game Fest 2022"
+                        },
+                        new
+                        {
+                            EventId = 2,
+                            Date = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The Game Wave Festival is a business, education and entertainment event for the gaming industry professionals.",
+                            Duration = "2 hours",
+                            Name = "Game Wave Festival"
+                        },
+                        new
+                        {
+                            EventId = 3,
+                            Date = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The largest gathering of African game developers, exporters and leaders in the world and this year is pushing the boundaries to make sure the African industry is meeting and building a community to develop the industry.",
+                            Duration = "3 hours",
+                            Name = "Africa Games Week 2022"
+                        },
+                        new
+                        {
+                            EventId = 4,
+                            Date = new DateTime(2022, 12, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Second year of the Canadian edition of world renown Reboot Develop boutique games industry and game developers conference, famous for unbeatable speaker lineups and huge attendance.",
+                            Duration = "4 hours",
+                            Name = "Reboot Develop Red 2022"
+                        },
+                        new
+                        {
+                            EventId = 5,
+                            Date = new DateTime(2022, 12, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The 2023 event will run on a hybrid model, encompassing both in-person and online-only events, and the theme this year will be Come in Gameverse",
+                            Duration = "7 hours",
+                            Name = "Taipei Game Show 2022"
+                        },
+                        new
+                        {
+                            EventId = 6,
+                            Date = new DateTime(2022, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The renowned Croatian developer conference returns to its usual April slot, once again inviting game makers and industry professionals to Dubrovnik. ",
+                            Duration = "8 hours",
+                            Name = "Reboot Develop Blue 2022"
+                        },
+                        new
+                        {
+                            EventId = 7,
+                            Date = new DateTime(2022, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Develop Brighton is the only event in the UK that brings the entire game-making industry together - from global superstars to micro indies, to learn from each other, share ideas and experiences, network and do business in a friendly and inclusive environment. ",
+                            Duration = "12 hours",
+                            Name = "Develop Brighton 2022"
+                        },
+                        new
+                        {
+                            EventId = 8,
+                            Date = new DateTime(2022, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The UK’s largest video games event, drawing tens of thousands of visitors to a four-day celebration of all things gaming.",
+                            Duration = "2 hours",
+                            Name = "EGX 2023"
+                        },
+                        new
+                        {
+                            EventId = 9,
+                            Date = new DateTime(2022, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Games Done Quick announced that Awesome Games Done Quick 2022, supporting Prevent Cancer Foundation, will take place entirely online.",
+                            Duration = "7 hours",
+                            Name = "Awesome Games Done Quick"
+                        });
                 });
 
             modelBuilder.Entity("GameStore.Data.FriendsFamily", b =>
@@ -387,6 +461,7 @@ namespace GameStore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GameId"), 1L, 1);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)")
@@ -401,6 +476,7 @@ namespace GameStore.Migrations
                         .HasColumnName("discount");
 
                     b.Property<int?>("GameStudio")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("gameStudio");
 
@@ -419,6 +495,7 @@ namespace GameStore.Migrations
                         .HasColumnName("price");
 
                     b.Property<DateTime?>("ReleaseDate")
+                        .IsRequired()
                         .HasColumnType("datetime")
                         .HasColumnName("releaseDate");
 
