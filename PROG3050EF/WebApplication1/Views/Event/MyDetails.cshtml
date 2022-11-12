@@ -1,0 +1,60 @@
+﻿@using GameStore.Models.ExtensionModels
+@model Event
+
+@{
+    ViewData["Title"] = " | Event Details";
+}
+
+<h1 class="mt-3">Event Details</h1>
+
+    <table class="table table-bordered table-striped table-sm">
+        <thead class="thead-dark">
+            <tr>
+                    <th>
+                        Event Name
+                    </th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+                <tr>
+                    <td>
+                        <b>@Model.Name</b>
+                    </td>
+                    <td>
+                        @Model.Description
+                    </td>
+                    <td>
+                        @Model.Date.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Model.Duration
+                    </td>
+                    <td>                       
+                    @if (Model.CustomerEvents.Where(item => item.Eventid == Model.EventId && item.Customerid == ViewBag.UserId).FirstOrDefault() == null)
+                    {
+                        <a asp-action="MyRegisterDetails" asp-controller="Event" 
+                         asp-route-id="@Model.EventId"
+                         class="btn btn-primary mt-1 mb-1">
+                            Register
+                        </a>
+                    }
+                    else 
+                    {
+                    <a asp-action="MyDeregisterDetails" asp-controller="Event" 
+                         asp-route-id="@Model.EventId"
+                         class="btn btn-primary mt-1 mb-1">
+                            Deregister
+                    </a>
+                    }
+                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <a asp-controller="Event" asp-action="MyList" class="link-primary ml-2">Go back</a>

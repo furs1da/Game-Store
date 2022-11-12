@@ -115,8 +115,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Q2FyZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/MyDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcTXlEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Event/MyList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcTXlMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Views/Game/Details.cshtml]

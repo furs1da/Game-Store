@@ -30,6 +30,7 @@ namespace GameStore.Controllers
             _storeContext = storeContext;
             data = rep;
         }
+
         [Authorize]
         public IActionResult List(GridDTO values)
         {
@@ -68,8 +69,49 @@ namespace GameStore.Controllers
         }
 
         [Authorize]
+        public IActionResult MyList(GridDTO values)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("List", "Event", new { area = "Admin" });
+            }
+
+
+            var builder = new EventsGridBuilder(HttpContext.Session, values,
+                defaultSortField: nameof(Event.Name));
+
+            var options = new EventQueryOptions
+            {
+                Includes = "CustomerEvents",
+                OrderByDirection = builder.CurrentRoute.SortDirection,
+                PageNumber = builder.CurrentRoute.PageNumber,
+                PageSize = builder.CurrentRoute.PageSize
+            };
+
+            options.SortFilter(builder);
+
+            var vm = new GridViewModel<Event>
+            {
+                Items = data.List(options),
+                CurrentRoute = builder.CurrentRoute,
+                TotalPages = builder.GetTotalPages(data.Count)
+            };
+
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
+            vm.Items = vm.Items.Where(item => item.CustomerEvents.Where(subitem => subitem.Customerid == customer.CustId && subitem.Eventid == item.EventId).SingleOrDefault() != null);
+
+            return View(vm);
+        }
+
+
+
+        [Authorize]
         [HttpGet]
-        public async Task<IActionResult> AddToWishList(int id)
+        public async Task<IActionResult> Register(int id)
         {
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
@@ -87,7 +129,60 @@ namespace GameStore.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> RemoveFromWishList(int id)
+        public async Task<IActionResult> MyRegister(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = new CustomerEvent();
+            ce.Customerid = customer.CustId;
+            ce.Eventid = id;
+
+            _storeContext.CustomerEvents.Add(ce);
+            _storeContext.SaveChanges();
+
+
+            return RedirectToAction("MyList");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> RegisterDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = new CustomerEvent();
+            ce.Customerid = customer.CustId;
+            ce.Eventid = id;
+
+            _storeContext.CustomerEvents.Add(ce);
+            _storeContext.SaveChanges();
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> MyRegisterDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = new CustomerEvent();
+            ce.Customerid = customer.CustId;
+            ce.Eventid = id;
+
+            _storeContext.CustomerEvents.Add(ce);
+            _storeContext.SaveChanges();
+
+            return RedirectToAction("MyDetails", new { id = id });
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Deregister(int id)
         {
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
@@ -103,17 +198,90 @@ namespace GameStore.Controllers
             return RedirectToAction("List");
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> MyDeregister(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
 
+            CustomerEvent ce = _storeContext.CustomerEvents.Where(item => item.Customerid == customer.CustId && item.Eventid == id).FirstOrDefault();
+
+            if (ce != null)
+            {
+                _storeContext.CustomerEvents.Remove(ce);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("MyList");
+        }
 
         [Authorize]
-        public ViewResult Details(int id)
+        [HttpGet]
+        public async Task<IActionResult> DeregisterDetails(int id)
         {
-            var book = data.Get(new QueryOptions<Event>
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = _storeContext.CustomerEvents.Where(item => item.Customerid == customer.CustId && item.Eventid == id).FirstOrDefault();
+
+            if (ce != null)
+            {
+                _storeContext.CustomerEvents.Remove(ce);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> MyDeregisterDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            CustomerEvent ce = _storeContext.CustomerEvents.Where(item => item.Customerid == customer.CustId && item.Eventid == id).FirstOrDefault();
+
+            if (ce != null)
+            {
+                _storeContext.CustomerEvents.Remove(ce);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("MyDetails", new { id = id });
+        }
+
+        [Authorize]
+        public IActionResult Details(int id)
+        {
+            var eventItem = data.Get(new QueryOptions<Event>
             {
                 Includes = "CustomerEvents",
-                Where = g => g.EventId == id
+                Where = e => e.EventId == id
             });
-            return View(book);
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
+            return View(eventItem);
+        }
+
+        [Authorize]
+        public IActionResult MyDetails(int id)
+        {
+            var eventItem = data.Get(new QueryOptions<Event>
+            {
+                Includes = "CustomerEvents",
+                Where = e => e.EventId == id
+            });
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
+            return View(eventItem);
         }
 
         #region OldCode
