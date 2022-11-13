@@ -78,7 +78,7 @@
                             }
                             else
                             {
-                                if (!FFList.Where(itemFF => itemFF.CustId1 == item.CustId && itemFF.CustId2 == userId).FirstOrDefault().Status)
+                                if (FFList.Where(itemFF => itemFF.CustId1 == item.CustId && itemFF.CustId2 == userId).FirstOrDefault().Status)
                                 {
                                     <a asp-action="RemoveFriend" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
@@ -165,7 +165,6 @@
                                         Send Friend Request 
                                  </a>
                         }
-
                     </td>
                     </tr>
             }

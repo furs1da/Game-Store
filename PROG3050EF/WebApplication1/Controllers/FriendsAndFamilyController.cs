@@ -31,6 +31,57 @@ namespace GameStore.Controllers
         }
 
         [Authorize]
+        public IActionResult ViewWishList(int id)
+        {
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.CustId == id);
+            ViewBag.UserName = customer.Nickname;
+
+            List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).ToList();
+
+            return View(list);
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult MyList()
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
+            List<Customer> userList = new List<Customer>();
+            List<FriendsFamily> fFList = _storeContext.FriendsFamilies.Where(item => item.CustId1 == customer.CustId || item.CustId2 == customer.CustId).ToList();
+
+            foreach(FriendsFamily item in fFList)
+            {
+                if(item.CustId1 == customer.CustId)
+                {
+                    if(userList.Where(itemC => itemC.CustId == item.CustId2).FirstOrDefault() == null)
+                    {
+                        Customer customerToAdd = _storeContext.Customers.SingleOrDefault(cust => cust.CustId == item.CustId2);
+                        if(customerToAdd != null)
+                            userList.Add(customerToAdd);
+                    }
+                }
+                else
+                {
+                    if (userList.Where(itemC => itemC.CustId == item.CustId1).FirstOrDefault() == null)
+                    {
+                        Customer customerToAdd = _storeContext.Customers.SingleOrDefault(cust => cust.CustId == item.CustId1);
+                        if (customerToAdd != null)
+                            userList.Add(customerToAdd);
+                    }
+
+                }
+            }
+            
+            ViewBag.ffList = _storeContext.FriendsFamilies.Where(item => item.CustId1 == customer.CustId || item.CustId2 == customer.CustId).ToList();
+
+            return View(userList);
+        }
+
+        [Authorize]
         [HttpGet]
         public IActionResult Search()
         {
