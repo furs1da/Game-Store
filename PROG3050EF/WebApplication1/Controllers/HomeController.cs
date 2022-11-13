@@ -20,7 +20,7 @@ namespace GameStore.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("List", "Game");
         }
 
         public IActionResult Privacy()
