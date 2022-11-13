@@ -47,11 +47,11 @@
                         <td>@item.FirstName @item.LastName</td>
                     }
                     <td>
-                       @if(FFList.Where(itemFF => itemFF.CustId1 == item.CustId || itemFF.CustId2 == userId).FirstOrDefault() != null)
+                       @if(FFList.Where(itemFF => itemFF.CustId1 == item.CustId && itemFF.CustId2 == userId).FirstOrDefault() != null)
                         {
-                            if (FFList.Where(itemFF => itemFF.CustId1 == item.CustId || itemFF.CustId2 == userId).FirstOrDefault().IsFamily)
+                            if (FFList.Where(itemFF => itemFF.CustId1 == item.CustId && itemFF.CustId2 == userId).FirstOrDefault().IsFamily)
                             {
-                               if (FFList.Where(itemFF => itemFF.CustId1 == item.CustId || itemFF.CustId2 == userId).FirstOrDefault().Status)
+                               if (FFList.Where(itemFF => itemFF.CustId1 == item.CustId && itemFF.CustId2 == userId).FirstOrDefault().Status)
                                 {
                                     <a asp-action="RemoveFamilyMember" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
@@ -78,7 +78,7 @@
                             }
                             else
                             {
-                                if (!FFList.Where(itemFF => itemFF.CustId1 == item.CustId || itemFF.CustId2 == userId).FirstOrDefault().Status)
+                                if (!FFList.Where(itemFF => itemFF.CustId1 == item.CustId && itemFF.CustId2 == userId).FirstOrDefault().Status)
                                 {
                                     <a asp-action="RemoveFriend" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
@@ -107,11 +107,11 @@
 
 
 
-                        else if(FFList.Where(itemFF => itemFF.CustId1 == userId || itemFF.CustId2 == item.CustId).FirstOrDefault() != null)
+                        else if(FFList.Where(itemFF => itemFF.CustId1 == userId && itemFF.CustId2 == item.CustId).FirstOrDefault() != null)
                         {
-                            if(FFList.Where(itemFF => itemFF.CustId1 == userId || itemFF.CustId2 == item.CustId).FirstOrDefault().IsFamily)
+                            if(FFList.Where(itemFF => itemFF.CustId1 == userId && itemFF.CustId2 == item.CustId).FirstOrDefault().IsFamily)
                             {
-                                if (FFList.Where(itemFF => itemFF.CustId1 == userId || itemFF.CustId2 == item.CustId).FirstOrDefault().Status)
+                                if (FFList.Where(itemFF => itemFF.CustId1 == userId && itemFF.CustId2 == item.CustId).FirstOrDefault().Status)
                                 { 
                                     <a asp-action="RemoveFamilyMember" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
@@ -130,7 +130,7 @@
                             }
                             else
                             {
-                                if (FFList.Where(itemFF => itemFF.CustId1 == userId || itemFF.CustId2 == item.CustId).FirstOrDefault().Status)
+                                if (FFList.Where(itemFF => itemFF.CustId1 == userId && itemFF.CustId2 == item.CustId).FirstOrDefault().Status)
                                 {
                                     <a asp-action="RemoveFriend" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
