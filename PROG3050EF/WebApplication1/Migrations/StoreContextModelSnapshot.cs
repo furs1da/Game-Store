@@ -390,7 +390,7 @@ namespace GameStore.Migrations
                         {
                             EventId = 7,
                             Date = new DateTime(2022, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Develop Brighton is the only event in the UK that brings the entire game-making industry together - from global superstars to micro indies, to learn from each other, share ideas and experiences, network and do business in a friendly and inclusive environment. ",
+                            Description = "Some Description.",
                             Duration = "12 hours",
                             Name = "Develop Brighton 2022"
                         },
@@ -1923,20 +1923,17 @@ namespace GameStore.Migrations
                     b.HasOne("GameStore.Data.Customer", "Cust")
                         .WithMany("WishLists")
                         .HasForeignKey("CustId")
-                        .IsRequired()
-                        .HasConstraintName("FKWishList705462");
+                        .IsRequired();
 
                     b.HasOne("GameStore.Data.Game", "Game")
                         .WithMany("WishLists")
                         .HasForeignKey("GameId")
-                        .IsRequired()
-                        .HasConstraintName("FKWishList952486");
+                        .IsRequired();
 
                     b.HasOne("GameStore.Data.Merchandise", "Merchandise")
                         .WithMany("WishLists")
                         .HasForeignKey("MerchandiseId")
-                        .IsRequired()
-                        .HasConstraintName("FKWishList795792");
+                        .IsRequired();
 
                     b.Navigation("Cust");
 

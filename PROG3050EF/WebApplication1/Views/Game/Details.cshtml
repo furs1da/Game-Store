@@ -64,17 +64,27 @@
 
 
 <div class="btn-group" role="group" aria-label="Basic example">
-    <form asp-action="Add" asp-controller="Cart" method="post">
+    <form>
         <button type="submit" name="id" value="@Model.GameId" class="btn btn-primary mr-1">
             Add To Cart
         </button>
     </form>
-
-    <form asp-action="Add" asp-controller="Cart" method="post">
-        <button type="submit" name="id" value="@Model.GameId" class="btn btn-primary">
-            Add To Wish List
-        </button>
-    </form>
+     @if (Model.WishLists.Where(item => item.GameId == Model.GameId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
+     {
+       <a asp-action="AddToWishListDetails" asp-controller="Game" 
+        asp-route-id="@Model.GameId"
+        class="btn btn-primary">                     
+            Add To Wist List                       
+       </a>                                         
+     }
+     else 
+     {
+      <a asp-action="RemoveFromWishListDetails" asp-controller="Game" 
+       asp-route-id="@Model.GameId"
+       class="btn btn-primary">
+            Remove From Wish List
+      </a>
+     }
 </div>
 
 <a asp-controller="Game" asp-action="List" class="link-primary ml-2">Go back</a>

@@ -47,7 +47,7 @@ namespace GameStore.Controllers
 
             var options = new GameQueryOptions
             {
-                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
+                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform, WishLists",
                 OrderByDirection = builder.CurrentRoute.SortDirection,
                 PageNumber = builder.CurrentRoute.PageNumber,
                 PageSize = builder.CurrentRoute.PageSize
@@ -61,18 +61,27 @@ namespace GameStore.Controllers
                 TotalPages = builder.GetTotalPages(data.Count)
             };
 
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
             return View(vm);
         }
 
         [Authorize]
         public ViewResult Details(int id)
         {
-            var book = data.Get(new QueryOptions<Game>
+            var game = data.Get(new QueryOptions<Game>
             {
-                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
+                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform, WishLists",
                 Where = g => g.GameId == id
             });
-            return View(book);
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
+            return View(game);
         }
 
         [Authorize]
@@ -97,6 +106,82 @@ namespace GameStore.Controllers
 
             builder.SaveRouteSegments();
             return RedirectToAction("List", builder.CurrentRoute);
-        } 
+        }
+
+
+
+
+
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddToWistList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = new WishList();
+            wl.CustId = customer.CustId;
+            wl.GameId = id;
+
+            _storeContext.WishLists.Add(wl);
+            _storeContext.SaveChanges();
+
+
+            return RedirectToAction("List");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddToWishListDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = new WishList();
+            wl.CustId = customer.CustId;
+            wl.GameId = id;
+
+            _storeContext.WishLists.Add(wl);
+            _storeContext.SaveChanges();
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> RemoveFromWishList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = _storeContext.WishLists.Where(item => item.CustId == customer.CustId && item.GameId == id).FirstOrDefault();
+
+            if (wl != null)
+            {
+                _storeContext.WishLists.Remove(wl);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("List");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> RemoveFromWishListDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = _storeContext.WishLists.Where(item => item.CustId == customer.CustId && item.GameId == id).FirstOrDefault();
+
+            if (wl != null)
+            {
+                _storeContext.WishLists.Remove(wl);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { id = id });
+        }
     }
 }

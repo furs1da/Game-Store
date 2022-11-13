@@ -98,9 +98,22 @@
                          Details
                         </a>
                         <span class="linkSpacer ml-1 mr-1">|</span>
-                        <button type="submit" name="id" value="@game.GameId" class="btn btn-primary">
-                            Add To Cart
-                        </button>
+                        @if (game.WishLists.Where(item => item.GameId == game.GameId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
+                        {
+                            <a asp-action="AddToWistList" asp-controller="Game" 
+                             asp-route-id="@game.GameId"
+                             class="btn btn-primary">
+                                Add To Wist List
+                            </a>
+                        }
+                        else 
+                        {
+                        <a asp-action="RemoveFromWishList" asp-controller="Game" 
+                             asp-route-id="@game.GameId"
+                             class="btn btn-primary">
+                                Remove From Wish List
+                        </a>
+                        }
                     </td>
                 </tr>
             }

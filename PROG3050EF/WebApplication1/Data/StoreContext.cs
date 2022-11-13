@@ -643,20 +643,17 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.WishLists)
                     .HasForeignKey(d => d.CustId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FKWishList705462");
+                    .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.WishLists)
                     .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FKWishList952486");
+                    .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.Merchandise)
                     .WithMany(p => p.WishLists)
                     .HasForeignKey(d => d.MerchandiseId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FKWishList795792");
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             // composite primary key for PlatformGame
