@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alex_\\Documents\\GitHub\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {}
+    "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alex_\\Documents\\GitHub\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {
+    "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alex_\\Documents\\GitHub\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
+        "projectUniqueName": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
         "projectName": "GameStore",
-        "projectPath": "C:\\Users\\alex_\\Documents\\GitHub\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
-        "packagesPath": "C:\\Users\\alex_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alex_\\Documents\\GitHub\\GameStore\\PROG3050EF\\WebApplication1\\obj\\",
+        "projectPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
+        "packagesPath": "C:\\Users\\askl3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alex_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\askl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
