@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\TestGameStore\\TestGameStore.csproj": {}
   },
   "projects": {
@@ -12,9 +13,27 @@
         "projectPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\TestGameStore\\TestGameStore.csproj",
         "packagesPath": "C:\\Users\\askl3\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\TestGameStore\\obj\\",
+=======
+    "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\TestGameStore\\TestGameStore.csproj": {}
+  },
+  "projects": {
+    "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\TestGameStore\\TestGameStore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\TestGameStore\\TestGameStore.csproj",
+        "projectName": "TestGameStore",
+        "projectPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\TestGameStore\\TestGameStore.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\TestGameStore\\obj\\",
+>>>>>>> 23efe9d2dcb2de0dec062fce4e006c07038f4ffd
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\askl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 23efe9d2dcb2de0dec062fce4e006c07038f4ffd
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +47,13 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {
                 "projectPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj"
+=======
+              "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {
+                "projectPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj"
+>>>>>>> 23efe9d2dcb2de0dec062fce4e006c07038f4ffd
               }
             }
           }
@@ -71,8 +95,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -81,10 +104,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
+<<<<<<< HEAD
     "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -93,9 +117,24 @@
         "projectPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
         "packagesPath": "C:\\Users\\askl3\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\askl3\\OneDrive\\文档\\unit test work\\GameStoreTest\\GameStore\\PROG3050EF\\WebApplication1\\obj\\",
+=======
+    "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
+        "projectName": "GameStore",
+        "projectPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\GameStore.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\College\\5th semester\\PROG3050 - Microsoft Enterprise\\Project\\GameStore\\PROG3050EF\\WebApplication1\\obj\\",
+>>>>>>> 23efe9d2dcb2de0dec062fce4e006c07038f4ffd
         "projectStyle": "PackageReference",
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\askl3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 23efe9d2dcb2de0dec062fce4e006c07038f4ffd
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -176,8 +215,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -189,7 +227,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
