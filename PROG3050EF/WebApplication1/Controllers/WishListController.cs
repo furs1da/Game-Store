@@ -94,6 +94,8 @@ namespace GameStore.Controllers
                 _storeContext.SaveChanges();
             }
 
+
+
             return RedirectToAction("MyList", new { id = id });
         }
 
