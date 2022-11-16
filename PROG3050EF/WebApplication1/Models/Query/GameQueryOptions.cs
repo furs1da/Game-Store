@@ -20,6 +20,11 @@ namespace GameStore.Models.Query
                     Where = b => b.Price > 35;
             }
 
+            if (builder.IsFilterByName)
+            {
+                Where = b => b.Name.Contains(builder.CurrentRoute.NameFilter);
+            }
+
             if (builder.IsFilterByCategory)
             {
                 int id = builder.CurrentRoute.CategoryFilter.ToInt();

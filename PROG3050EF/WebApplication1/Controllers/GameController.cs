@@ -113,6 +113,8 @@ namespace GameStore.Controllers
 
 
 
+
+
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> AddToWistList(int id)

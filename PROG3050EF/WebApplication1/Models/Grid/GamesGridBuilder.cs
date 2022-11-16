@@ -17,6 +17,7 @@ namespace GameStore.Models.Grid
             routes.CategoryFilter = (isInitial) ? FilterPrefix.Category + values.Category : values.Category;
             routes.PlatformFilter = (isInitial) ? FilterPrefix.Platform + values.Platform : values.Platform;
             routes.PriceFilter = (isInitial) ? FilterPrefix.Price + values.Price : values.Price;
+            routes.NameFilter = (isInitial) ? FilterPrefix.Name + values.Name : values.Name;
         }
 
         public void LoadFilterSegments(string[] filter, Category category, Platform platform, GameFeature gameFeature)
@@ -52,15 +53,20 @@ namespace GameStore.Models.Grid
             }
 
             routes.PriceFilter = FilterPrefix.Price + filter[3];
+
+            routes.NameFilter = FilterPrefix.Name + filter[4];
         }
 
         public void ClearFilterSegments() => routes.ClearFilters();
 
         string def = GamesGridDTO.DefaultFilter;
+        string defName = GamesGridDTO.DefaultNameFilter;
         public bool IsFilterByCategory => routes.CategoryFilter != def;
         public bool IsFilterByPlatform => routes.PlatformFilter != def;
         public bool IsFilterByGameFeature => routes.GameFeatureFilter != def;
         public bool IsFilterByPrice => routes.PriceFilter != def;
+
+        public bool IsFilterByName => routes.NameFilter != defName;
 
         public bool IsSortByPrice =>
             routes.SortField.EqualsNoCase(nameof(Game.Price));

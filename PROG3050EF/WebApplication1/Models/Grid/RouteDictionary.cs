@@ -12,6 +12,7 @@ namespace GameStore.Models.Grid
         public const string GameFeature = "gamefeature-";
         public const string Platform = "platform-";
         public const string Price = "price-";
+        public const string Name = "name-";
     }
 
     public class RouteDictionary : Dictionary<string, string>
@@ -55,6 +56,12 @@ namespace GameStore.Models.Grid
         {
             get => Get(nameof(GamesGridDTO.Price))?.Replace(FilterPrefix.Price, "");
             set => this[nameof(GamesGridDTO.Price)] = value;
+        }
+
+        public string NameFilter
+        {
+            get => Get(nameof(GamesGridDTO.Name))?.Replace(FilterPrefix.Name, "");
+            set => this[nameof(GamesGridDTO.Name)] = value;
         }
 
         public string CategoryFilter
