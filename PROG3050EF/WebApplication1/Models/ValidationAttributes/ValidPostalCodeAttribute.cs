@@ -18,7 +18,7 @@ namespace GameStore.Models.ValidationAttributes
             if (value is string)
             {
                 string postalCode = (string)value;
-                if ((Regex.Match(postalCode, postalCodeRegex).Success))
+                if ((Regex.Match(postalCode.ToUpper(), postalCodeRegex).Success))
                 {
                     return ValidationResult.Success;
                 }
