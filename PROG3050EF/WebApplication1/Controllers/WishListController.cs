@@ -33,11 +33,24 @@ namespace GameStore.Controllers
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
             ViewBag.UserId = customer.CustId;
+            ViewBag.UserName = User.Identity.Name;
 
             List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).ToList();
 
             return View(list);
         }
+
+        public IActionResult UserList(string username)
+        {
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == username);
+            ViewBag.UserId = customer.CustId;
+            ViewBag.UserName = username;
+
+            List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).ToList();
+
+            return View(list);
+        }
+
 
         [Authorize]
         public IActionResult GameDetails(int id)

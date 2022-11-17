@@ -1012,3 +1012,12 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.pdb
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.genruntimeconfig.cache
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\ref\GameStore.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\System.Web.Razor.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.Web.Helpers.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\WebMatrix.Data.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\WebMatrix.WebData.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
