@@ -66,17 +66,17 @@
 
 
 
+<div class="btn-group" role="group" aria-label="Basic example">
+    <form asp-action="Edit" asp-controller="Game" method="get">
+        <button type="submit" name="id" value="@Model.GameId" class="btn btn-primary">
+            Edit</button>
+    </form>
 
-<form asp-action="Edit" asp-controller="Game" method="post">
-    <button type="submit" name="id" value="@Model.GameId" class="btn btn-primary">
-        Edit</button>
-</form>
-
-<form asp-action="Delete" asp-controller="Game" method="post">
-    <button type="submit" name="id" value="@Model.GameId" class="btn btn-primary mt-1">
-        Delete</button>
-</form>
-
+    <form asp-action="Delete" asp-controller="Game" method="get">
+        <button type="submit" name="id" value="@Model.GameId" class="btn btn-primary ml-1">
+            Delete</button>
+    </form>
+</div>
 
 
 
