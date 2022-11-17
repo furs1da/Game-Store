@@ -119,6 +119,12 @@
                             {
                                 if (FFList.Where(itemFF => itemFF.CustId1 == userId && itemFF.CustId2 == item.CustId).FirstOrDefault().Status)
                                 { 
+                                    <a asp-action="ViewWishList" asp-controller="FriendsAndFamily" 
+                                     asp-route-id="@item.CustId"
+                                     asp-route-slug="@item.Nickname.Slug()" class="btn btn-primary">
+                                        View Wish List
+                                    </a>
+                                    <span class="linkSpacer ml-1 mr-1">|</span>
                                     <a asp-action="RemoveFamilyMember" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
                                      class="btn btn-primary">
@@ -138,6 +144,12 @@
                             {
                                 if (FFList.Where(itemFF => itemFF.CustId1 == userId && itemFF.CustId2 == item.CustId).FirstOrDefault().Status)
                                 {
+                                    <a asp-action="ViewWishList" asp-controller="FriendsAndFamily" 
+                                     asp-route-id="@item.CustId"
+                                     asp-route-slug="@item.Nickname.Slug()" class="btn btn-primary">
+                                        View Wish List
+                                    </a>
+                                    <span class="linkSpacer ml-1 mr-1">|</span>
                                     <a asp-action="RemoveFriend" asp-controller="FriendsAndFamily" 
                                      asp-route-id="@item.CustId"
                                      class="btn btn-primary">
