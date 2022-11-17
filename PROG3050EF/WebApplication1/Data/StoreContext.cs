@@ -397,8 +397,9 @@ namespace GameStore.Data
             {
                 entity.ToTable("MailingAddress");
 
+                entity.HasKey(e => e.MailingAddressId);
+
                 entity.Property(e => e.MailingAddressId)
-                    .ValueGeneratedNever()
                     .HasColumnName("mailingAddressId");
 
                 entity.Property(e => e.Address)
@@ -608,8 +609,9 @@ namespace GameStore.Data
             {
                 entity.ToTable("ShippingAddress");
 
+                entity.HasKey(e => e.ShippingAddressId);
+
                 entity.Property(e => e.ShippingAddressId)
-                    .ValueGeneratedNever()
                     .HasColumnName("shippingAddressId");
 
                 entity.Property(e => e.Address)
