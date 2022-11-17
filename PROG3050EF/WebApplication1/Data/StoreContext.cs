@@ -123,7 +123,7 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.CreditCards)
                     .HasForeignKey(d => d.CustId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKCreditCard326673");
             });
 
@@ -201,8 +201,8 @@ namespace GameStore.Data
                     .WithMany(p => p.Customers)
                     .UsingEntity<Dictionary<string, object>>(
                         "CustomerEvent",
-                        l => l.HasOne<Event>().WithMany().HasForeignKey("Eventid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKCustomer_E485607"),
-                        r => r.HasOne<Customer>().WithMany().HasForeignKey("Customerid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKCustomer_E75975"),
+                        l => l.HasOne<Event>().WithMany().HasForeignKey("Eventid").OnDelete(DeleteBehavior.Cascade).HasConstraintName("FKCustomer_E485607"),
+                        r => r.HasOne<Customer>().WithMany().HasForeignKey("Customerid").OnDelete(DeleteBehavior.Cascade).HasConstraintName("FKCustomer_E75975"),
                         j =>
                         {
                             j.HasKey("Customerid", "Eventid").HasName("PK__Customer__333907D60F8269FF");
@@ -281,13 +281,13 @@ namespace GameStore.Data
                 entity.HasOne(d => d.CustId1Navigation)
                     .WithMany(p => p.FriendsFamilyCustId1Navigations)
                     .HasForeignKey(d => d.CustId1)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FKFriendsFam820474");
 
                 entity.HasOne(d => d.CustId2Navigation)
                     .WithMany(p => p.FriendsFamilyCustId2Navigations)
                     .HasForeignKey(d => d.CustId2)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FKFriendsFam820475");
             });
 
@@ -389,7 +389,7 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.GameImages)
                     .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKGameImage381528");
             });
 
@@ -467,7 +467,7 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Merchandise)
                     .WithMany(p => p.MerchandiseImages)
                     .HasForeignKey(d => d.MerchandiseId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKMerchandis483326");
             });
 
@@ -497,19 +497,19 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKOrder861201");
 
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKOrder547560");
 
                 entity.HasOne(d => d.Merchandise)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.MerchandiseId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKOrder609133");
             });
 
@@ -567,13 +567,13 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.Reviews)
                     .HasForeignKey(d => d.CustId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKReview172984");
 
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.Reviews)
                     .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKReview486625");
             });
 
@@ -601,7 +601,7 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Review)
                     .WithMany(p => p.ReviewImages)
                     .HasForeignKey(d => d.ReviewId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKReviewImag856029");
             });
 
@@ -645,17 +645,17 @@ namespace GameStore.Data
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.WishLists)
                     .HasForeignKey(d => d.CustId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.WishLists)
                     .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Merchandise)
                     .WithMany(p => p.WishLists)
                     .HasForeignKey(d => d.MerchandiseId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.SetNull);
             });
 
             // composite primary key for PlatformGame
