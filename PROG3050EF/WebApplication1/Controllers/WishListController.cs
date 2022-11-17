@@ -43,6 +43,12 @@ namespace GameStore.Controllers
         public IActionResult UserList(string username)
         {
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == username);
+            if (customer == null)
+            {
+                ViewBag.UserName = username;
+                return View(new List<WishList>());
+            }
+
             ViewBag.UserId = customer.CustId;
             ViewBag.UserName = username;
 
