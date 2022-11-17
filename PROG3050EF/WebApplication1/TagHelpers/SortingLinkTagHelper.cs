@@ -29,6 +29,8 @@ namespace GameStore.TagHelpers
             string ctlr = ViewCtx.RouteData.Values["controller"].ToString();
             string action = ViewCtx.RouteData.Values["action"].ToString();
             string url = linkBuilder.GetPathByAction(action, ctlr, routes);
+            
+            
 
             output.BuildLink(url, "text-white");
         }
