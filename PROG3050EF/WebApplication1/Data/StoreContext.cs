@@ -326,7 +326,7 @@ namespace GameStore.Data
                     .UsingEntity<Dictionary<string, object>>(
                         "GameCategory",
                         l => l.HasOne<Category>().WithMany().HasForeignKey("Categoryid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKGame_Categ786403"),
-                        r => r.HasOne<Game>().WithMany().HasForeignKey("Gameid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKGame_Categ26396"),
+                        r => r.HasOne<Game>().WithMany().HasForeignKey("Gameid").OnDelete(DeleteBehavior.Cascade).HasConstraintName("FKGame_Categ26396"),
                         j =>
                         {
                             j.HasKey("Gameid", "Categoryid").HasName("PK__Game_Cat__0B57EBB7A12BD34A");
@@ -353,7 +353,7 @@ namespace GameStore.Data
                     .WithMany(p => p.GameFeatures)
                     .UsingEntity<Dictionary<string, object>>(
                         "GameFeatureGame",
-                        l => l.HasOne<Game>().WithMany().HasForeignKey("Gameid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKGameFeatur387831"),
+                        l => l.HasOne<Game>().WithMany().HasForeignKey("Gameid").OnDelete(DeleteBehavior.Cascade).HasConstraintName("FKGameFeatur387831"),
                         r => r.HasOne<GameFeature>().WithMany().HasForeignKey("GameFeatureid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKGameFeatur415415"),
                         j =>
                         {
@@ -528,7 +528,7 @@ namespace GameStore.Data
                     .WithMany(p => p.Platforms)
                     .UsingEntity<Dictionary<string, object>>(
                         "PlatformGame",
-                        l => l.HasOne<Game>().WithMany().HasForeignKey("Gameid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKPlatform_G103358"),
+                        l => l.HasOne<Game>().WithMany().HasForeignKey("Gameid").OnDelete(DeleteBehavior.Cascade).HasConstraintName("FKPlatform_G103358"),
                         r => r.HasOne<Platform>().WithMany().HasForeignKey("Platformid").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FKPlatform_G477683"),
                         j =>
                         {
