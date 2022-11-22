@@ -86,7 +86,8 @@ namespace GameStore.Controllers
 
         [Authorize]
         [HttpPost]
-        public RedirectToActionResult Filter([FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform, [FromServices] IRepository<GameFeature> dataFeature,
+        public RedirectToActionResult Filter([FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform, 
+            [FromServices] IRepository<GameFeature> dataFeature,
             string[] filter, bool clear = false)
         {
             var builder = new GamesGridBuilder(HttpContext.Session);
@@ -116,9 +117,30 @@ namespace GameStore.Controllers
 
 
         [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> AddToWistList(int id)
+        [HttpPost]
+        public async Task<IActionResult> AddToWistList(int id,
+            [FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform,
+            [FromServices] IRepository<GameFeature> dataFeature,
+            string[] filter, bool clear = false)
         {
+            var builder = new GamesGridBuilder(HttpContext.Session);
+
+            if (clear)
+            {
+                builder.ClearFilterSegments();
+            }
+            else
+            {
+                var category = dataCategory.Get(filter[0].ToInt());
+                var platform = dataPlatform.Get(filter[1].ToInt());
+                var gameFeature = dataFeature.Get(filter[2].ToInt());
+
+                builder.LoadFilterSegments(filter, category, platform, gameFeature);
+            }
+
+
+
+
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
 
@@ -130,7 +152,8 @@ namespace GameStore.Controllers
             _storeContext.SaveChanges();
 
 
-            return RedirectToAction("List");
+            builder.SaveRouteSegments();
+            return RedirectToAction("List", builder.CurrentRoute);
         }
 
         [Authorize]
@@ -151,9 +174,30 @@ namespace GameStore.Controllers
         }
 
         [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> RemoveFromWishList(int id)
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromWishList(int id,
+            [FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform,
+            [FromServices] IRepository<GameFeature> dataFeature,
+            string[] filter, bool clear = false)
         {
+            var builder = new GamesGridBuilder(HttpContext.Session);
+
+            if (clear)
+            {
+                builder.ClearFilterSegments();
+            }
+            else
+            {
+                var category = dataCategory.Get(filter[0].ToInt());
+                var platform = dataPlatform.Get(filter[1].ToInt());
+                var gameFeature = dataFeature.Get(filter[2].ToInt());
+
+                builder.LoadFilterSegments(filter, category, platform, gameFeature);
+            }
+
+
+
+
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
 
@@ -165,7 +209,8 @@ namespace GameStore.Controllers
                 _storeContext.SaveChanges();
             }
 
-            return RedirectToAction("List");
+            builder.SaveRouteSegments();
+            return RedirectToAction("List", builder.CurrentRoute);
         }
 
         [Authorize]
