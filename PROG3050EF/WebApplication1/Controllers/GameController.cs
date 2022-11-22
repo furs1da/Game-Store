@@ -109,13 +109,6 @@ namespace GameStore.Controllers
             return RedirectToAction("List", builder.CurrentRoute);
         }
 
-
-
-
-
-
-
-
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddToWistList(int id,

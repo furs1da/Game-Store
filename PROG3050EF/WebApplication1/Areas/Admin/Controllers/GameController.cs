@@ -66,16 +66,15 @@ namespace GameStore.Areas.Admin.Controllers
 
 
 
-
         [Authorize]
         public ViewResult Details(int id)
         {
-            var book = data.Get(new QueryOptions<Game>
+            var game = data.Get(new QueryOptions<Game>
             {
                 Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
                 Where = g => g.GameId == id
             });
-            return View(book);
+            return View(game);
         }
 
         [Authorize]
@@ -118,13 +117,13 @@ namespace GameStore.Areas.Admin.Controllers
                 dataGameStore.Games.Insert(vm.Game);
                 dataGameStore.Save();
 
-                TempData["message"] = $"{vm.Game.Name} added to Books.";
+                TempData["message"] = $"{vm.Game.Name} added to Games.";
                 return RedirectToAction("Index");
             }
             else
             {
                 Load(vm, "Add");
-                return View("Book", vm);
+                return View("Game", vm);
             }
         }
 
@@ -154,7 +153,7 @@ namespace GameStore.Areas.Admin.Controllers
             else
             {
                 Load(vm, "Edit");
-                return View("Book", vm);
+                return View("Game", vm);
             }
         }
 
@@ -166,7 +165,7 @@ namespace GameStore.Areas.Admin.Controllers
         {
             dataGameStore.Games.Delete(vm.Game);
             dataGameStore.Save();
-            TempData["message"] = $"{vm.Game.Name} removed from Books.";
+            TempData["message"] = $"{vm.Game.Name} removed from Games.";
             return RedirectToAction("List");
         }
 

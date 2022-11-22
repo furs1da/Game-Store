@@ -21,9 +21,10 @@ namespace GameStore.Data
         [Required(ErrorMessage = "Please enter a game name.")]
         [MaxLength(255)]
         public string Name { get; set; } = null!;
-
+        [Required]
         [Range(0.0, 1000000.0, ErrorMessage = "Price must be more than 0.")]
         public decimal? Price { get; set; }
+        [Required(ErrorMessage = "Quantity field is required.")]
         [Range(0, 100000, ErrorMessage = "Quantity must be more than 0.")]
         public int? Pquantity { get; set; }
 

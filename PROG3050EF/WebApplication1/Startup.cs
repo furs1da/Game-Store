@@ -84,15 +84,18 @@ namespace GameStore
 
                 // route for paging, sorting, and filtering for Admin area
                 endpoints.MapAreaControllerRoute(
-                   name: "admin",
-                   areaName: "Admin",
-                   pattern: "Admin/{controller=Game}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
+                    name: "",
+                    areaName: "Admin",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
 
                 // route for paging and sorting only for Admin area
                 endpoints.MapAreaControllerRoute(
-                   name: "admin",
-                   areaName: "Admin",
+                   name: "",
+                    areaName: "Admin",
                    pattern: "Admin/{controller=Game}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
+
+
+
 
                 // route for paging, sorting, and filtering
                 endpoints.MapControllerRoute(
