@@ -163,6 +163,10 @@ namespace GameStore.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Delete(GameViewModel vm)
         {
+            dataGameStore.DeleteCurrentGameCategories(vm.Game);
+            dataGameStore.DeleteCurrentPlatformGames(vm.Game);
+            dataGameStore.DeleteCurrentGameFeatureGames(vm.Game);
+
             dataGameStore.Games.Delete(vm.Game);
             dataGameStore.Save();
             TempData["message"] = $"{vm.Game.Name} removed from Games.";

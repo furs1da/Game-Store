@@ -8,6 +8,41 @@ namespace GameStore.Models.Repositories
         private StoreContext context { get; set; }
         public GameStoreUnitOfWork(StoreContext ctx) => context = ctx;
 
+        private Repository<Event> eventData; 
+
+        public Repository<Event> Events
+        {
+            get
+            {
+                if (eventData == null)
+                    eventData = new Repository<Event>(context);
+                return eventData;
+            }
+        }
+
+        private Repository<Customer> customerData;
+        public Repository<Customer> Customers
+        {
+            get
+            {
+                if (customerData == null)
+                    customerData = new Repository<Customer>(context);
+                return customerData;
+            }
+        }
+
+        private Repository<CustomerEvent> customerEventData;
+        public Repository<CustomerEvent> CustomerEvent
+        {
+            get
+            {
+                if (customerEventData == null)
+                    customerEventData = new Repository<CustomerEvent>(context);
+                return customerEventData;
+            }
+        }
+
+
         private Repository<Game> gameData;
         public Repository<Game> Games
         {
@@ -89,6 +124,21 @@ namespace GameStore.Models.Repositories
                 if (gamefeaturegameData == null)
                     gamefeaturegameData = new Repository<GameFeatureGame>(context);
                 return gamefeaturegameData;
+            }
+        }
+
+
+
+        public void DeleteCurrentCustomers(Event eventItem)
+        {
+            var currentCustomers = CustomerEvent.List(new QueryOptions<CustomerEvent>
+            {
+                Where = ce => ce.Eventid == eventItem.EventId
+            });
+
+            foreach (CustomerEvent ce in currentCustomers)
+            {
+                CustomerEvent.Delete(ce);
             }
         }
 
