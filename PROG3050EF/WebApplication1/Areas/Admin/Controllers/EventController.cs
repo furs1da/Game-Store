@@ -66,29 +66,86 @@ namespace GameStore.Areas.Admin.Controllers
             return View(eventItem);
         }
 
+        [HttpGet]
+        public ViewResult Add(int id) => GetEvent(id, "Add");
 
-        [Authorize]
         [HttpPost]
-        public RedirectToActionResult Filter([FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform, [FromServices] IRepository<GameFeature> dataFeature,
-            string[] filter, bool clear = false)
+        public IActionResult Add(EventViewModel vm)
         {
-            var builder = new GamesGridBuilder(HttpContext.Session);
-
-            if (clear)
+            if (ModelState.IsValid)
             {
-                builder.ClearFilterSegments();
+               
+
+                dataGameStore.Events.Insert(vm.Event);
+                dataGameStore.Save();
+
+                TempData["message"] = $"{vm.Event.Name} added to Games.";
+                return RedirectToAction("Index");
             }
             else
             {
-                var category = dataCategory.Get(filter[0].ToInt());
-                var platform = dataPlatform.Get(filter[1].ToInt());
-                var gameFeature = dataFeature.Get(filter[2].ToInt());
-
-                builder.LoadFilterSegments(filter, category, platform, gameFeature);
+                Load(vm, "Add");
+                return View("Event", vm);
             }
-
-            builder.SaveRouteSegments();
-            return RedirectToAction("List", builder.CurrentRoute);
         }
+
+        private ViewResult GetEvent(int id, string operation)
+        {
+            var eventItem = new EventViewModel();
+            Load(eventItem, operation, id);
+            return View("Event", eventItem);
+        }
+
+        private void Load(EventViewModel vm, string op, int? id = null)
+        {
+            if (Operation.IsAdd(op))
+            {
+                vm.Event = new Event();
+            }
+            else
+            {
+                vm.Event = dataGameStore.Events.Get(new QueryOptions<Event>
+                {   
+                    Where = e => e.EventId == (id ?? vm.Event.EventId)
+                });
+            }
+        }
+
+
+        [HttpGet]
+        public ViewResult Edit(int id) => GetEvent(id, "Edit");
+
+        [HttpPost]
+        public IActionResult Edit(EventViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                dataGameStore.Events.Update(vm.Event);
+                dataGameStore.Save();
+
+                TempData["message"] = $"{vm.Event.Name} updated.";
+                return RedirectToAction("List");
+            }
+            else
+            {
+                Load(vm, "Edit");
+                return View("Event", vm);
+            }
+        }
+
+        [HttpGet]
+        public ViewResult Delete(int id) => GetEvent(id, "Delete");
+
+        [HttpPost]
+        public IActionResult Delete(EventViewModel vm)
+        {
+            dataGameStore.DeleteCurrentCustomers(vm.Event);
+
+            dataGameStore.Events.Delete(vm.Event);
+            dataGameStore.Save();
+            TempData["message"] = $"{vm.Event.Name} removed from Events.";
+            return RedirectToAction("List");
+        }
+
     }
 }
