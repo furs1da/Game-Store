@@ -80,7 +80,7 @@ namespace GameStore.Areas.Admin.Controllers
                 dataGameStore.Save();
 
                 TempData["message"] = $"{vm.Event.Name} added to Games.";
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             else
             {
