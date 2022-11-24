@@ -49,6 +49,7 @@ namespace GameStore.Controllers
             vm.CategoryId = customer.PreferedCategoryId != null ? customer.PreferedCategoryId : null;
             vm.PlatformId = customer.PreferedPlatformId != null ? customer.PreferedPlatformId : null;
 
+            return RedirectToAction("PreferencesEdit");
             return View(vm);
         }
 

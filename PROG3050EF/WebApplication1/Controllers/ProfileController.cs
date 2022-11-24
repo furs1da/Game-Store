@@ -48,6 +48,7 @@ namespace GameStore.Controllers
             vm.RecievePromotion = (bool)(customer.RecievePromotion != null ? customer.RecievePromotion : false);
             vm.Gender = customer.Gender != null ? customer.Gender : null;
 
+            return RedirectToAction("ProfileInformationEdit");
             return View(vm);
         }
 

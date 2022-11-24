@@ -1030,3 +1030,8 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.pdb
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.genruntimeconfig.cache
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\ref\GameStore.dll
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.GameStore.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.build.GameStore.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.GameStore.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.GameStore.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets.pack.json

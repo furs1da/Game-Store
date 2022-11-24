@@ -61,7 +61,7 @@ namespace GameStore.Controllers
                 vm.Province = 0;
                 vm.PostalCode = null;
             }
-
+            return RedirectToAction("EditShippingAddress");
             return View(vm);
         }
 
@@ -98,7 +98,7 @@ namespace GameStore.Controllers
                 vm.Province = 0;
                 vm.PostalCode = null;
             }
-
+            return RedirectToAction("EditMailingAddress");
             return View(vm);
         }
 
