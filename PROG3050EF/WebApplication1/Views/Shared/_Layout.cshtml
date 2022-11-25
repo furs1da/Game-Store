@@ -19,6 +19,9 @@
         width: 100%;
         text-align: center;
     }
+    .submenu{
+        top:auto;
+    }
     .vl {
         border-left: 2px solid white;
         height: 100%;
@@ -156,7 +159,7 @@
                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Addresses
                                    </a>
-                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   <div class="dropdown-menu submenu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" asp-action="ShippingAddress" asp-controller="Address"
                                asp-area="">Shipping Address</a>
                                     <a class="dropdown-item" asp-action="MailingAddress" asp-controller="Address"
