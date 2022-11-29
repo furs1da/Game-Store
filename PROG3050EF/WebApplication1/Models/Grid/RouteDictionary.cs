@@ -13,6 +13,10 @@ namespace GameStore.Models.Grid
         public const string Platform = "platform-";
         public const string Price = "price-";
         public const string Name = "name-";
+
+        public const string GameName = "gamename-";
+        public const string MerchName = "merchname-";
+        public const string MerchPrice = "merchprice-";
     }
 
     public class RouteDictionary : Dictionary<string, string>
@@ -58,6 +62,25 @@ namespace GameStore.Models.Grid
             set => this[nameof(GamesGridDTO.Price)] = value;
         }
 
+        public string MerchandisePriceFilter
+        {
+            get => Get(nameof(MerchandiseGridDTO.Price))?.Replace(FilterPrefix.MerchPrice, "");
+            set => this[nameof(MerchandiseGridDTO.Price)] = value;
+        }
+
+        public string GameNameFilter
+        {
+            get => Get(nameof(MerchandiseGridDTO.Game))?.Replace(FilterPrefix.GameName, "");
+            set => this[nameof(MerchandiseGridDTO.Game)] = value;
+        }
+
+        public string MerchandiseNameFilter
+        {
+            get => Get(nameof(MerchandiseGridDTO.Name))?.Replace(FilterPrefix.MerchName, "");
+            set => this[nameof(MerchandiseGridDTO.Name)] = value;
+        }
+
+
         public string NameFilter
         {
             get => Get(nameof(GamesGridDTO.Name))?.Replace(FilterPrefix.Name, "");
@@ -99,8 +122,10 @@ namespace GameStore.Models.Grid
 
 
 
+
+
         public void ClearFilters() =>
-            PriceFilter = CategoryFilter = PlatformFilter = GameFeatureFilter = GamesGridDTO.DefaultFilter;
+           GameNameFilter = MerchandiseNameFilter = MerchandisePriceFilter = PriceFilter = CategoryFilter = PlatformFilter = GameFeatureFilter = GamesGridDTO.DefaultFilter;
 
         private string Get(string key) => Keys.Contains(key) ? this[key] : null;
 

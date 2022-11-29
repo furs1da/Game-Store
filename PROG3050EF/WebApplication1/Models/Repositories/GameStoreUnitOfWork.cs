@@ -8,6 +8,20 @@ namespace GameStore.Models.Repositories
         private StoreContext context { get; set; }
         public GameStoreUnitOfWork(StoreContext ctx) => context = ctx;
 
+        private Repository<Merchandise> merchandiseData;
+
+        public Repository<Merchandise> Merchandises
+        {
+            get
+            {
+                if (merchandiseData == null)
+                    merchandiseData = new Repository<Merchandise>(context);
+                return merchandiseData;
+            }
+        }
+
+
+
         private Repository<Event> eventData; 
 
         public Repository<Event> Events

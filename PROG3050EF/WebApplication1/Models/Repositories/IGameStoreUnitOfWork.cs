@@ -19,6 +19,9 @@ namespace GameStore.Models.Repositories
         Repository<Event> Events { get; }
         Repository<Customer> Customers { get; }
 
+        // Merchandise
+        Repository<Merchandise> Merchandises { get; }
+
         //Event 
         void DeleteCurrentCustomers(Event eventItem);
 
