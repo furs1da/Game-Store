@@ -12,9 +12,9 @@ namespace GameStore.Models.Query
         {
             if (builder.IsFilterByPrice)
             {
-                if (builder.CurrentRoute.PriceFilter == "under10")
+                if (builder.CurrentRoute.MerchandisePriceFilter == "under10")
                     Where = b => b.Price < 10;
-                else if (builder.CurrentRoute.PriceFilter == "10to35")
+                else if (builder.CurrentRoute.MerchandisePriceFilter == "10to35")
                     Where = b => b.Price >= 10 && b.Price <= 35;
                 else
                     Where = b => b.Price > 35;

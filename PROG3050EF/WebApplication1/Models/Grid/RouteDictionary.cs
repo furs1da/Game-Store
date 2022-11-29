@@ -125,7 +125,14 @@ namespace GameStore.Models.Grid
 
 
         public void ClearFilters() =>
-           GameNameFilter = MerchandiseNameFilter = MerchandisePriceFilter = PriceFilter = CategoryFilter = PlatformFilter = GameFeatureFilter = GamesGridDTO.DefaultFilter;
+            PriceFilter = CategoryFilter = PlatformFilter = GameFeatureFilter = GamesGridDTO.DefaultFilter;
+
+        public void ClearFiltersMerchandise()
+        {
+            GameNameFilter = MerchandisePriceFilter = MerchandiseGridDTO.DefaultFilter;
+            MerchandiseNameFilter = MerchandiseGridDTO.DefaultNameFilter;
+        }
+             
 
         private string Get(string key) => Keys.Contains(key) ? this[key] : null;
 

@@ -98,7 +98,7 @@ namespace GameStore
                 endpoints.MapAreaControllerRoute(
                    name: "",
                     areaName: "Admin",
-                   pattern: "Admin/{controller=Game}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
+                   pattern: "Admin/{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
 
 
 

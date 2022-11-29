@@ -25,7 +25,7 @@
         
         <tr><td>Quantity:</td><td>@Model.Quantity.ToString()</td></tr>
         <tr><td>Price:</td><td>@Model.Price.Value.ToString("c")</td></tr>
-        <tr><td>Game Studio:</td><td>@(gameList.FirstOrDefault(item => item.GameId == Model.GameId) == null ? "No Information" : gameList.FirstOrDefault(item => item.GameId == Model.GameId).Name)</td></tr>
+        <tr><td>Game:</td><td>@(gameList.FirstOrDefault(item => item.GameId == Model.GameId) == null ? "No Information" : gameList.FirstOrDefault(item => item.GameId == Model.GameId).Name)</td></tr>
        
     </tbody>
 </table>

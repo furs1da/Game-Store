@@ -23,12 +23,12 @@ namespace GameStore.Models.Grid
         {
             routes.GameNameFilter = FilterPrefix.GameName + filter[0];
 
-            routes.MerchandiseNameFilter = FilterPrefix.MerchName + filter[1];
+            routes.MerchandiseNameFilter = FilterPrefix.MerchName + filter[2];
 
-            routes.MerchandisePriceFilter = FilterPrefix.MerchPrice + filter[2];
+            routes.MerchandisePriceFilter = FilterPrefix.MerchPrice + filter[1];
         }
 
-        public void ClearFilterSegments() => routes.ClearFilters();
+        public void ClearFilterSegments() => routes.ClearFiltersMerchandise();
 
         string def = MerchandiseGridDTO.DefaultFilter;
         string defName = MerchandiseGridDTO.DefaultNameFilter;

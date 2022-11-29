@@ -64,11 +64,13 @@ namespace GameStore.Areas.Admin.Controllers
         [Authorize]
         public ViewResult Details(int id)
         {
-            var game = data.Get(new QueryOptions<Merchandise>
+            var merch = data.Get(new QueryOptions<Merchandise>
             { 
-                Where = g => g.MerchId == id
+                Where = m => m.MerchId == id
             });
-            return View(game);
+
+            ViewBag.Games = _storeContext.Games.ToList();
+            return View(merch);
         }
 
         [Authorize]
