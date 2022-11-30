@@ -1,0 +1,125 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+@model GridViewModel<Merchandise>
+
+    @{
+        ViewData["Title"] = " | Merchandise Catalog";
+        List<Game> gamesList = new List<Game>();
+        gamesList = ViewBag.Games;
+    }
+
+    <h1 class="mt-3">Merchandise Catalog</h1>
+
+    <h5 class="mt-1"><a asp-action="Add">Add a merchandise</a></h5>
+    @* filter form *@
+
+    <form asp-action="Filter" method="post" class="form-inline" asp-area="Admin">
+        
+        <label>Game: </label>
+        <vc:merchandise-game-drop-down selected-value="@Model.CurrentRoute.GameNameFilter">
+        </vc:merchandise-game-drop-down>
+
+        <label>Price: </label>
+        <vc:merchandise-price-drop-down selected-value="@Model.CurrentRoute.MerchandisePriceFilter">
+        </vc:merchandise-price-drop-down>
+
+        <label>Merchandise Name:</label> 
+        <input type="text" name="filter" class="form-control m-2" value="@Model.CurrentRoute.MerchandiseNameFilter"/>
+
+        <button type="submit" class="btn btn-primary mr-2">Filter</button>
+        <button type="submit" name="clear" value="true" class="btn btn-primary">Clear</button>
+    </form>
+
+
+
+
+    @* add to cart form *@
+    <form>
+        <table class="table table-bordered table-striped table-sm mt-1">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        <my-sorting-link sort-field="@nameof(Merchandise.Name)" 
+                        current="@Model.CurrentRoute" asp-area="Admin">Name</my-sorting-link>
+                    </th>
+                    <th>Description</th>
+                    <th>Game</th>
+                    <th>Quantity</th>
+                    <th>
+                        <my-sorting-link sort-field="@nameof(Merchandise.Price)" 
+                        current="@Model.CurrentRoute" asp-area="Admin">Price</my-sorting-link>
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Merchandise merch in Model.Items)
+            {
+                    <tr>
+                        <td>
+                            <partial name="_MerchandiseLinkPartial" model="@merch" />
+                        </td>
+                        <td>
+                                <p>
+                                    @merch.Description
+                                </p>         
+                        </td>
+                        <td>
+                                <p>
+                                    @(gamesList.Where(item => item.GameId == merch.GameId).FirstOrDefault() != null ? gamesList.Where(item => item.GameId == merch.GameId).FirstOrDefault().Name : "No Information")
+                                </p>                 
+                        </td>
+                        <td>
+                                <p>
+                                    @merch.Quantity
+                                </p>  
+                        </td>
+                        <td>@merch.Price.Value.ToString("c")</td>
+
+
+                        <td>
+                             <a asp-action="Details" asp-controller="Merchandise" asp-area="" 
+                         asp-route-id="@merch.GameId"
+                         asp-route-slug="@merch.Name.Slug()" class="btn btn-primary">
+                         Details
+                        </a>
+                        <span class="linkSpacer ml-1 mr-1">|</span>
+                        @if (merch.WishLists.Where(item => item.MerchandiseId == merch.MerchId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
+                        {
+                            <button type="submit" method="post" asp-action="AddToWistList" asp-controller="Merchandise" 
+                             asp-route-id="@merch.MerchId"
+                             class="btn btn-primary">
+                                Add To Wist List
+                            </button>
+                        }
+                        else 
+                        {
+                        <button type="submit" method="post" asp-action="RemoveFromWishList" asp-controller="Merchandise" 
+                             asp-route-id="@merch.MerchId"
+                             class="btn btn-primary">
+                                Remove From Wish List
+                        </button>
+                        }
+                        </td>
+                    </tr>
+            }
+            </tbody>
+        </table>
+    </form>
+
+    @{
+    for (int i = 1; i <= Model.TotalPages; i++)
+    {
+    <my-paging-link number="@i" current="@Model.CurrentRoute" />
+    }
+    }
