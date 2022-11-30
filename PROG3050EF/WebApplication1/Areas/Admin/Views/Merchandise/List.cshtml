@@ -49,7 +49,7 @@
                 <tr>
                     <th>
                         <my-sorting-link sort-field="@nameof(Merchandise.Name)" 
-                        current="@Model.CurrentRoute">Name</my-sorting-link>
+                        current="@Model.CurrentRoute" asp-area="Admin">Name</my-sorting-link>
                     </th>
                     <th>Description</th>
                     <th>Game</th>
@@ -76,7 +76,7 @@
                         </td>
                         <td>
                                 <p>
-                                    @gamesList.Where(item => item.GameId == merch.GameId).FirstOrDefault().Name
+                                    @(gamesList.Where(item => item.GameId == merch.GameId).FirstOrDefault() != null ? gamesList.Where(item => item.GameId == merch.GameId).FirstOrDefault().Name : "No Information")
                                 </p>                 
                         </td>
                         <td>
@@ -101,6 +101,6 @@
     @{
     for (int i = 1; i <= Model.TotalPages; i++)
     {
-                <my-paging-link number="@i" current="@Model.CurrentRoute" />
+    <my-paging-link number="@i" current="@Model.CurrentRoute" />
     }
     }

@@ -174,7 +174,7 @@ namespace GameStore.Areas.Admin.Controllers
             {
                 vm.Merchandise = dataGameStore.Merchandises.Get(new QueryOptions<Merchandise>
                 {
-                    Where = g => g.GameId == (id ?? vm.Merchandise.MerchId)
+                    Where = m => m.MerchId == (id ?? vm.Merchandise.MerchId)
                 });
             }
         }
