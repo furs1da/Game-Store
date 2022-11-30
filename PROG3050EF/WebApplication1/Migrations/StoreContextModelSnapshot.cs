@@ -488,9 +488,11 @@ namespace GameStore.Migrations
                         .HasColumnName("name");
 
                     b.Property<int?>("Pquantity")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
+                        .IsRequired()
                         .HasColumnType("decimal(19,2)")
                         .HasColumnName("price");
 
@@ -979,26 +981,31 @@ namespace GameStore.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MerchId"), 1L, 1);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("description");
 
                     b.Property<int?>("GameId")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("game_id");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)")
                         .HasColumnName("name");
 
                     b.Property<decimal?>("Price")
+                        .IsRequired()
                         .HasColumnType("decimal(19,2)")
                         .HasColumnName("price");
 
                     b.Property<int?>("Quantity")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("quantity");
 
@@ -1494,11 +1501,13 @@ namespace GameStore.Migrations
                         .HasColumnType("int")
                         .HasColumnName("cust_id");
 
-                    b.Property<int>("GameId")
+                    b.Property<int?>("GameId")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("game_id");
 
-                    b.Property<int>("MerchandiseId")
+                    b.Property<int?>("MerchandiseId")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("merchandise_id");
 

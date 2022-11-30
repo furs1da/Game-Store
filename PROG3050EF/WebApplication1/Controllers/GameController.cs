@@ -194,7 +194,10 @@ namespace GameStore.Controllers
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
 
-            WishList wl = _storeContext.WishLists.Where(item => item.CustId == customer.CustId && item.GameId == id).FirstOrDefault();
+            List<WishList> listWL = _storeContext.WishLists.Where(item => item.GameId != null).ToList();
+
+            WishList wl = listWL.Where(item => item.CustId == customer.CustId && item.GameId == id).FirstOrDefault();
+
 
             if (wl != null)
             {
@@ -213,7 +216,10 @@ namespace GameStore.Controllers
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
 
-            WishList wl = _storeContext.WishLists.Where(item => item.CustId == customer.CustId && item.GameId == id).FirstOrDefault();
+            List<WishList> listWL = _storeContext.WishLists.Where(item => item.GameId != null).ToList();
+
+            WishList wl = listWL.Where(item => item.CustId == customer.CustId && item.GameId == id).FirstOrDefault();
+
 
             if (wl != null)
             {

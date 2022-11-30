@@ -118,6 +118,10 @@ namespace GameStore
                     pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
 
                 endpoints.MapControllerRoute(
+                name: "",
+                pattern: "{controller}/{action}/{id?}");
+
+                endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Game}/{action=List}/{id?}");
 
