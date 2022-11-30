@@ -35,7 +35,7 @@ namespace GameStore.Controllers
             ViewBag.UserId = customer.CustId;
             ViewBag.UserName = User.Identity.Name;
 
-            List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).ToList();
+            List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).Include(item => item.Merchandise).ToList();
 
             return View(list);
         }
@@ -52,7 +52,7 @@ namespace GameStore.Controllers
             ViewBag.UserId = customer.CustId;
             ViewBag.UserName = username;
 
-            List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).ToList();
+            List<WishList> list = _storeContext.WishLists.Where(wl => wl.CustId == customer.CustId).Include(item => item.Game).Include(item => item.Merchandise).ToList();
 
             return View(list);
         }
@@ -80,6 +80,28 @@ namespace GameStore.Controllers
             return View(game);
         }
 
+        [Authorize]
+        public IActionResult MerchandiseDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+            ViewBag.UserId = customer.CustId;
+
+            Merchandise merch = _storeContext.Merchandises.Where(item => item.MerchId == id)
+                .Include(item => item.WishLists)
+                .FirstOrDefault();
+
+            Game game = _storeContext.Games.FirstOrDefault(item => item.GameId == merch.GameId);
+
+            ViewBag.Game = game;
+
+            if (merch == null)
+                return View("Error");
+
+            return View(merch);
+        }
+
+
 
         [Authorize]
         [HttpGet]
@@ -94,9 +116,29 @@ namespace GameStore.Controllers
 
             _storeContext.WishLists.Add(wl);
             _storeContext.SaveChanges();
+            //return RedirectToAction("MyList", new { id = id });
 
-            return RedirectToAction("MyList", new { id = id });
+            return RedirectToAction("MyList");
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddMerchandiseToWishList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = new WishList();
+            wl.CustId = customer.CustId;
+            wl.MerchandiseId = id;
+
+            _storeContext.WishLists.Add(wl);
+            _storeContext.SaveChanges();
+
+            return RedirectToAction("MyList");
+        }
+
+
 
         [Authorize]
         [HttpGet]
@@ -115,9 +157,29 @@ namespace GameStore.Controllers
 
 
 
-            return RedirectToAction("MyList", new { id = id });
+            return RedirectToAction("MyList");
         }
 
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> RemoveMerchandiseFromWishList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = _storeContext.WishLists.Where(item => item.CustId == customer.CustId && item.MerchandiseId == id).FirstOrDefault();
+
+            if (wl != null)
+            {
+                _storeContext.WishLists.Remove(wl);
+                _storeContext.SaveChanges();
+            }
+
+
+
+            return RedirectToAction("MyList");
+        }
 
 
 
@@ -163,6 +225,48 @@ namespace GameStore.Controllers
             }
 
             return RedirectToAction("GameDetails", new { id = id });
+        }
+
+
+
+
+
+
+
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AddMerchandiseToWishListDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = new WishList();
+            wl.CustId = customer.CustId;
+            wl.MerchandiseId = id;
+
+            _storeContext.WishLists.Add(wl);
+            _storeContext.SaveChanges();
+
+            return RedirectToAction("MerchandiseDetails", new { id = id });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> RemoveMerchandiseFromWishListDetails(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WishList wl = _storeContext.WishLists.Where(item => item.CustId == customer.CustId && item.MerchandiseId == id).FirstOrDefault();
+
+            if (wl != null)
+            {
+                _storeContext.WishLists.Remove(wl);
+                _storeContext.SaveChanges();
+            }
+
+            return RedirectToAction("MerchandiseDetails", new { id = id });
         }
 
     }

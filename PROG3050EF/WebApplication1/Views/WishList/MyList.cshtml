@@ -36,7 +36,7 @@
         {
             @foreach (WishList item in Model)
             {
-                if (item.GameId != 0)
+                if (item.Game != null)
                 {
                     <tr>
                     <td>Game</td>
@@ -75,7 +75,30 @@
                     <td>@item.Merchandise.Name</td>
                     <td>@item.Merchandise.Price</td>
                     <td>
-                        Some Action
+                       <a asp-action="MerchandiseDetails" asp-controller="WishList" asp-area="" 
+                             asp-route-id="@item.Merchandise.MerchId"
+                             asp-route-slug="@item.Merchandise.Name.Slug()" class="btn btn-primary">
+                             Details
+                            </a>
+                            <span class="linkSpacer ml-1 mr-1">|</span>
+                           
+                                @if (item.Merchandise == null && Model.Where(item => item.MerchandiseId == item.Merchandise.MerchId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
+                                {
+                                    <a asp-action="AddMerchandiseToWishList" asp-controller="WishList" 
+                                 asp-route-id="@item.Merchandise.MerchId"
+                                 class="btn btn-primary">
+                                        Add To Wish List
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-action="RemoveMerchandiseFromWishList" asp-controller="WishList" 
+                                 asp-route-id="@item.Merchandise.MerchId"
+                                 class="btn btn-primary">
+                                    Remove From Wish List
+                                </a>
+                                }
+                            
                     </td>
                     </tr>
                 }

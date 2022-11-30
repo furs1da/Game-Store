@@ -25,7 +25,7 @@
         {
             @foreach (WishList item in Model)
             {
-                if (item.GameId != 0)
+                if (item.GameId != null)
                 {
                     <tr>
                     <td>Game</td>
