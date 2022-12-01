@@ -1,0 +1,84 @@
+﻿@using GameStore.Models.ExtensionModels
+@model CartViewModel
+
+@{
+    ViewData["Title"] = " | Cart";
+}
+
+<h1>Your Cart</h1>
+
+<form asp-action="Clear" method="post">
+    <ul class="list-group mb-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Subtotal: @Model.SubTotal.ToString("c")
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <a asp-action="Checkout" class="btn btn-primary mr-1"> Checkout</a>
+                        <button type="submit" class="btn btn-primary mr-1"> Clear Cart</button>
+                        <a asp-action="List" asp-controller="Game"
+                           asp-all-route-data="@Model.GridRoute">Back to Shopping</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+    </ul>
+</form>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in Model.List)  {
+               
+                if (item.Game != null)
+                {
+                    <tr>
+                    <td>Game</td>
+                    <td>@item.Game.Name</td>
+                    <td>@item.Game.Price</td>
+                    <td>
+                            <a asp-action="EditGame" asp-controller="Cart"
+                               asp-route-id="@item.Game.GameId"
+                               asp-route-slug="@item.Game.Name.Slug()" 
+                               class="btn btn-primary">Edit Game</a>
+                            <span class="linkSpacer ml-1 mr-1">|</span>
+                            <form asp-action="RemoveGame" method="post">
+                            <button type="submit" name="id" value="@item.Game.GameId" class="btn btn-primary">
+                                Remove Game</button>
+                            </form>
+                    </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                    <td>Merchandise</td>
+                    <td>@item.Merchandise.Name</td>
+                    <td>@item.Merchandise.Price</td>
+                    <td>
+                       <a asp-action="EditMerchandise" asp-controller="Cart"
+                               asp-route-id="@item.Merchandise.MerchId"
+                               asp-route-slug="@item.Merchandise.Name.Slug()" 
+                               class="btn btn-primary">Edit Merchandise</a>
+                       <span class="linkSpacer ml-1 mr-1">|</span>
+                       <form asp-action="RemoveMerchandise" method="post">
+                            <button type="submit" name="id" value="@item.Merchandise.MerchId" class="btn btn-primary">
+                                Remove Merchandise</button>
+                       </form>
+                    </td>
+                    </tr>
+                }
+                
+            }
+        </tbody>
+    </table>

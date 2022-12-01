@@ -38,8 +38,9 @@ namespace GameStore
 
             services.AddHttpContextAccessor();
 
+            services.AddTransient<IGameStoreUnitOfWork, GameStoreUnitOfWork>();
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-
+            services.AddTransient<ICart, Cart>();
 
             services.AddDbContext<StoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("StoreContext")));
