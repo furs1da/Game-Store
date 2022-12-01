@@ -136,7 +136,7 @@ namespace GameStore.Data
 
         public void EditMerchandise(CartItem item)
         {
-            var exists = GetById(item.Merchandise.MerchId, 0);
+            var exists = GetById(item.Merchandise.MerchId, 1);
             if (exists != null)
             {
                 exists.Quantity = item.Quantity;

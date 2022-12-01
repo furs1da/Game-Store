@@ -116,7 +116,7 @@ namespace GameStore.Controllers
             }
             else
             {
-                return View(item);
+                return View("Edit",item);
             }
         }
 
@@ -130,7 +130,7 @@ namespace GameStore.Controllers
             }
             else
             {
-                return View(item);
+                return View("Edit",item);
             }
         }
 
