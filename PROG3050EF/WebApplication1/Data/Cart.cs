@@ -98,11 +98,11 @@ namespace GameStore.Data
         {
             if(type == 0)
             {
-                return items.FirstOrDefault(ci => ci.Game.GameId == id);
+                return items.FirstOrDefault(ci => ci.Game != null && ci.Game.GameId == id);
             }
             else
             {
-                return items.FirstOrDefault(ci => ci.Merchandise.MerchId == id);
+                return items.FirstOrDefault(ci => ci.Merchandise != null && ci.Merchandise.MerchId == id);
             }
         }
 

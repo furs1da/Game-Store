@@ -47,15 +47,14 @@ namespace GameStore.Models.DTOs
             Platforms = new Dictionary<int, string>();
             foreach (PlatformGame pg in game.PlatformGames)
             {
-                Categories.Add(pg.Platform.PlatformId, pg.Platform.Name);
+                Platforms.Add(pg.Platform.PlatformId, pg.Platform.Name);
             }
 
             GameFeatures = new Dictionary<int, string>();
             foreach (GameFeatureGame gfg in game.GameFeatureGames)
             {
-                Categories.Add(gfg.GameFeature.FeatureId, gfg.GameFeature.Feature);
+                GameFeatures.Add(gfg.GameFeature.FeatureId, gfg.GameFeature.Feature);
             }
-
         }
 
     }

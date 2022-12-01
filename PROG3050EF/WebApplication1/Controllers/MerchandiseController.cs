@@ -22,14 +22,19 @@ namespace GameStore.Controllers
         private SignInManager<User> signInManager;
         private StoreContext _storeContext;
         private IRepository<Merchandise> data { get; set; }
+        private IRepository<Game> dataGame { get; set; }
+        private ICart cart { get; set; }
         public RedirectToActionResult Index() => RedirectToAction("List");
 
-        public MerchandiseController(UserManager<User> userMngr, SignInManager<User> signInMngr, StoreContext storeContext, IRepository<Merchandise> rep)
+        public MerchandiseController(UserManager<User> userMngr, SignInManager<User> signInMngr, StoreContext storeContext, IRepository<Merchandise> rep, ICart cart, IRepository<Game> repGame)
         {
             userManager = userMngr;
             signInManager = signInMngr;
             _storeContext = storeContext;
             data = rep;
+            dataGame = repGame;
+            this.cart = cart;
+            cart.Load(dataGame, data);
         }
 
         [Authorize]
@@ -134,6 +139,56 @@ namespace GameStore.Controllers
 
             _storeContext.WishLists.Add(wl);
             _storeContext.SaveChanges();
+
+
+            builder.SaveRouteSegments();
+            return RedirectToAction("List", builder.CurrentRoute);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToActionResult AddMerchandise(int id,string[] filter, bool clear = false)
+        {
+            var builder = new MerchandiseGridBuilder(HttpContext.Session);
+
+            if (clear)
+            {
+                builder.ClearFilterSegments();
+            }
+            else
+            {
+                builder.LoadFilterSegments(filter);
+            }
+
+
+
+
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            var merch = data.Get(new QueryOptions<Merchandise>
+            {    
+                Where = m => m.MerchId == id
+            });
+            if (merch == null)
+            {
+                TempData["message"] = "Unable to add book to cart";
+            }
+            else
+            {
+                var dto = new MerchandiseDTO();
+                dto.Load(merch);
+                CartItem item = new CartItem
+                {
+                    Merchandise = dto,
+                    Quantity = 1  // default value
+                };
+                cart.AddMerchandise(item);
+                cart.Save();
+
+                TempData["message"] = $"{merch.Name} added to cart";
+            }
 
 
             builder.SaveRouteSegments();

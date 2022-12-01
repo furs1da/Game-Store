@@ -34,6 +34,7 @@
                 <th>Type</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Quantity</th>
                 <th></th>
             </tr>
         </thead>
@@ -46,13 +47,14 @@
                     <td>Game</td>
                     <td>@item.Game.Name</td>
                     <td>@item.Game.Price</td>
+                    <td>@item.Quantity.ToString()</td>
                     <td>
                             <a asp-action="EditGame" asp-controller="Cart"
                                asp-route-id="@item.Game.GameId"
                                asp-route-slug="@item.Game.Name.Slug()" 
-                               class="btn btn-primary">Edit Game</a>
+                               class="btn btn-primary">Edit Quantity</a>
                             <span class="linkSpacer ml-1 mr-1">|</span>
-                            <form asp-action="RemoveGame" method="post">
+                            <form asp-action="RemoveGame" method="post" style="display:inline-block">
                             <button type="submit" name="id" value="@item.Game.GameId" class="btn btn-primary">
                                 Remove Game</button>
                             </form>
@@ -65,13 +67,14 @@
                     <td>Merchandise</td>
                     <td>@item.Merchandise.Name</td>
                     <td>@item.Merchandise.Price</td>
+                    <td>@item.Quantity.ToString()</td>
                     <td>
                        <a asp-action="EditMerchandise" asp-controller="Cart"
                                asp-route-id="@item.Merchandise.MerchId"
                                asp-route-slug="@item.Merchandise.Name.Slug()" 
-                               class="btn btn-primary">Edit Merchandise</a>
+                               class="btn btn-primary">Edit Quantity</a>
                        <span class="linkSpacer ml-1 mr-1">|</span>
-                       <form asp-action="RemoveMerchandise" method="post">
+                       <form asp-action="RemoveMerchandise" method="post" style="display:inline-block">
                             <button type="submit" name="id" value="@item.Merchandise.MerchId" class="btn btn-primary">
                                 Remove Merchandise</button>
                        </form>

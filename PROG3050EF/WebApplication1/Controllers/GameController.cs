@@ -22,14 +22,20 @@ namespace GameStore.Controllers
         private SignInManager<User> signInManager;
         private StoreContext _storeContext;
         private IRepository<Game> data { get; set; }
+        private IRepository<Merchandise> dataMerch { get; set; }
+        private ICart cart { get; set; }
+
         public RedirectToActionResult Index() => RedirectToAction("List");
 
-        public GameController(UserManager<User> userMngr, SignInManager<User> signInMngr, StoreContext storeContext, IRepository<Game> rep)
+        public GameController(UserManager<User> userMngr, SignInManager<User> signInMngr, StoreContext storeContext, IRepository<Game> rep, ICart cart, IRepository<Merchandise> repMerch)
         {
             userManager = userMngr;
             signInManager = signInMngr;
             _storeContext = storeContext;
             data = rep;
+            dataMerch = repMerch;
+            this.cart = cart;
+            cart.Load(data, dataMerch);
         }
 
 
@@ -148,6 +154,65 @@ namespace GameStore.Controllers
             builder.SaveRouteSegments();
             return RedirectToAction("List", builder.CurrentRoute);
         }
+
+        [Authorize]
+        [HttpPost]
+        public RedirectToActionResult AddGame(int id, [FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform,
+            [FromServices] IRepository<GameFeature> dataFeature,
+            string[] filter, bool clear = false)
+        {
+            var builder = new GamesGridBuilder(HttpContext.Session);
+
+            if (clear)
+            {
+                builder.ClearFilterSegments();
+            }
+            else
+            {
+                var category = dataCategory.Get(filter[0].ToInt());
+                var platform = dataPlatform.Get(filter[1].ToInt());
+                var gameFeature = dataFeature.Get(filter[2].ToInt());
+
+                builder.LoadFilterSegments(filter, category, platform, gameFeature);
+            }
+
+
+
+
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            var game = data.Get(new QueryOptions<Game>
+            {
+                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
+                Where = g => g.GameId == id
+            });
+            if (game == null)
+            {
+                TempData["message"] = "Unable to add book to cart";
+            }
+            else
+            {
+                var dto = new GameDTO();
+                dto.Load(game);
+                CartItem item = new CartItem
+                {
+                    Game = dto,
+                    Quantity = 1  // default value
+                };
+                cart.AddGame(item);
+                cart.Save();
+
+                TempData["message"] = $"{game.Name} added to cart";
+            }
+
+
+            builder.SaveRouteSegments();
+            return RedirectToAction("List", builder.CurrentRoute);
+        }
+
+
+
 
         [Authorize]
         [HttpGet]

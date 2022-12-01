@@ -94,6 +94,12 @@
                          Details
                         </a>
                         <span class="linkSpacer ml-1 mr-1">|</span>
+                        <button type="submit" method="post" asp-action="AddMerchandise" asp-controller="Merchandise" 
+                             asp-route-id="@merch.MerchId"
+                             class="btn btn-primary">
+                                Add To Cart
+                            </button>
+                        <span class="linkSpacer ml-1 mr-1">|</span>
                         @if (merch.WishLists.Where(item => item.MerchandiseId == merch.MerchId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
                         {
                             <button type="submit" method="post" asp-action="AddToWistList" asp-controller="Merchandise" 
