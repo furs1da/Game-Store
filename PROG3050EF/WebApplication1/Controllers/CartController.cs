@@ -109,6 +109,8 @@ namespace GameStore.Controllers
         public IActionResult EditGame(int id)
         {
             CartItem item = cart.GetById(id, 0);
+
+            
             if (item == null)
             {
                 TempData["message"] = "Unable to locate cart item";
@@ -123,6 +125,7 @@ namespace GameStore.Controllers
         public IActionResult EditMerchandise(int id)
         {
             CartItem item = cart.GetById(id, 1);
+
             if (item == null)
             {
                 TempData["message"] = "Unable to locate cart item";
@@ -135,8 +138,15 @@ namespace GameStore.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult EditMerchandise(CartItem item)
+        public IActionResult EditMerchandise(CartItem item)
         {
+            if (item.Merchandise.Quantity < item.Quantity)
+            {
+                item = cart.GetById(item.Merchandise.MerchId, 1);
+                ModelState.AddModelError("", "Sorry, we do not have so much copies of this item in our store.");
+                return View("Edit", item);
+            }
+
             cart.EditMerchandise(item);
             cart.Save();
 
@@ -145,8 +155,16 @@ namespace GameStore.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult EditGame(CartItem item)
+        public IActionResult EditGame(CartItem item)
         {
+            if (item.Game.Quantity < item.Quantity)
+            {
+                item = cart.GetById(item.Game.GameId, 0);
+                ModelState.AddModelError("", "Sorry, we do not have so much copies of this item in our store.");
+                return View("Edit", item);
+            }
+
+
             cart.EditGame(item);
             cart.Save();
 

@@ -6,6 +6,8 @@
 
 <h1>Edit Cart Item</h1>
 
+ <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
 @if(Model.Game != null)
 {
     <form asp-action="EditGame" method="post">
@@ -33,10 +35,11 @@
                 </div>
             </li>
         </ul>
+        <input type="hidden" asp-for="Game.Quantity" />
         <input type="hidden" asp-for="Game.GameId" />
         <input type="hidden" asp-for="Game.Name" />
 
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         <a asp-action="Index" my-button>Cancel</a>
     </form>
 }
@@ -67,10 +70,11 @@ else
                 </div>
             </li>
         </ul>
+        <input type="hidden" asp-for="Merchandise.Quantity" />
         <input type="hidden" asp-for="Merchandise.MerchId" />
         <input type="hidden" asp-for="Merchandise.Name" />
 
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         <a asp-action="Index" my-button>Cancel</a>
     </form>
 }
