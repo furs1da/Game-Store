@@ -12,5 +12,7 @@ namespace GameStore.Data
         public DateTime ExpirationDate { get; set; }
 
         public virtual Customer Cust { get; set; } = null!;
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

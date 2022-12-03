@@ -1,5 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using GameStore.Models.ExtensionModels
+@model OrderViewModel
+
 @{
+    ViewData["Title"] = "Check Out";
 }
+
+
+
+
+<form asp-action="Checkout" asp-controller="Cart" method="post" class="mt-5">
+    <h3 class="mb-2">Subtotal: @Model.Cart.SubTotal.ToString("c")</h3>
+    <h5 class="mt-4">Please select one of your credit cards to checkout:</h5>
+    <div class="form-group row mt-3">
+                <div class="col-sm-2"><label><b>Credit Cart:</b></label></div>
+                <div class="col-sm-4">
+                    <select asp-for="@Model.CreditCardId" class="form-control"
+                        asp-items='@new SelectList(Model.CreditCards, "CreditId", "CardNumber", Model.CreditCardId)'>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <span asp-validation-for="@Model.CreditCardId" class="text-danger"></span>
+                </div>
+    </div>
+    <div class="form-group">
+                <input type="submit" value="Check Out" class="btn btn-primary" />
+    </div>
+    
+</form>

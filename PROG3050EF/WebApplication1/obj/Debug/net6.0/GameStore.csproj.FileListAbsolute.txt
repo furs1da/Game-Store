@@ -733,13 +733,11 @@ C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\n
 C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.pdb
 C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.genruntimeconfig.cache
 C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\ref\GameStore.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Debugger.Contracts.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\MimeKit.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
-D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.GameStore.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.build.GameStore.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.GameStore.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.GameStore.props
+C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets.pack.json
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\appsettings.Development.json
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\appsettings.json
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\GameStore.staticwebassets.runtime.json
@@ -782,6 +780,7 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.Scripting.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.VisualBasic.Features.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.Workspaces.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
@@ -806,13 +805,17 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.NET.StringTools.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Debugger.Contracts.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\dotnet-aspnet-codegenerator-design.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\MimeKit.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\NuGet.Common.dll
@@ -932,6 +935,7 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.VisualBasic.resources.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.VisualBasic.resources.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.VisualBasic.resources.dll
@@ -1004,6 +1008,7 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
@@ -1030,8 +1035,3 @@ D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG30
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.pdb
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\GameStore.genruntimeconfig.cache
 D:\College\5th semester\PROG3050 - Microsoft Enterprise\Project\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\ref\GameStore.dll
-C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.GameStore.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.build.GameStore.props
-C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.GameStore.props
-C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.GameStore.props
-C:\Users\alex_\Documents\GitHub\GameStore\PROG3050EF\WebApplication1\obj\Debug\net6.0\staticwebassets.pack.json

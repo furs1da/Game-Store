@@ -489,6 +489,10 @@ namespace GameStore.Data
 
                 entity.Property(e => e.MerchandiseId).HasColumnName("merchandise_id");
 
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.Property(e => e.CreditId).HasColumnName("credit_id");
+
                 entity.Property(e => e.OrderNo)
                     .HasMaxLength(255)
                     .IsUnicode(false)
@@ -505,6 +509,11 @@ namespace GameStore.Data
                     .HasForeignKey(d => d.GameId)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FKOrder547560");
+
+                entity.HasOne(d => d.CreditCard)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CreditId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.Merchandise)
                     .WithMany(p => p.Orders)
