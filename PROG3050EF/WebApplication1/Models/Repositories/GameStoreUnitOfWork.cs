@@ -21,6 +21,44 @@ namespace GameStore.Models.Repositories
         }
 
 
+        private Repository<Order> orderData;
+
+        public Repository<Order> Orders
+        {
+            get
+            {
+                if (orderData == null)
+                    orderData = new Repository<Order>(context);
+                return orderData;
+            }
+        }
+
+        private Repository<Review> reviewData;
+
+        public Repository<Review> Reviews
+        {
+            get
+            {
+                if (reviewData == null)
+                    reviewData = new Repository<Review>(context);
+                return reviewData;
+            }
+        }
+
+        private Repository<CreditCard> creditCardData;
+
+        public Repository<CreditCard> CreditCards
+        {
+            get
+            {
+                if (creditCardData == null)
+                    creditCardData = new Repository<CreditCard>(context);
+                return creditCardData;
+            }
+        }
+
+
+
 
         private Repository<Event> eventData; 
 

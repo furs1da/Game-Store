@@ -14,6 +14,14 @@ namespace GameStore.Models.Repositories
         Repository<PlatformGame> PlatformGames { get; }
         Repository<GameFeatureGame> GameFeatureGames { get; }
 
+        // Review
+        Repository<Review> Reviews { get; }
+
+        // Order
+        Repository<Order> Orders { get; }
+
+        Repository<CreditCard> CreditCards { get; }
+
         // Event
 
         Repository<Event> Events { get; }

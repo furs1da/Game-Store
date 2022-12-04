@@ -505,7 +505,7 @@ namespace GameStore.Controllers
            
             if (ModelState.IsValid)
             {
-                if (vm.ReviewId == null)
+                if (vm.ReviewId == 0)
                 {
                     Review review = new Review();
                     review.IsApproved = false;

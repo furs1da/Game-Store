@@ -1,0 +1,8 @@
+﻿@using GameStore.Models.ExtensionModels
+@model Review
+
+<a asp-action="Details" asp-controller="AdminReview" asp-area="admin" 
+    asp-route-id="@Model.ReviewId"
+    asp-route-slug="@Model.Title.Slug()">
+    @Model.Title
+</a>

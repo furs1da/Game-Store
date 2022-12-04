@@ -1,0 +1,122 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+
+
+@model ReviewApproveViewModel
+
+@{
+    // this view is used for add, edit, and delete. 
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+
+    ViewData["Title"] = $" | ";
+}
+
+<h1>Review Approval</h1>
+
+<form asp-action="@action" asp-area="Admin" asp-controller="AdminReview" method="post">
+    
+    <input type="hidden" asp-for="Review.ReviewId" />
+    <input type="hidden" asp-for="Review.GameId" />
+    <input type="hidden" asp-for="Review.CustId" />
+    <input type="hidden" asp-for="Review.Title" />
+    <input type="hidden" asp-for="Review.Description" />
+    <input type="hidden" asp-for="Review.Rate" />
+    <input type="hidden" asp-for="Review.Date" />
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Name:</label></div>
+
+        @* if deleting, display title in a label and put value in hidden field
+           for delete message. Otherwise, provide a text box*@
+        @if (Operation.IsDelete(action)) {
+            <div class="col-sm-4"><label>@Model.Review.Title</label></div>
+            <input type="hidden" asp-for="Review.Title" />
+        }
+        else {
+            <div class="col-sm-4">
+                <input asp-for="Review.Title" class="form-control" disabled/>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Review.Title" class="text-danger"></span>
+            </div>
+        }
+    </div>
+
+    @* if not deleting, display text boxes and drop-downs for rest of fields*@
+    @if (!Operation.IsDelete(action))
+    {
+
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Description:</label></div>
+            <div class="col-sm-4">
+                <textarea asp-for="Review.Description" rows="5" cols="40" class="form-control" disabled></textarea>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Review.Description" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Date:</label></div>
+            <div class="col-sm-4">
+                <input asp-for="Review.Date" type="date" class="form-control" disabled/>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Review.Date" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Game Name: </label></div>
+            <div class="col-sm-4">
+               @Model.Review.Game.Name
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Customer: </label></div>
+            <div class="col-sm-4">
+                @Model.Review.Cust.Nickname
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Rating: </label></div>
+             <div class="col-sm-4">
+                @Model.Review.Rate
+            </div>
+        </div>
+        @if(Model.Review.IsApproved ==null)
+        {
+            Model.Review.IsApproved = false;
+        }           
+        <div class="form-group">
+            <label asp-for="Review.IsApproved">Publish this review</label>
+            <input type="checkbox" asp-for="Review.IsApproved" class="form-check"/>
+        </div>
+    }
+
+
+
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+
+            @* return user to main admin page after add, or to search page otherwise *@
+            <a asp-action="List" my-button>Cancel</a>
+        </div>
+    </div>
+   
+</form>
