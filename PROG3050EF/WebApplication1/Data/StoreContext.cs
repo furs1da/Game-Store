@@ -555,6 +555,8 @@ namespace GameStore.Data
 
                 entity.Property(e => e.CustId).HasColumnName("cust_id");
 
+                entity.Property(e => e.IsApproved).HasColumnName("isApproved");
+
                 entity.Property(e => e.Date)
                     .HasColumnType("datetime")
                     .HasColumnName("date");

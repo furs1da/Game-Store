@@ -110,6 +110,11 @@
             Remove From Wish List
       </a>
      }
+     <a asp-action="ReviewsList" asp-controller="Game" 
+        asp-route-id="@Model.Game.GameId"
+        class="btn btn-primary mr-1 ml-2">                     
+            Check Reviews                       
+     </a>       
 </div>
 
 @if (canBeDownloaded)

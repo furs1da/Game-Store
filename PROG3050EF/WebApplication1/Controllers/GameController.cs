@@ -14,7 +14,7 @@ using GameStore.Models.ViewModels;
 using GameStore.Models.ExtensionModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Controllers
 {
@@ -412,6 +412,138 @@ namespace GameStore.Controllers
 
 
             return RedirectToAction("Details", new { id = id });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> ReviewsList(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            ReviewListViewModel vm = new ReviewListViewModel();
+
+            var listReviews = _storeContext.Reviews.Where(item => item.GameId == id && item.IsApproved != null && item.IsApproved == true).ToList();
+
+            vm.Reviews = listReviews;
+
+            //Guilty
+            var listCustomers = _storeContext.Customers.ToList();
+
+            vm.Customers = listCustomers;
+
+
+            Game game = _storeContext.Games.FirstOrDefault(item => item.GameId == id);
+
+            if (game == null)
+                return View("Error");
+
+            vm.Game = game;
+
+
+            List<Review> listRw = _storeContext.Reviews.Where(item => item.GameId == id).ToList();
+
+            if (listRw.Count == 0)
+            {
+                vm.OverallRating = 0;
+            }
+            else
+            {
+                vm.OverallRating = listRw.Sum(item => item.Rate) / listRw.Count;
+            }
+
+            return View(vm);
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> WriteReview(int id)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            WriteReviewViewModel vm = new WriteReviewViewModel();
+            Review rw = _storeContext.Reviews.FirstOrDefault(item => item.GameId == id && item.CustId == customer.CustId);
+
+            if (rw == null)
+            {
+                rw = new Review();
+                rw.GameId = id;
+                rw.CustId = customer.CustId;
+                rw.Rate = 0;
+            }
+            else
+            {
+                vm.ReviewId = rw.ReviewId;
+                vm.Title = rw.Title;
+                vm.Description = rw.Description;
+            }
+
+            vm.Rate = rw.Rate;
+            vm.GameId = rw.GameId;
+            vm.CustId = rw.CustId;
+
+            Game game = _storeContext.Games.FirstOrDefault(item => item.GameId == id);
+
+            if (game == null)
+                return View("Error");
+
+            vm.Game = game;
+
+            return View(vm);
+        }
+
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> WriteReview(WriteReviewViewModel vm)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+           
+            if (ModelState.IsValid)
+            {
+                if (vm.ReviewId == null)
+                {
+                    Review review = new Review();
+                    review.IsApproved = false;
+                    review.Title = vm.Title;
+                    review.Rate = vm.Rate;
+                    review.Description = vm.Description;
+                    review.Date = DateTime.Now;
+                    review.GameId = vm.GameId;
+                    review.CustId = vm.CustId;
+
+                    _storeContext.Reviews.Add(review);
+                }
+                else
+                {
+                    Review review = _storeContext.Reviews.FirstOrDefault(item => item.ReviewId == vm.ReviewId);
+                    review.IsApproved = false;
+                    review.Title = vm.Title;
+                    review.Rate = vm.Rate;
+                    review.Description = vm.Description;
+                    review.Date = DateTime.Now;
+
+                    _storeContext.Reviews.Update(review);
+                }
+
+                
+                _storeContext.SaveChanges();
+
+                return RedirectToAction("Details", new { id = vm.GameId });
+            }
+
+            Game game = _storeContext.Games.FirstOrDefault(item => item.GameId == vm.GameId);
+
+            if (game == null)
+                return View("Error");
+
+            vm.Game = game;
+
+            return View(vm);
         }
     }
 }

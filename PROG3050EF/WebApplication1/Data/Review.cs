@@ -18,6 +18,8 @@ namespace GameStore.Data
         public DateTime? Date { get; set; }
         public string? Title { get; set; }
 
+        public bool? IsApproved { get; set; }
+
         public virtual Customer Cust { get; set; } = null!;
         public virtual Game Game { get; set; } = null!;
         public virtual ICollection<ReviewImage> ReviewImages { get; set; }
