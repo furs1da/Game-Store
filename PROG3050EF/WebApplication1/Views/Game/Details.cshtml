@@ -1,13 +1,13 @@
 ﻿@using GameStore.Data.UtilityClasses
 @using GameStore.Data.Static_Data
-@model Game
+@model GameDetailsViewModel
 
 @{
     ViewData["Title"] = " | Game Details";
     bool canBeDownloaded = false;
     canBeDownloaded = ViewBag.canBeDownloaded;
 
-    int result = 5;
+    int result = Model.Rating;
 
     var chk = "checked";
     var checked1 = result == 1 ? chk : null;
@@ -22,8 +22,7 @@
    $(document).ready(function () {
     $('input[type=radio]').on('change', function()
     {
-        console.log('HI!');
-        window.location = '@Url.Action("Rating", "Game", new { id = Model.GameId, rating = result })';
+        $('#rating_form').submit();
     });
 
     });
@@ -34,17 +33,17 @@
 <table class="table table-bordered table-sm">
     <thead>
         <tr class="thead-dark">
-            <th>Name:</th><th>@Model.Name</th>
+            <th>Name:</th><th>@Model.Game.Name</th>
         </tr>
     </thead>
     <tbody>
 
-        <tr><td>Description:</td><td>@Model.Description</td></tr>
+        <tr><td>Description:</td><td>@Model.Game.Description</td></tr>
         
         <tr>
-            <td>@(Model.GameCategories.Count > 1 ? "Categories" : "Category")</td>
+            <td>@(Model.Game.GameCategories.Count > 1 ? "Categories" : "Category")</td>
             <td>
-                @foreach (GameCategory gc in Model.GameCategories) {
+                @foreach (GameCategory gc in Model.Game.GameCategories) {
                             <p>
                                 @gc.Category.Name
                             </p>
@@ -53,9 +52,9 @@
         </tr>
 
         <tr>
-            <td>@(Model.PlatformGames.Count > 1 ? "Platforms" : "Platform")</td>
+            <td>@(Model.Game.PlatformGames.Count > 1 ? "Platforms" : "Platform")</td>
             <td>
-                @foreach (PlatformGame pc in Model.PlatformGames) {
+                @foreach (PlatformGame pc in Model.Game.PlatformGames) {
                             <p>
                                 @pc.Platform.Name
                             </p>
@@ -65,9 +64,9 @@
 
 
         <tr>
-            <td>@(Model.GameFeatureGames.Count > 1 ? "Game Features" : "Game Feature")</td>
+            <td>@(Model.Game.GameFeatureGames.Count > 1 ? "Game Features" : "Game Feature")</td>
             <td>
-                @foreach (GameFeatureGame gfg in Model.GameFeatureGames) {
+                @foreach (GameFeatureGame gfg in Model.Game.GameFeatureGames) {
                             <p>
                                 @gfg.GameFeature.Feature
                             </p>
@@ -75,12 +74,12 @@
             </td>
         </tr>
 
-        <tr><td>Quantity:</td><td>@Model.Pquantity.ToString()</td></tr>
-        <tr><td>Price:</td><td>@Model.Price.Value.ToString("c")</td></tr>
-        <tr><td>Discount:</td><td>@(Model.Discount != null ? Model.Discount.Value.ToString("c") : 0)</td></tr>
-        <tr><td>Release Date:</td><td>@Model.ReleaseDate.Value.ToString("dd/MM/yyyy")</td></tr>
-        <tr><td>Game Studio:</td><td>@(GameStudioList.GameStudios.FirstOrDefault(item => item.Id == Model.GameStudio) == null ? "No Information" : GameStudioList.GameStudios.FirstOrDefault(item => item.Id == Model.GameStudio).Name)</td></tr>
-        <tr><td>Digital or Physical Copy:</td><td>@(Model.Digital == true ? "Digital" : "Physical")</td></tr>
+        <tr><td>Quantity:</td><td>@Model.Game.Pquantity.ToString()</td></tr>
+        <tr><td>Price:</td><td>@Model.Game.Price.Value.ToString("c")</td></tr>
+        <tr><td>Discount:</td><td>@(Model.Game.Discount != null ? Model.Game.Discount.Value.ToString("c") : 0)</td></tr>
+        <tr><td>Release Date:</td><td>@Model.Game.ReleaseDate.Value.ToString("dd/MM/yyyy")</td></tr>
+        <tr><td>Game Studio:</td><td>@(GameStudioList.GameStudios.FirstOrDefault(item => item.Id == Model.Game.GameStudio) == null ? "No Information" : GameStudioList.GameStudios.FirstOrDefault(item => item.Id == Model.Game.GameStudio).Name)</td></tr>
+        <tr><td>Digital or Physical Copy:</td><td>@(Model.Game.Digital == true ? "Digital" : "Physical")</td></tr>
     </tbody>
 </table>
 
@@ -89,15 +88,15 @@
 <div class="btn-group" role="group" aria-label="Basic example">
     <form>
         <a asp-action="AddGameDetails" asp-controller="Game" 
-            asp-route-id="@Model.GameId"
+            asp-route-id="@Model.Game.GameId"
             class="btn btn-primary mr-2">
             Add To Cart
       </a>
     </form>
-     @if (Model.WishLists.Where(item => item.GameId == Model.GameId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
+     @if (Model.Game.WishLists.Where(item => item.GameId == Model.Game.GameId && item.CustId == ViewBag.UserId).FirstOrDefault() == null)
      {
        <a asp-action="AddToWishListDetails" asp-controller="Game" 
-        asp-route-id="@Model.GameId"
+        asp-route-id="@Model.Game.GameId"
         class="btn btn-primary">                     
             Add To Wist List                       
        </a>                                         
@@ -105,7 +104,7 @@
      else 
      {
       <a asp-action="RemoveFromWishListDetails" asp-controller="Game" 
-       asp-route-id="@Model.GameId"
+       asp-route-id="@Model.Game.GameId"
        class="btn btn-primary">
             Remove From Wish List
       </a>
@@ -118,16 +117,16 @@
 }
 
 <a asp-controller="Game" asp-action="List" class="link-primary ml-2">Go back</a>
-
-<form asp-controller="Game" asp-action="Rating" asp-route-id="@Model.GameId" asp-route-rating="@result" method="post" enctype="application/x-www-form-urlencoded">
+    
+<form asp-controller="Game" asp-action="Rating" asp-route-id="@Model.Game.GameId" asp-route-rating="@Model.Rating" id="rating_form" method="post" enctype="application/x-www-form-urlencoded">
     <div class="mt-4 mb-5">
         <h3 class="mt-1">Rating:</h3>
          <div class="rating">
-            <input type="radio" checked="@checked5" id="star5-@result" name="@result" value="5" /><label for="star5-@result" title="Best">5 stars</label>
-            <input type="radio" checked="@checked4" id="star4-@result" name="@result" value="4" /><label for="star4-@result" title="Good">4 stars</label>
-            <input type="radio" checked="@checked3" id="star3-@result" name="@result" value="3" /><label for="star3-@result" title="Average">3 stars</label>
-            <input type="radio" checked="@checked2" id="star2-@result" name="@result" value="2" /><label for="star2-@result" title="Not Great">2 stars</label>
-            <input type="radio" checked="@checked1" id="star1-@result" name="@result" value="1" /><label for="star1-@result" title="Pretty Bad">1 star</label>
+            <input type="radio" checked="@checked5" id="star5-@result" asp-for="@Model.Rating" value="5" /><label for="star5-@result" title="Best">5 stars</label>
+            <input type="radio" checked="@checked4" id="star4-@result" asp-for="@Model.Rating" value="4"/><label for="star4-@result" title="Good">4 stars</label>
+            <input type="radio" checked="@checked3" id="star3-@result" asp-for="@Model.Rating" value="3"/><label for="star3-@result" title="Average">3 stars</label>
+            <input type="radio" checked="@checked2" id="star2-@result" asp-for="@Model.Rating" value="2"/><label for="star2-@result" title="Not Great">2 stars</label>
+            <input type="radio" checked="@checked1" id="star1-@result" asp-for="@Model.Rating" value="1"/><label for="star1-@result" title="Pretty Bad">1 star</label>
         </div>
     </div>
 </form>

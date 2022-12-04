@@ -97,7 +97,13 @@ namespace GameStore.Controllers
 
             ViewBag.canBeDownloaded = canBeDownloaded;
 
-            return View(game);
+
+            GameDetailsViewModel vm = new GameDetailsViewModel();
+            
+            vm.Game = game;
+            vm.Rating = 0;
+
+            return View(vm);
         }
 
         [Authorize]
@@ -357,7 +363,7 @@ namespace GameStore.Controllers
 
 
         [Authorize]
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Rating(int id, int rating)
         {
             string currentUsername = User.Identity.Name;
