@@ -20,8 +20,9 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
    $(document).ready(function () {
-    $('input[type=radio]').live('change', function()
+    $('input[type=radio]').on('change', function()
     {
+        console.log('HI!');
         window.location = '@Url.Action("Rating", "Game", new { id = Model.GameId, rating = result })';
     });
 
