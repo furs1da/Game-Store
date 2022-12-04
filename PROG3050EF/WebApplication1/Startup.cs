@@ -77,29 +77,29 @@ namespace GameStore
             app.UseSession();
             app.UseEndpoints(endpoints =>
             {
-                //// route for Admin area
-                //endpoints.MapAreaControllerRoute(
-                //   name: "admin",
-                //   areaName: "Admin",
-                //   pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
+                // route for Admin area
+                endpoints.MapAreaControllerRoute(
+                   name: "admin",
+                   areaName: "Admin",
+                   pattern: "{controller=AdminGame}/{action=Index}/{id?}");
 
-                //// route for paging, sorting, and filtering for Admin area
-                //endpoints.MapAreaControllerRoute(
-                //    name: "",
-                //    areaName: "Admin",
-                //    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
+                // route for paging, sorting, and filtering for Admin area
+                endpoints.MapAreaControllerRoute(
+                    name: "",
+                    areaName: "Admin",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{category}/{platform}/{gamefeature}/{price}");
 
-                //// route for paging, sorting, and filtering for Admin area
-                //endpoints.MapAreaControllerRoute(
-                //    name: "",
-                //    areaName: "Admin",
-                //    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{game}/{price}");
+                // route for paging, sorting, and filtering for Admin area
+                endpoints.MapAreaControllerRoute(
+                    name: "",
+                    areaName: "Admin",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{game}/{price}");
 
-                //// route for paging and sorting only for Admin area
-                //endpoints.MapAreaControllerRoute(
-                //   name: "",
-                //   areaName: "Admin",
-                //   pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
+                // route for paging and sorting only for Admin area
+                endpoints.MapAreaControllerRoute(
+                   name: "",
+                   areaName: "Admin",
+                   pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
 
 
 

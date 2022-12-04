@@ -46,7 +46,7 @@ namespace GameStore.Controllers
         {
             if(User.IsInRole("Admin"))
             {
-                return RedirectToAction("List", "Game", new { area = "Admin" });
+                return RedirectToAction("List", "AdminGame", new { area = "Admin" });
             }
 
 

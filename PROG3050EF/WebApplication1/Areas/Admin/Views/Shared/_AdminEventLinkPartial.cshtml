@@ -1,7 +1,7 @@
 ﻿@using GameStore.Models.ExtensionModels
 @model Event
 
-<a asp-action="Details" asp-controller="Event" asp-area="admin" 
+<a asp-action="Details" asp-controller="AdminEvent" asp-area="admin" 
     asp-route-id="@Model.EventId"
     asp-route-slug="@Model.Name.Slug()">
     @Model.Name

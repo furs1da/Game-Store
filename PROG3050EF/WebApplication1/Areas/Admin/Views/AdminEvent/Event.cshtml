@@ -1,0 +1,96 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+
+
+@model EventViewModel
+
+@{
+    // this view is used for add, edit, and delete. 
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+
+    ViewData["Title"] = $" | {action} Event";
+}
+
+<h1>@action Event</h1>
+
+<form asp-action="@action" asp-area="Admin" asp-controller="AdminEvent" method="post">
+    
+    <input type="hidden" asp-for="Event.EventId" />
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Name:</label></div>
+
+        @* if deleting, display title in a label and put value in hidden field
+           for delete message. Otherwise, provide a text box*@
+        @if (Operation.IsDelete(action)) {
+            <div class="col-sm-4"><label>@Model.Event.Name</label></div>
+            <input type="hidden" asp-for="Event.Name" />
+        }
+        else {
+            <div class="col-sm-4">
+                <input asp-for="Event.Name" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Event.Name" class="text-danger"></span>
+            </div>
+        }
+    </div>
+
+    @* if not deleting, display text boxes and drop-downs for rest of fields*@
+    @if (!Operation.IsDelete(action))
+    {
+
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Description:</label></div>
+            <div class="col-sm-4">
+                <textarea asp-for="Event.Description" rows="5" cols="40" class="form-control"></textarea>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Event.Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Date:</label></div>
+            <div class="col-sm-4">
+                <input asp-for="Event.Date" type="date" class="form-control"  />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Event.Date" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+             <div class="col-sm-2"><label>Duration:</label></div>
+             <div class="col-sm-4">
+                <input asp-for="Event.Duration" class="form-control" />
+             </div>
+             <div class="col-sm-6">
+                <span asp-validation-for="Event.Duration" class="text-danger"></span>
+             </div>
+        </div>
+    }
+
+
+
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+
+            @* return user to main admin page after add, or to search page otherwise *@
+            <a asp-action="List" my-button>Cancel</a>
+        </div>
+    </div>
+   
+</form>

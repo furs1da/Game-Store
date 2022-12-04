@@ -1,0 +1,65 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+@model GridViewModel<Event>
+
+@{
+    ViewData["Title"] = " | Event Catalog";
+}
+
+<h1 class="mt-3">Event Catalog</h1>
+
+<h5 class="mt-1"><a asp-action="Add">Add an event</a></h5>
+
+    <table class="table table-bordered table-striped table-sm">
+        <thead class="thead-dark">
+            <tr>
+                    <th>
+                        <my-sorting-link sort-field="@nameof(Event.Name)"
+                            current="@Model.CurrentRoute">Event Name</my-sorting-link>
+                    </th>
+                    <th><my-sorting-link sort-field="@nameof(Event.Date)"
+                            current="@Model.CurrentRoute">Date</my-sorting-link></th>
+                    <th>Duration</th>
+                    <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Event itemEvent in Model.Items)
+            {
+                <tr>
+                    <td>
+                        <partial name="_AdminEventLinkPartial" model="@itemEvent" />
+                    </td>
+                    <td>
+                        @itemEvent.Date.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @itemEvent.Duration
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@itemEvent.EventId" asp-area="Admin">Edit</a>
+                        <span class="linkSpacer ml-1 mr-1">|</span>
+                        <a asp-action="Delete" asp-route-id="@itemEvent.EventId" asp-area="Admin">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+@{
+    for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <my-paging-link number="@i" current="@Model.CurrentRoute" />
+    }
+}
+
+@*<partial name="_PagingLinksPartial" />*@
