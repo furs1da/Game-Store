@@ -101,7 +101,28 @@ namespace GameStore.Controllers
             GameDetailsViewModel vm = new GameDetailsViewModel();
             
             vm.Game = game;
-            vm.Rating = 0;
+
+            Review rw = _storeContext.Reviews.FirstOrDefault(item => item.GameId == id && item.CustId == customer.CustId);
+
+            if (rw == null)
+            {
+                vm.Rating = 0;
+            }
+            else
+            {
+                vm.Rating = rw.Rate;
+            }
+
+            List<Review> listRw = _storeContext.Reviews.Where(item => item.GameId == id).ToList();
+
+            if (listRw.Count == 0)
+            {
+                vm.OverallRating = 0;
+            }
+            else
+            {
+                vm.OverallRating = listRw.Sum(item => item.Rate) / listRw.Count;
+            }
 
             return View(vm);
         }
@@ -369,7 +390,26 @@ namespace GameStore.Controllers
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
 
-            
+            Review rw = _storeContext.Reviews.FirstOrDefault(item => item.GameId == id && item.CustId == customer.CustId);
+
+            if(rw != null)
+            {
+                rw.Rate = rating;
+
+                _storeContext.Reviews.Update(rw);
+                _storeContext.SaveChanges();
+            }
+            else
+            {
+                rw = new Review();
+                rw.GameId = id;
+                rw.CustId = customer.CustId;
+                rw.Rate = rating;
+
+                _storeContext.Reviews.Add(rw);
+                _storeContext.SaveChanges();
+            }
+
 
             return RedirectToAction("Details", new { id = id });
         }

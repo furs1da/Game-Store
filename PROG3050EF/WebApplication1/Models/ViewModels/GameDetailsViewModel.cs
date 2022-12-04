@@ -11,5 +11,7 @@ namespace GameStore.Models.ViewModels
         public Game Game { get; set; }
 
         public int Rating { get; set; }
+
+        public double OverallRating { get; set; }
     }
 }

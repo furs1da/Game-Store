@@ -80,6 +80,7 @@
         <tr><td>Release Date:</td><td>@Model.Game.ReleaseDate.Value.ToString("dd/MM/yyyy")</td></tr>
         <tr><td>Game Studio:</td><td>@(GameStudioList.GameStudios.FirstOrDefault(item => item.Id == Model.Game.GameStudio) == null ? "No Information" : GameStudioList.GameStudios.FirstOrDefault(item => item.Id == Model.Game.GameStudio).Name)</td></tr>
         <tr><td>Digital or Physical Copy:</td><td>@(Model.Game.Digital == true ? "Digital" : "Physical")</td></tr>
+        <tr><td>Overall Rating:</td><td>@(Model.OverallRating == 0 ? "No ratings" : Model.OverallRating)</td></tr>
     </tbody>
 </table>
 
@@ -130,3 +131,5 @@
         </div>
     </div>
 </form>
+
+
