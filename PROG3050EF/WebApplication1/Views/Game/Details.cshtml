@@ -6,7 +6,27 @@
     ViewData["Title"] = " | Game Details";
     bool canBeDownloaded = false;
     canBeDownloaded = ViewBag.canBeDownloaded;
+
+    int result = 5;
+
+    var chk = "checked";
+    var checked1 = result == 1 ? chk : null;
+    var checked2 = result == 2 ? chk : null;
+    var checked3 = result == 3 ? chk : null;
+    var checked4 = result == 4 ? chk : null;
+    var checked5 = result == 5 ? chk : null;
 }
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+   $(document).ready(function () {
+    $('input[type=radio]').live('change', function()
+    {
+        window.location = '@Url.Action("Rating", "Game", new { id = Model.GameId, rating = result })';
+    });
+
+    });
+</script>
 
 <h1 class="mt-3">Game Details</h1>
 
@@ -97,3 +117,16 @@
 }
 
 <a asp-controller="Game" asp-action="List" class="link-primary ml-2">Go back</a>
+
+<form asp-controller="Game" asp-action="Rating" asp-route-id="@Model.GameId" asp-route-rating="@result" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="mt-4 mb-5">
+        <h3 class="mt-1">Rating:</h3>
+         <div class="rating">
+            <input type="radio" checked="@checked5" id="star5-@result" name="@result" value="5" /><label for="star5-@result" title="Best">5 stars</label>
+            <input type="radio" checked="@checked4" id="star4-@result" name="@result" value="4" /><label for="star4-@result" title="Good">4 stars</label>
+            <input type="radio" checked="@checked3" id="star3-@result" name="@result" value="3" /><label for="star3-@result" title="Average">3 stars</label>
+            <input type="radio" checked="@checked2" id="star2-@result" name="@result" value="2" /><label for="star2-@result" title="Not Great">2 stars</label>
+            <input type="radio" checked="@checked1" id="star1-@result" name="@result" value="1" /><label for="star1-@result" title="Pretty Bad">1 star</label>
+        </div>
+    </div>
+</form>

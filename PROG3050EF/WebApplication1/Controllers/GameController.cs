@@ -15,6 +15,7 @@ using GameStore.Models.ExtensionModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 
+
 namespace GameStore.Controllers
 {
     public class GameController : Controller
@@ -350,6 +351,19 @@ namespace GameStore.Controllers
                 _storeContext.WishLists.Remove(wl);
                 _storeContext.SaveChanges();
             }
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Rating(int id, int rating)
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            
 
             return RedirectToAction("Details", new { id = id });
         }
