@@ -77,11 +77,15 @@ namespace GameStore
             app.UseSession();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Game}/{action=List}/{id?}");
+
                 // route for Admin area
                 endpoints.MapAreaControllerRoute(
                    name: "admin",
                    areaName: "Admin",
-                   pattern: "{controller=AdminGame}/{action=Index}/{id?}");
+                   pattern: "{controller=AdminGame}/{action=List}/{id?}");
 
                 // route for paging, sorting, and filtering for Admin area
                 endpoints.MapAreaControllerRoute(
@@ -122,9 +126,7 @@ namespace GameStore
                 name: "",
                 pattern: "{controller}/{action}/{id?}");
 
-                endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Game}/{action=List}/{id?}");
+                
 
             });
 
