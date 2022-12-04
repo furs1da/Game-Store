@@ -13,6 +13,7 @@ using GameStore.Models.Query;
 using GameStore.Models.ViewModels;
 using GameStore.Models.ExtensionModels;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
 
 namespace GameStore.Controllers
 {
@@ -86,6 +87,14 @@ namespace GameStore.Controllers
             string currentUsername = User.Identity.Name;
             Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
             ViewBag.UserId = customer.CustId;
+
+            bool canBeDownloaded = false;
+
+            if (game.Price == 0 || _storeContext.Orders.FirstOrDefault(item => item.GameId != null && item.GameId == game.GameId && item.CustId == customer.CustId) != null)
+                canBeDownloaded = true;
+
+
+            ViewBag.canBeDownloaded = canBeDownloaded;
 
             return View(game);
         }
@@ -212,6 +221,44 @@ namespace GameStore.Controllers
         }
 
 
+        [Authorize]
+        [HttpGet]
+        public RedirectToActionResult AddGameDetails(int id, [FromServices] IRepository<Category> dataCategory, [FromServices] IRepository<Platform> dataPlatform,
+            [FromServices] IRepository<GameFeature> dataFeature,
+            string[] filter, bool clear = false)
+        {
+            
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            var game = data.Get(new QueryOptions<Game>
+            {
+                Includes = "GameCategories.Category, GameFeatureGames.GameFeature, PlatformGames.Platform",
+                Where = g => g.GameId == id
+            });
+            if (game == null)
+            {
+                TempData["message"] = "Unable to add book to cart";
+            }
+            else
+            {
+                var dto = new GameDTO();
+                dto.Load(game);
+                CartItem item = new CartItem
+                {
+                    Game = dto,
+                    Quantity = 1  // default value
+                };
+                cart.AddGame(item);
+                cart.Save();
+
+                TempData["message"] = $"{game.Name} added to cart";
+            }
+
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
 
 
         [Authorize]
@@ -230,6 +277,18 @@ namespace GameStore.Controllers
 
             return RedirectToAction("Details", new { id = id });
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Download()
+        {
+            string currentUsername = User.Identity.Name;
+            Customer customer = _storeContext.Customers.SingleOrDefault(cust => cust.Nickname == currentUsername);
+
+            byte[] bytes = Encoding.UTF8.GetBytes("Thank you for using our game store! Your steam code for this game is: 12345ABCDEFG");
+            return File(bytes, "text/plain", "gamecode.txt");
+        }
+
 
         [Authorize]
         [HttpPost]

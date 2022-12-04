@@ -16,8 +16,8 @@ namespace GameStore.Data
         public bool IsShipped { get; set; }
 
         public virtual Customer Cust { get; set; } = null!;
-        public virtual Game Game { get; set; } = null!;
-        public virtual Merchandise Merchandise { get; set; } = null!;
+        public virtual Game? Game { get; set; } = null!;
+        public virtual Merchandise? Merchandise { get; set; } = null!;
         public virtual CreditCard CreditCard { get; set; } = null!;
     }
 }
