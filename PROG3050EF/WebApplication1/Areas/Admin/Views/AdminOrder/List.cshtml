@@ -45,7 +45,7 @@
                     ordersDisplayed.Add(itemOrder.OrderNo);
 
                 <tr>
-                    <td>
+                        <td>
                             <partial name="_AdminOrderLinkPartial" model="@itemOrder" />
                         </td>
                         <td>
@@ -95,7 +95,7 @@
                         </td>
 
                         <td>
-                            <a asp-action="Edit" asp-route-id="@itemOrder.OrderNo" asp-area="Admin">Change shipping status</a>
+                            <a asp-action="Edit" asp-route-id="@itemOrder.OrderNo" asp-area="Admin">Change Shipping Status</a>
                             <span class="linkSpacer ml-1 mr-1">|</span>
                             <a asp-action="Delete" asp-route-id="@itemOrder.OrderNo" asp-area="Admin">Delete</a>
                         </td>

@@ -1,0 +1,103 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+@model List<Order>
+
+@{
+    ViewData["Title"] = " | Review Details";
+    bool isShipped = true;
+    double totalPrice = 0;
+}
+
+<h1 class="mt-3">Review Details</h1>
+
+    <table class="table table-bordered table-striped table-sm">
+        <thead class="thead-dark">
+            <tr>
+                    <th>Order Number</th>          
+                    <th>Customer</th>
+                    <th>List of Products</th>
+                    <th>Date</th>
+                    <th>Is Shipped</th>
+                    <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                <tr>
+                    <td>
+                        <b>@Model[0].OrderNo</b>
+                    </td>
+                    <td>
+                         @Model[0].Cust.Nickname
+                    </td>
+                    <td>
+                        @foreach(Order item in Model)
+                        {
+                            if(item.Game != null)
+                                {
+                                    <p>@item.Game.Name (Game)</p>
+                                }
+                                else
+                                {
+                                    <p>@item.Merchandise.Name (Merchandise)</p>
+                                }
+                        }
+                    </td>
+
+                    <td>
+                        @Model[0].Date.ToString("dd/MM/yyyy")
+                    </td>
+
+                    <td>
+                        @{isShipped = true;}
+                            @foreach (Order item in Model)
+                            {
+                                @if (!item.IsShipped)
+                                {
+                                    isShipped = false;    
+                                }
+                            }
+                            @(isShipped == true ? "Shipped" : "Not Shipped")
+                    </td>
+                    <td>
+                            @{totalPrice = 0;}
+                            @foreach (Order item in Model)
+                            {
+                               if(item.Game != null)
+                                {
+                                    totalPrice += (double)item.Game.Price * item.Quantity;
+                                }
+                                else
+                                {
+                                    totalPrice += (double)item.Merchandise.Price * item.Quantity;
+                                }
+                            }
+                            @totalPrice.ToString("C")
+                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <form asp-action="Edit" asp-controller="AdminOrder" method="get">
+            <button type="submit" name="id" value="@Model[0].OrderNo" class="btn btn-primary">
+                Change Shipping Status</button>
+        </form>
+
+        <form asp-action="Delete" asp-controller="AdminOrder" method="get">
+            <button type="submit" name="id" value="@Model[0].OrderNo" class="btn btn-primary ml-1">
+                Delete</button>
+        </form>
+    </div>
+
+    <a asp-controller="AdminOrder" asp-action="List" asp-area="Admin" class="link-primary ml-2">Go back</a>

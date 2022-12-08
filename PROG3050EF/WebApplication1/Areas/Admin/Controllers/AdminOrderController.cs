@@ -55,5 +55,19 @@ namespace GameStore.Areas.Admin.Controllers
             
             return View(vm);
         }
+
+        [Authorize]
+        public ViewResult Details(string id)
+        {
+            var options = new OrderQueryOptions
+            {
+                Includes = "Cust, Game, Merchandise",
+                Where = g => g.OrderNo == id
+            };
+
+            var eventList = data.List(options);
+
+            return View(eventList);
+        }
     }
 }
