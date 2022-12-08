@@ -37,7 +37,7 @@ namespace GameStore.Areas.Admin.Controllers
         public ViewResult List(GridDTO values)
         {
             var builder = new ReviewGridBuilder(HttpContext.Session, values,
-                defaultSortField: nameof(Event.Name));
+                defaultSortField: nameof(Review.Title));
 
             var options = new ReviewQueryOptions
             {

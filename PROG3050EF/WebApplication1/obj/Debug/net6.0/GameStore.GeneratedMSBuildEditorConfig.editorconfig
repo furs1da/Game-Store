@@ -51,6 +51,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5NZXJjaGFuZGlzZVxNZXJjaGFuZGlzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Areas/Admin/Views/AdminOrder/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5PcmRlclxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Areas/Admin/Views/AdminReview/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5SZXZpZXdcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,6 +81,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Areas/Admin/Views/Shared/_AdminMerchLinkPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbk1lcmNoTGlua1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Areas/Admin/Views/Shared/_AdminOrderLinkPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbk9yZGVyTGlua1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/College/5th semester/PROG3050 - Microsoft Enterprise/Project/GameStore/PROG3050EF/WebApplication1/Areas/Admin/Views/Shared/_AdminReviewLinkPartial.cshtml]
