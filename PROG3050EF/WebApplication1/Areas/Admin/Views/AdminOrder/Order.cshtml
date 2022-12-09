@@ -1,0 +1,167 @@
+﻿@using GameStore.Data.UtilityClasses
+@using GameStore.Models.ViewModels
+@using GameStore.Models.ExtensionModels
+@using GameStore.Data
+@using Microsoft.AspNetCore.Mvc
+@using GameStore
+@using GameStore.Models
+@using GameStore.TagHelpers
+@using GameStore.Data.Static_Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, GameStore
+
+
+@model List<Order>
+
+@{
+    // this view is used for add, edit, and delete. 
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+    ViewData["Title"] = $" | ";
+    double totalPrice = 0;
+    AddressViewModel shippingAddress = ViewBag.ShippingAddress;
+}
+
+<h1 class="mt-3">Order Processing</h1>
+
+<form asp-action="@action" asp-area="Admin" asp-controller="AdminOrder" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Order No: @Model[0].OrderNo</label></div>
+    </div>
+
+    @* if not deleting, display text boxes and drop-downs for rest of fields*@
+    @if (!Operation.IsDelete(action))
+    {
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Customer:</label></div>
+            <div class="col-sm-4">
+                <b>@Model[0].Cust.Nickname</b>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6"><h3>List of Products:</h3></div>
+        </div>
+
+
+        @for(int i =0; i < Model.Count(); i++)
+        {
+            <input type="hidden" asp-for="@Model[i].OrderId" />
+            <input type="hidden" asp-for="@Model[i].OrderNo" />
+            <input type="hidden" asp-for="@Model[i].CustId" />
+            <input type="hidden" asp-for="@Model[i].Date" />
+            <input type="hidden" asp-for="@Model[i].CreditId" />
+            <input type="hidden" asp-for="@Model[i].Quantity" />
+
+            <div class="form-group row">
+            <div class="col-sm-2"><label>Product:</label></div>
+            <div class="col-sm-4">
+              @if(Model[i].Game != null)
+              {
+                <input type="hidden" asp-for="@Model[i].GameId" />
+                <b>@Model[i].Game.Name (Game)</b>
+
+                if(!Model[i].Game.Digital.Value)
+                {  
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" asp-for="@Model[i].IsShipped">
+                      <label class="form-check-label" asp-for="@Model[i].IsShipped">
+                        Is shipped?
+                      </label>
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" asp-for="@Model[i].IsShipped" />
+                }
+              }
+
+              @if(Model[i].Merchandise != null)
+              {
+                 <input type="hidden" asp-for="@Model[i].MerchandiseId" />
+                 <b>@Model[i].Merchandise.Name (Merchandise)</b>              
+                 <div class="form-check">
+                      <input class="form-check-input" type="checkbox" asp-for="@Model[i].IsShipped">
+                      <label class="form-check-label" asp-for="@Model[i].IsShipped">
+                        Is shipped?
+                      </label>
+                 </div>
+              }
+
+              
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="@Model[i].IsShipped" class="text-danger"></span>
+            </div>
+        </div>
+
+     
+                                
+                            
+        }
+        
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Total Price: </label></div>
+            <div class="col-sm-4">
+                            @{totalPrice = 0;}
+                            @foreach (Order item in Model)
+                            {
+                               if(item.Game != null)
+                                {
+                                    totalPrice += (double)item.Game.Price * item.Quantity;
+                                }
+                                else
+                                {
+                                    totalPrice += (double)item.Merchandise.Price * item.Quantity;
+                                }
+                            }
+                            @totalPrice.ToString("C")
+            </div>
+        </div>
+
+       <h3>Customer's Shipping Address</h3>
+       <div class="form-group">
+            <label asp-for="@shippingAddress.Address">Address: @(shippingAddress.Address == null ? "No Information" : shippingAddress.Address)</label>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@shippingAddress.City">City: @(shippingAddress.City == null ? "No Information" : shippingAddress.City)</label>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@shippingAddress.Province">Province: @(shippingAddress.Provinces.FirstOrDefault(item => item.Id == shippingAddress.Province) == null ? "No Information" : shippingAddress.Provinces.FirstOrDefault(item => item.Id == shippingAddress.Province).Name)</label>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@shippingAddress.PostalCode">Postal Code: @(shippingAddress.PostalCode == null ? "No Information" : shippingAddress.PostalCode)</label>
+        </div>
+    }
+
+    else
+    {
+        @for(int i =0; i < Model.Count(); i++)
+        {
+            <input type="hidden" asp-for="@Model[i].OrderId" />
+            <input type="hidden" asp-for="@Model[i].OrderNo" />
+            <input type="hidden" asp-for="@Model[i].CustId" />
+            <input type="hidden" asp-for="@Model[i].Date" />
+            <input type="hidden" asp-for="@Model[i].CreditId" />
+            <input type="hidden" asp-for="@Model[i].Quantity" /> 
+            <input type="hidden" asp-for="@Model[i].IsShipped" />
+        }
+    }
+
+
+    
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+
+            @* return user to main admin page after add, or to search page otherwise *@
+             <a asp-controller="AdminOrder" asp-action="List" asp-area="Admin" class="link-primary ml-2">Go back</a>
+        </div>
+    </div>
+   
+</form>

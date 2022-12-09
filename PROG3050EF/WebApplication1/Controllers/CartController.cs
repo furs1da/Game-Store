@@ -290,10 +290,10 @@ namespace GameStore.Controllers
                 orderItem.Date = DateTime.Now;
                 orderItem.OrderNo = orderNo.ToString();
 
-                _storeContext.Orders.Update(orderItem);
-                _storeContext.SaveChanges();
+                _storeContext.Orders.Add(orderItem);
+                
             }
-
+            _storeContext.SaveChanges();
             cart.Clear();
             cart.Save();
             return RedirectToAction("Index");
