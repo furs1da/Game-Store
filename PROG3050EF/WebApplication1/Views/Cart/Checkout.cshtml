@@ -12,7 +12,7 @@
     <h3 class="mb-2">Subtotal: @Model.Cart.SubTotal.ToString("c")</h3>
     <h5 class="mt-4">Please select one of your credit cards to checkout:</h5>
     <div class="form-group row mt-3">
-                <div class="col-sm-2"><label><b>Credit Cart:</b></label></div>
+                <div class="col-sm-2"><label><b>Credit Card:</b></label></div>
                 <div class="col-sm-4">
                     <select asp-for="@Model.CreditCardId" class="form-control"
                         asp-items='@new SelectList(Model.CreditCards, "CreditId", "CardNumber", Model.CreditCardId)'>

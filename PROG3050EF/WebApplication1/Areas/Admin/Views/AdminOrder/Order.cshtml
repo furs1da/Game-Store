@@ -19,7 +19,11 @@
     var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
     ViewData["Title"] = $" | ";
     double totalPrice = 0;
-    AddressViewModel shippingAddress = ViewBag.ShippingAddress;
+    AddressViewModel shippingAddress = null;
+    if (ViewBag.ShippingAddress != null)
+    {
+        shippingAddress = ViewBag.ShippingAddress;
+    }
 }
 
 <h1 class="mt-3">Order Processing</h1>
@@ -120,23 +124,25 @@
                             @totalPrice.ToString("C")
             </div>
         </div>
+        if (shippingAddress != null)
+        {
+            <h3>Customer's Shipping Address</h3>
+            <div class="form-group">
+                <label asp-for="@shippingAddress.Address">Address: @(shippingAddress.Address == null ? "No Information" : shippingAddress.Address)</label>
+            </div>
 
-       <h3>Customer's Shipping Address</h3>
-       <div class="form-group">
-            <label asp-for="@shippingAddress.Address">Address: @(shippingAddress.Address == null ? "No Information" : shippingAddress.Address)</label>
-        </div>
+            <div class="form-group">
+                <label asp-for="@shippingAddress.City">City: @(shippingAddress.City == null ? "No Information" : shippingAddress.City)</label>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="@shippingAddress.City">City: @(shippingAddress.City == null ? "No Information" : shippingAddress.City)</label>
-        </div>
+            <div class="form-group">
+                <label asp-for="@shippingAddress.Province">Province: @(shippingAddress.Provinces.FirstOrDefault(item => item.Id == shippingAddress.Province) == null ? "No Information" : shippingAddress.Provinces.FirstOrDefault(item => item.Id == shippingAddress.Province).Name)</label>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="@shippingAddress.Province">Province: @(shippingAddress.Provinces.FirstOrDefault(item => item.Id == shippingAddress.Province) == null ? "No Information" : shippingAddress.Provinces.FirstOrDefault(item => item.Id == shippingAddress.Province).Name)</label>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="@shippingAddress.PostalCode">Postal Code: @(shippingAddress.PostalCode == null ? "No Information" : shippingAddress.PostalCode)</label>
-        </div>
+            <div class="form-group">
+                <label asp-for="@shippingAddress.PostalCode">Postal Code: @(shippingAddress.PostalCode == null ? "No Information" : shippingAddress.PostalCode)</label>
+            </div>
+        }
     }
 
     else
