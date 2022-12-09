@@ -92,6 +92,10 @@
               "target": "Package",
               "version": "[3.4.2, )"
             },
+            "Syncfusion.DocIORenderer.Net.Core": {
+              "target": "Package",
+              "version": "[20.3.0.60, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.4, )"

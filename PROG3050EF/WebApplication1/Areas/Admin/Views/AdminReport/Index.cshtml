@@ -1,0 +1,18 @@
+﻿@using GameStore.Models.ViewModels.Reports
+@model SelectValueViewModel
+@{
+    ViewData["Title"] = " | Order Details";
+}
+
+
+<h1 class="mt-3">Report Generator</h1>
+
+
+<select class="form-select" asp-for="@Model.SelectValue" id="@Model.SelectValue">
+  <option value="customer" selected>Member List Report</option>
+  <option value="game">Game List Report</option>
+</select>
+
+
+<a asp-action="GenerateReport" asp-controller="AdminReport" asp-area="Admin" asp-route-id="@Model.SelectValue" class="btn btn-primary mt-2"
+                           >Generate Report</a>
