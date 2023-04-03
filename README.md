@@ -2,7 +2,7 @@
 
 Welcome to the Game Store project! This application allows users to buy games and merchandise, enroll in events, write reviews, add friends and family members, and much more. The application also includes an admin panel for managing various aspects of the platform, such as orders, games, merchandise, events, and game reviews.
 
-## [Below you can find a complete list of screencaptures of all the functionality implemented in this project.](#_Toc1803475829)
+## [Below you can find a complete list of screencaptures of all the functionality implemented in this project.](#introduction)
 
 ## Features
 
@@ -88,7 +88,7 @@ Thanks to everyone who contributed to the development of the Game Store project.
 
 
 
-<span id="_Toc1803475829" class="anchor"><span id="_Toc1153413386" class="anchor"><span id="_Toc121554358" class="anchor"></span></span></span>INTRODUCTION
+<span id="introduction"></span>INTRODUCTION
 ===========================================================================================================================================================
 
 The Scientia Ludo’s is brought you by Retail Operations. They are a
