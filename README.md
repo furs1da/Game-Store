@@ -101,8 +101,8 @@ and effectively without any difficulties.
 <span id="_Toc493285545" class="anchor"><span id="_Toc121554359" class="anchor"></span></span>HOME PAGE
 =======================================================================================================
 
-![](media/image2.png){width="7.236110017497813in"
-height="3.9818186789151357in"}
+![image](https://user-images.githubusercontent.com/45331164/229421280-040b5fbf-27b6-4c61-aac7-e0f55b82a4f6.png)
+
 
 Game Zone is an application where you could shop your own
 online/physical copies games, which is free to download and install once
@@ -119,8 +119,7 @@ to.
 <span id="_Toc622720903" class="anchor"><span id="_Toc121554360" class="anchor"></span></span>REGISTER PAGE
 ===========================================================================================================
 
-![](media/image3.png){width="7.219525371828522in"
-height="4.20661198600175in"}
+![image](https://user-images.githubusercontent.com/45331164/229421313-b292959e-72c1-4d29-9ae5-1b60693783b2.png)
 
 This Register Page allows new users to log in through the system using
 it and all of them are required to entered by the user.
@@ -157,8 +156,7 @@ it and all of them are required to entered by the user.
 Log In Page
 ===========
 
-![](media/image4.png){width="6.778569553805775in"
-height="3.812946194225722in"}
+![image](https://user-images.githubusercontent.com/45331164/229421334-60019e61-db5e-41d0-816d-032298b9ec6b.png)
 
 The Log in Page is for the user who is already registered with us and is
 already member of our Game Zone Web App.
@@ -185,7 +183,7 @@ information:
 Forgotten Password (HELP)
 =========================
 
-![](media/image5.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421356-e9379679-9809-4a09-9e2b-f04248a3028b.png)
 
 This page shows whenever you forgot your password in the Log in page
 previously you can easily change the password once again by typing in a
@@ -195,8 +193,7 @@ received the link to change the password successfully.
 Game Details Page
 =================
 
-![](media/image6.png){width="6.5in" height="3.65625in"}
-
+![image](https://user-images.githubusercontent.com/45331164/229421368-3132763b-d28a-473c-9974-e8285826038f.png)
 The Game Details Page Can be navigated by clicking the Details Button
 once you are at the home page which is also known as the Game Catalog
 Page.
@@ -227,7 +224,7 @@ As For the Function of these buttons here, we have:
 Merchandise Catalog Page
 ========================
 
-![](media/image7.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421392-8b03e91a-742c-4e87-8580-b18ce94657ab.png)
 
 Merchandise Catalogue Page is the page that allows user to view the
 merchandise available in our Game Zone Store.
@@ -253,7 +250,7 @@ We have various features in this page as per:
 Merchandise Details Page
 ========================
 
-> ![](media/image8.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421411-f444749d-a8d0-447d-8922-6c64f6f98f73.png)
 >
 > This page is for the user to display the merchandise details for the
 > specific merchandise the user/member have selected.
@@ -273,8 +270,7 @@ Merchandise Details Page
 Events Catalog Page
 ===================
 
-![](media/image9.png){width="7.123370516185477in"
-height="4.0068963254593175in"}
+![image](https://user-images.githubusercontent.com/45331164/229421433-b33fbaa8-85b9-4a9a-afc2-c4487fa86e21.png)
 
 In this page its listed as per above the events been conducted during
 the specific date and mentioning how long will the event be held for.
@@ -294,8 +290,7 @@ These specific buttons are used for:
 Events Details Page
 ===================
 
-![](media/image10.png){width="7.097329396325459in"
-height="3.992248468941382in"}
+![image](https://user-images.githubusercontent.com/45331164/229421444-560ba0b0-bfb2-4223-aab0-1e1c05f0dee0.png)
 
 This is the page where you could see the details for the event in
 specifically to know what kind of your wanting to register into.
@@ -318,7 +313,7 @@ In this page also the buttons are worked as follows:
 Navigation Bar
 ==============
 
-![](media/image11.png){width="6.5in" height="0.2777777777777778in"}
+![image](https://user-images.githubusercontent.com/45331164/229421468-86d4064f-c7a4-4bb3-8b76-4b6495cddbc6.png)
 
 This is the navigation Bar which has all the button embedded
 functionalities. And these Buttons/Links Navigation works as follows:
@@ -368,8 +363,7 @@ functionalities. And these Buttons/Links Navigation works as follows:
 Your Wishlist Page
 ==================
 
-![](media/image12.png){width="6.29166447944007in"
-height="3.5390627734033244in"}
+![image](https://user-images.githubusercontent.com/45331164/229421488-31a704ba-08e0-494b-8484-f4550f3c0ef9.png)
 
 In this page all your wish list items are displayed together, and you
 are given the option to view the details or remove a Wishlist item.
@@ -388,8 +382,7 @@ In this page also the buttons are worked as follows:
 Your Cards Page
 ===============
 
-![](media/image13.png){width="6.240739282589677in"
-height="3.5104166666666665in"}
+![image](https://user-images.githubusercontent.com/45331164/229421511-f7061ec9-ee5e-403c-9efd-226d6332f201.png)
 
 In this page all your cards are displayed. You can add, edit, or delete
 a card.
@@ -408,7 +401,7 @@ In this page also the buttons are worked as follows:
 Edit Credit Cards Page
 ======================
 
-![](media/image14.png){width="6.388889982502187in" height="3.59375in"}
+![image](https://user-images.githubusercontent.com/45331164/229421542-7457cbc5-49ac-4953-be3f-dfa7ec03b6e9.png)
 
 In this page you can edit all the information on your card.
 
@@ -423,8 +416,7 @@ In this page also the buttons are worked as follows:
 Confirm Deletion Card Page
 ==========================
 
-![](media/image15.png){width="7.106130796150481in"
-height="3.230818022747157in"}
+![image](https://user-images.githubusercontent.com/45331164/229421565-2f86446b-ad8c-41ce-a581-d5c1eb934c96.png)
 
 In this page you can confirm whether you want to delete a card or
 cancel.
@@ -440,8 +432,7 @@ In this page also the buttons are worked as follows:
 Shipping Address Information Page
 =================================
 
-![](media/image16.png){width="6.677084426946632in"
-height="3.7558595800524937in"}
+![image](https://user-images.githubusercontent.com/45331164/229421584-83560873-7d22-4b12-8419-4a5f97b27d8c.png)
 
 In this page all your Shipping Address is displayed.
 
@@ -457,8 +448,7 @@ In this page also the buttons are worked as follows:
 Edit Shipping Address Page
 ==========================
 
-![](media/image17.png){width="5.740739282589677in"
-height="3.2291666666666665in"}
+![image](https://user-images.githubusercontent.com/45331164/229421601-0f351ddf-f658-4aea-8a78-e79d55335f58.png)
 
 In this page you can edit your Shipping Address.
 
@@ -475,8 +465,7 @@ In this page also the buttons are worked as follows:
 Mailing Address Page
 ====================
 
-![](media/image18.png){width="6.572463910761154in"
-height="3.6970111548556432in"}
+![image](https://user-images.githubusercontent.com/45331164/229421621-486322f8-eba1-4210-a427-ad6be9467db4.png)
 
 In this page all your Mailing Address is displayed
 
@@ -492,7 +481,7 @@ In this page also the buttons are worked as follows:
 Edit Mailing Address Page
 =========================
 
-![](media/image19.png){width="5.84375in" height="3.2749343832021in"}
+![image](https://user-images.githubusercontent.com/45331164/229421642-637f6a6a-f3ed-411b-a518-9950282e817a.png)
 
 In this page you can edit your Mailing Address.
 
@@ -506,8 +495,7 @@ In this page you can edit your Mailing Address.
 Profile Information Page
 ========================
 
-![](media/image20.png){width="7.068784995625546in"
-height="3.97619094488189in"}
+![image](https://user-images.githubusercontent.com/45331164/229421658-d0473c05-c14b-43af-b1a2-56538af53ef0.png)
 
 In this page the user / member could see their own details of their
 information and know about what information has been recorded
@@ -523,7 +511,7 @@ previously.
 Find User’s Profile Page
 ========================
 
-![](media/image21.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421668-f5932121-ce8a-41cc-ab6d-66108101d8d5.png)
 
 This page has been created for the current user to search for the user’s
 who has been our member for ***GAME ZONE.*** The User / member currently
@@ -555,7 +543,7 @@ Logged In can search by their username/nickname.
 Friends & Family Page
 =====================
 
-![](media/image22.png){width="6.15625in" height="3.4500656167979002in"}
+![image](https://user-images.githubusercontent.com/45331164/229421684-1f4eee97-cd44-44e8-ad60-142893554982.png)
 
 This page consists of all the users’ friends and family on the database
 where the user can choose whether they would like to cancel their family
@@ -575,8 +563,7 @@ your friends list
 Your Cart Page
 ==============
 
-![](media/image23.png){width="6.765820209973754in"
-height="3.8057742782152233in"}
+![image](https://user-images.githubusercontent.com/45331164/229421693-0cf08136-ae4f-47a1-9a4d-2e4b9756d9ea.png)
 
 This page shows all the items which the user has selected to view all
 the information regarding the game or merchandise they chose, so we have
@@ -600,7 +587,7 @@ There are also some action buttons as follows:
 Edit Cart Page
 ==============
 
-![](media/image24.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421710-029c7cc0-c5fc-4a4b-81ff-86803f6baf85.png)
 
 In this page users will be editing the amount of quantity they wish to
 purchase later. And The Quantity also has a limit which is having a
@@ -618,7 +605,7 @@ The Buttons above works as follows: =
 Checkout Page
 =============
 
-![](media/image25.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421730-5e7a8ee4-f333-4e91-83b2-310b416739dd.png)
 
 In this page we have our check out subtotal which will add up to how
 many items we have selected on our “Your Cart” Page.
@@ -657,8 +644,7 @@ had three extra buttons.
 Add A Game (ADMIN)
 ==================
 
-![](media/image27.png){width="6.707069116360455in"
-height="3.7727274715660544in"}
+![image](https://user-images.githubusercontent.com/45331164/229421864-c6dc261e-5a09-47f3-ae38-86fb2e9792e7.png)
 
 In this page Admin can add a new set piece of information. In which you
 have validations. The required fields for this are all of them except
@@ -676,8 +662,7 @@ The Buttons also works as follows:
 Edit Game Page (ADMIN)
 ======================
 
-![](media/image28.png){width="7.130768810148731in"
-height="4.011057524059493in"}
+![image](https://user-images.githubusercontent.com/45331164/229421841-2c964e8a-b304-40b1-a401-567b248080f8.png)
 
 In this page Admin can Edit the existing information. In which you have
 validations. The required fields for this are all of them except for
@@ -695,8 +680,7 @@ The Buttons also works as follows:
 Delete Games Page (ADMIN)
 =========================
 
-![](media/image29.png){width="7.152135826771653in"
-height="4.023076334208224in"}
+![image](https://user-images.githubusercontent.com/45331164/229421891-7af91931-2e53-4be6-9f0e-ad9ed34eac95.png)
 
 In this page the admin can DELETE the specific game he wishes for in
 this case we have” Apex Legends.”\
@@ -714,7 +698,7 @@ The buttons Features would be:
 Review Catalog Page (ADMIN)
 ===========================
 
-![](media/image30.png){width="6.5in" height="3.6618055555555555in"}
+![image](https://user-images.githubusercontent.com/45331164/229421903-c863eab5-402f-47ea-a4f6-2fae7896ac9d.png)
 
 In this page the admin can view Reviews and delete reviews as well as
 decide.
@@ -732,7 +716,7 @@ The buttons Features would be:
 Order Catalog Page (ADMIN)
 ==========================
 
-![](media/image31.png){width="6.5in" height="3.6791666666666667in"}
+![image](https://user-images.githubusercontent.com/45331164/229421919-90403676-1a9f-43ea-90d4-6d82f89e7530.png)
 
 In this page the admin can view order catalog page and delete any orders
 placed in addition change the shipping status for a specific order that
@@ -751,7 +735,7 @@ The buttons Features would be:
 Merchandise Catalog Page (ADMIN)
 ================================
 
-![](media/image32.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229421936-de9eaa2f-fa51-46c5-b063-0cafc6cb6111.png)
 
 In this page the admin can view the merchandise catalog page and delete
 any item of merchandise in addition edit any item of merchandise and add
@@ -772,8 +756,7 @@ The buttons Features would be:
 Edit Merchandise Catalog Page (ADMIN)
 =====================================
 
-![](media/image33.png){width="6.5448982939632545in"
-height="3.6870997375328085in"}
+![image](https://user-images.githubusercontent.com/45331164/229421955-e825cf29-8e31-418f-83af-ed84ed1262b7.png)
 
 In this page the admin can view the merchandise and edit any item of
 merchandise or press the “cancel” and nothing will happen.
@@ -788,8 +771,7 @@ merchandise or press the “cancel” and nothing will happen.
 Add Merchandise Page (ADMIN)
 ============================
 
-![](media/image34.png){width="6.2599978127734035in"
-height="3.5132228783902013in"}
+![image](https://user-images.githubusercontent.com/45331164/229421973-194b88e6-e033-4454-b8ab-fe68c6a06b1d.png)
 
 In this page the admin has a couple fields to fill in to add a new item
 of merchandise or if the admin chooses to cancel, he can click the
@@ -807,7 +789,7 @@ The buttons Features would be:
 Delete Merchandise Page (ADMIN)
 ===============================
 
-![](media/image35.png){width="6.5in" height="3.68125in"}
+![image](https://user-images.githubusercontent.com/45331164/229421985-3a1198e0-9763-4d50-a7e7-05aca2c43b90.png)
 
 In this page the admin has two choices one being the confirm the
 deletion of an item of merchandise or cancel all together and go back to
@@ -825,7 +807,7 @@ The buttons Features would be:
 Event Catalog Page (ADMIN)
 ==========================
 
-![](media/image36.png){width="6.5in" height="3.660416666666667in"}
+![image](https://user-images.githubusercontent.com/45331164/229422009-2199ffd0-4321-491b-a60a-758b8ffbd1c9.png)
 
 In this page the admin can view the event catalog page and delete any
 item event in addition edit any item of an event, delete any item of an
@@ -846,7 +828,7 @@ The buttons Features would be:
 Add Event Page (ADMIN)
 ======================
 
-![](media/image37.png){width="6.5in" height="3.65625in"}
+![image](https://user-images.githubusercontent.com/45331164/229422022-9ed9bb01-b985-44fa-8031-025fae768a5b.png)
 
 In this page the admin has a couple fields to fill in to add a new event
 or if the admin chooses to cancel, he can click the cancel button or the
@@ -865,7 +847,7 @@ The buttons Features would be:
 Edit Event Page (ADMIN)
 =======================
 
-![](media/image38.png){width="6.5in" height="3.6659722222222224in"}
+![image](https://user-images.githubusercontent.com/45331164/229422032-13200556-e392-4c8f-8d5c-8321a1df13fa.png)
 
 In this page the admin can view the event and edit any item of the event
 or press the “cancel” and nothing will happen.
@@ -881,7 +863,7 @@ The buttons Features would be:
 Delete Event Page (ADMIN)
 =========================
 
-![](media/image39.png){width="6.5in" height="3.6597222222222223in"}
+![image](https://user-images.githubusercontent.com/45331164/229422054-888994e4-ac4f-43cc-933d-99ce44fd4f10.png)
 
 In this page the admin has two choices one being the confirm the
 deletion of an event or cancel all together and go back to the previous
@@ -896,8 +878,9 @@ The buttons Features would be:
 -   *Cancel: The “cancel” button cancels the deletion of an event and
     takes the admin back to the event catalog page. *
 
-<span id="_Toc121554397" class="anchor"></span>Review approval Page
-(ADMIN)![](media/image40.png){width="6.5in" height="3.65625in"}
+<span id="_Toc121554397" class="anchor"></span>Review approval Page (ADMIN)
+
+![image](https://user-images.githubusercontent.com/45331164/229422076-b1f174ef-4f8e-44fb-ad38-c391fba3833f.png)
 
 In this page the admin can view the review and edit any aspect of the
 review or press the “cancel” and nothing will happen.
@@ -911,9 +894,8 @@ The buttons Features would be:
 -   *Cancel: The “cancel” button cancels all the edits made to the
     review and takes the admin back to the review catalog page. *
 
-<span id="_Toc121554398" class="anchor"></span>Delete Review Page
-(ADMIN) ![](media/image41.png){width="6.5in"
-height="3.6791666666666667in"}
+<span id="_Toc121554398" class="anchor"></span>Delete Review Page (ADMIN) 
+![image](https://user-images.githubusercontent.com/45331164/229422115-6e3dca56-028f-444e-b0bb-3546bc898eba.png)
 
 In this page the admin can confirm the deletion of a review or choose to
 cancel the deletion process.
@@ -927,9 +909,8 @@ The buttons Features would be:
 -   *Cancel: The “cancel” button cancels the deletion of a review and
     takes the admin back to the review catalog page. *
 
-<span id="_Toc121554399" class="anchor"></span>Order Processing Page
-(ADMIN)![](media/image42.png){width="6.5in"
-height="3.629861111111111in"}
+<span id="_Toc121554399" class="anchor"></span>Order Processing Page (ADMIN)
+![image](https://user-images.githubusercontent.com/45331164/229422184-72ba6684-8ac0-42ff-b398-274f23e5c2f3.png)
 
 In this page the admin can either choose to edit an order which is being
 processed by editing aspects of the order or cancel the editing process
@@ -945,7 +926,7 @@ The buttons Features would be:
     changes being made. *
 
 <span id="_Toc121554400" class="anchor"></span>Delete Order Page (ADMIN)
-![](media/image43.png){width="6.5in" height="3.645138888888889in"}
+![image](https://user-images.githubusercontent.com/45331164/229422172-0be1461a-1af3-4cb0-8fed-1e30df9a25a6.png)
 
 In this page the admin can confirm the deletion of an order or choose to
 cancel the deletion process.
@@ -959,8 +940,9 @@ The buttons Features would be:
 -   *Cancel: The “cancel” button cancels the deletion of an order and
     takes the admin back to the order catalog page. *
 
-<span id="_Toc121554401" class="anchor"></span>Report Generator Page
-(ADMIN) ![](media/image44.png){width="6.5in"
+<span id="_Toc121554401" class="anchor"></span>Report Generator Page (ADMIN)
+
+![image](https://user-images.githubusercontent.com/45331164/229422234-1e9c67c6-29fb-48b8-bdde-1601d8612d7b.png)
 height="3.6694444444444443in"} In this page the admin can generate two
 types of reports one being the member list report and other being a game
 list report
